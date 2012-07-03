@@ -1,26 +1,6 @@
-/* 
-* regular #d5a582
-  cold #63a3c7
-  hot #c65568
-*/
-
-/* body{ */
-/*     background: #000 url('/img/shadow.jpg') center fixed no-repeat; */
-/*     padding-top: 40px; */
-/*     text-shadow:1px 1px 1px #000; */
-/* } */
-
 .post{
  margin: 15px 0;
 }
-
-
-/* .cell{ */
-/*     border: 1px solid black; */
-/*     border-radius: 10px; */
-/*     padding: 10px; */
-/*     background-color:rgba(214,214,213,0.7); */
-/* } */
 
 header{
     height: 40px;
@@ -32,5 +12,12 @@ header nav a{
 }
 
 
-.title{font-size: 20px;}
+.title{
+    font-size: 20px;
+    position:relative;
+    top:3px;
+}
 
+.content{
+    padding-top: 10px;
+}
