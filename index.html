@@ -6,7 +6,7 @@ layout: default
   <div class="post cell">
     <h2><a href="{{ post.url }}" class="dark-link">{{ post.title }}</a></h2>
     <h4 class="low-top">
-      Posted on {{ page.date | date: "%d %B %Y" }}
+      Posted on {{ post.date | date: "%d %B %Y" }}
       {% unless no_category %}
       {% if post.category %}
       in <a href="/categories/{{ post.category | slugize }}">{{ post.category }}</a>
