@@ -11,7 +11,7 @@
 
 
   
-  <title>jquery autobox plugin - Kev Zettler</title>
+  <title>Disable Any Element With jQuery - Kev Zettler</title>
   
 
   <meta name="description" content="">
@@ -49,38 +49,47 @@
 
         <div id="main">
 	  <div class="post cell">
-  <h1>jquery autobox plugin</h1>
+  <h1>Disable Any Element With jQuery</h1>
   <h4 class="large-bottom">
-    Posted on 30 October 2010
-    
+    Posted on 05 July 2012
+     in <a href="/categories/Code">Code</a> 
   </h4>
   
   <div class="content">
-    <p>I have worked on several site designs that expect form inputs to render with a default value. Upon focus of the input the default text should clear and allow user input to stick. Sometimes the design calls for this to happen with a password field as well.</p>
+    <p>In HTML the <a href="http://www.w3schools.com/tags/att_input_disabled.asp">disabled attribute</a> alows you to mark an input element as 'disabled' Which will trigger
+the browser to render the input in a 'greyed out' style:</p>
 
-<p>Password fields are a special condition as the text is rendered as dots. You cannot dynamically change the 'type' attribute of a password input field. This is a browser security feature. To obtain this behavior with password fields you need to dynamically create a text field on top of the password and hide it on focus. This plugin handles this.</p>
+<table style="padding:20px;">
+  <tr>
+    <td>
+      <form>
+        <p>Enabled elements</p>
+        <button >Click</button><br /><br />
+        <input type="text"  value="text" /><br />
+        <select ><br />
+          <option>Select</option>
+        </select>
+      </form>
+    </td>
+    <td>
+      <form style="padding-left:40px;">
+        <p>Disabled elements</p>
+        <button disabled="disabled">Click</button><br /><br />
+        <input type="text" disabled="disabled" value="text" /><br />
+        <select disabled="disabled"><br />
+          <option>Select</option>
+        </select>
+      </form>
+    </td>
+  </tr>
+</table>
 
-<pre><code> "You cannot dynamically change the 'type' attribute of a password input field."
-</code></pre>
 
-<p>Handle any font colors or styling with css.</p>
+<p>This is helpful for limiting user interaction when an app is in an unknown state. Like waiting for an Ajax response. However this attribute is only available on form input elements.
+This is unfortunate if you are heavily using your own custom UI components. Say you have a bunch of buttons throughout your UI that are actually <code>&lt;a&gt;</code> elements.</p>
 
-<p>Downloads</p>
-
-<p><a href="https://github.com/kevzettler/jquery.autobox/tarball/master">download - tar.gz</a></p>
-
-<p><a href="https://github.com/kevzettler/jquery.autobox/zipball/master">download - .zip</a></p>
-
-<p>Installation</p>
-
-<pre><code>&lt;script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"&gt;&lt;/script&gt;  
-&lt;script src="jquery.autobox.js" type="text/javascript"&gt;&lt;/script&gt;  
-&lt;script type="text/javascript"&gt;&lt;/script&gt;  
-&lt;form&gt; &lt;input value="default text" type="text" /&gt; &lt;input value="default pass" type="pass" /&gt; &lt;/form&gt;  
-</code></pre>
-
-<p>Demo
-See it live <a href="http://www.callmekev.com/demo">here</a></p>
+<p>I've ran into this problem on several projects and developed a pattern which grew into a plugin I now use on most projects. You can get the plugin here <a href="https://github.com/kevzettler/jquery.disable/downloads">download jquery.disable</a>
+or check it out and contribute to <a href="https://github.com/kevzettler/jquery.disable">jquery.disable on github</a></p>
 
   </div>
   
@@ -94,18 +103,14 @@ See it live <a href="http://www.callmekev.com/demo">here</a></p>
   
   <div class="next-prev-nav low-top">
     
-      &laquo;&nbsp;<a href="/2010/09/05/IE-button-bug.html" rel="previous" title="IE button bug">IE button bug</a>
+      &laquo;&nbsp;<a href="/Protip/2011/04/09/2-computers-1-network-cable.html" rel="previous" title="How to transfer files between two computers over ethernet">How to transfer files between two computers over ethernet</a>
     
   
     
       
-        |
-      
     
     
   
-    
-      <a href="/Protip/2011/04/09/2-computers-1-network-cable.html" rel="next" title="How to transfer files between two computers over ethernet">How to transfer files between two computers over ethernet</a>&nbsp;&raquo;
     
   
     <br />
