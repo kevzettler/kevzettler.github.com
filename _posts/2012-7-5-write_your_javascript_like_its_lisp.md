@@ -7,6 +7,12 @@ tags:
   - Conventions
 ---
 
+### tldr;
+* Abstract anonymous functions into named functions to avoid nesting callbacks.
+* Avoid using local variables of a shared scope in nested anonymous functions.
+* Abstract large JavaScript object declaration into smaller generator functions.
+
+
 ## Or 'How To Avoid Callback Hell'.
 I have been meaning to write this post for some time now. Basically since Node.js came onto the spotlight and people started complaining about JavaScript code maintainability and readability due to
 nested callbacks and other asynchronous patterns. Writing JavaScript like Lisp is a bit of an generalization. More specifically, I mean write JavaScript like it’s a functional language, which it is. 
@@ -172,9 +178,3 @@ We now have self-contained small units of code that are much more manageable.
   
     (click click-handler)
 {% endhighlight %}
-
-## tldr;
-* Abstract anonymous functions into named functions to avoid nesting callbacks.
-* Avoid using local variables of a shared scope in nested anonymous functions.
-* Abstract large JavaScript object declaration into smaller generator functions.
-
