@@ -182,10 +182,11 @@ We now have self-contained small units of code that are much more manageable.
   
     (on-click click-handler)
 
+{% endhighlight %}
 
 ## In conclusion
 
 If you're coming from a traditionally synchronous, procedural programming background. These patterns may not be a silver bullet for you. 
 This doesn't eliminate the need for callbacks. Hopefully it will help you manage them better. The code, in parts, is still written and executed in a non-sequential order. 
 
-{% endhighlight %}
+
