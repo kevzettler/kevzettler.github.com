@@ -12,7 +12,6 @@ tags:
 * Avoid using local variables of a shared scope in nested anonymous functions.
 * Abstract large JavaScript object declaration into smaller generator functions.
 
-
 ## Or 'How To Avoid Callback Hell'.
 I have been meaning to write this post for some time now. Basically since Node.js came onto the spotlight and people started complaining about JavaScript code maintainability and readability due to
 nested callbacks and other asynchronous patterns. Writing JavaScript like Lisp is a bit of an generalization. More specifically, I mean write JavaScript like it’s a functional language, which it is. 
@@ -90,8 +89,12 @@ Simply giving the anonymous functions names and moving them out of the nested pa
 
 Visually the code is now easier to parse. Programmatically, the callbacks are now standalone units that can be tested in isolation.
 We could easily write a unit test for `ajaxSuccessHandler` that called it with a dummy data object and ensured it was functioning correctly. This is significantly harder when nesting anonymous functions.
+
+Stack traces now become more useful as well. Trying to hunt down a bug in a stack trace that is 3 layers deep in anonymous functions is not helpful. If the functions are named its much easier to track down issues.
+
 Another added benefit of this pattern is that it now makes it easy to annotate our functions to utilize the features of [Google's Closure Compiler](https://developers.google.com/closure/compiler/docs/js-for-compiler).
 This opens up the opportunity to add strict type checking to our JavaScript.
+
 
 Expanding on our re-factor, we could have abstracted the anonymous callbacks passed to the `fadeOut` and `animate` invocations. Also the callback passed to our `$.Get` call is ripe for naming as well.
 For this small example we'll skip editing them as its a bit overkill. In larger code bases you'll see those functions swell.
@@ -147,7 +150,7 @@ Again this is an exaggerated example and a bit overkill in this case, but defini
 For fun let’s look at the above example in some bad pseudo Lisp. 
 
 > __Disclaimer__ I am by no means a certified Lisper. 
-> The extent of my experience with Lisp is a few toy projects in Scheme and Commonlisp. The following code is meant to be more of visual aid than a functional program.
+> The extent of my experience with Lisp is a few toy projects in Scheme and Common Lisp. The following code is meant to be more of visual aid than a functional program.
 
 ### Our nested Ajax procedure.
 I've simplified `success` and `error` callbacks for this example to make them simple calls to `alert`
@@ -155,26 +158,34 @@ You can see this is visually similar to the way JavaScript nests anonymous funct
 This example makes use of Lisps anonymous functions with `lambda`. `lambda` is equivalent to JavaScripts `(function(){})`
 
 {% highlight cl %}
-    (click (lambda (event)
-              (ajax ((pseudo-data) 
-                     (success (lambda (data)
-                       (alert data)))
-                     (error (lambda (data)
-                       (alert data)))))))
+                       
+    (on-click (lambda (event)
+      (ajax pseudo-data
+        (lambda (data) ; success
+          (alert data))
+        (lambda (data) ; error
+          (alert data)))))
+        
 {% endhighlight %}
   
 ## After our re-factor.
 Below you can see that a similar clarity arises to our Lisp code when we abstract the anonymous functions in to named ones.
 We now have self-contained small units of code that are much more manageable.
 {% highlight cl %}
-    (defun success-callback (data)
-      (alert data))
-  
-    (defun error-callback (data)
-      (alert data))
-  
+                       
+    (defun success-callback (data) (alert data))
+
+    (defun error-callback (data) (jax-log data))
+
     (defun click-handler (event)
-      (ajax (pseudo-data) (success success-callback) (error error-callback)))
+      (ajax pseudo-data success-callback error-callback))
   
-    (click click-handler)
+    (on-click click-handler)
+
+
+## In conclusion
+
+If you're coming from a traditionally synchronous, procedural programming background. These patterns may not be a silver bullet for you. 
+This doesn't eliminate the need for callbacks. Hopefully it will help you manage them better. The code, in parts, is still written and executed in a non-sequential order. 
+
 {% endhighlight %}
