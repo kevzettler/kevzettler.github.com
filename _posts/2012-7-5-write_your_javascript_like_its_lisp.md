@@ -87,6 +87,9 @@ We could easily write a unit test for `ajaxSuccessHandler` that called it with a
 Another added benefit of this pattern is that it now makes it easy to annotate our functions to utilize the features of [Google's Closure Compiler](https://developers.google.com/closure/compiler/docs/js-for-compiler).
 This opens up the opportunity to add strict type checking to our JavaScript.
 
+Expanding on our re-factor, we could have abstracted the anonymous callbacks passed to the `fadeOut` and `animate` invocations. Also the callback passed to our `$.Get` call is ripe for naming as well.
+For this small example we'll skip editing them as its a bit overkill. In larger code bases you'll see those functions swell.
+
 ## Generate large objects from named functions.
 This next example is a bit exaggerated but gets the concept across. 
 Often times you may have some JavaScript objects defined inline as a parameter or local variable.
