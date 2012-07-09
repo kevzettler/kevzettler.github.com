@@ -1,3 +1,15 @@
+body pre{
+    background-color: rgba(251, 244, 222, 70);
+}
+
+#disqus_thread{
+    margin-top: 25px;
+}
+
+h2{
+  padding-top: 10px;
+}
+
 .post{
  margin: 15px 0;
 }
