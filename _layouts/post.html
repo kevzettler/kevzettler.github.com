@@ -14,6 +14,11 @@ layout: default
   </div>
   
   <hr />
+
+  <div style="float:right;">
+    <span class='st_twitter_hcount' displayText='Tweet'></span>
+    <span class='st_email_hcount' displayText='Email'></span>
+  </div>
   
   {% if page.tags %}
     Tagged in
@@ -22,7 +27,8 @@ layout: default
     {% endfor %}
     <br />
   {% endif %}
-  
+
+
   <div class="next-prev-nav low-top">
     {% if page.previous.url %}
       &laquo;&nbsp;<a href="{{ page.previous.url }}" rel="previous" title="{{ page.previous.title }}">{{ page.previous.title }}</a>
