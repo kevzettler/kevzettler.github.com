@@ -65,14 +65,22 @@
         g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
         s.parentNode.insertBefore(g,s)}(document,'script'));
     </script>
-
     <script id="IntercomSettingsScriptTag">
+      var fake_users = [
+      {email: 'kevzettler@gmail.com', created_at: 123456},
+      {email: 'bryanzettler@gmail.com', created_at: 123456},
+      {email: 'katiezettler@gmail.com', created_at: 123456},
+      ]
+
+      user = fake_users[Math.floor(Math.random()*4)];
+
       var intercomSettings = {
       app_id: '1gyarz4u',
-      email: 'john.doe@example.com', // TODO: User's e-mail address
-      created_at: 1234567890 // TODO: User's sign-up date, Unix timestamp
+      email: user.email
+      created_at:  user.created_at
       };
     </script>
+
     <script>
       (function() {
       function async_load() {
