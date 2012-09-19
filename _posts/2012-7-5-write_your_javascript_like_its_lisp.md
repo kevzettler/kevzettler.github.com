@@ -14,7 +14,7 @@ tags:
 
 ## Or 'How To Avoid Callback Hell'.
 I have been meaning to write this post for some time now. Basically since Node.js came onto the spotlight and people started complaining about JavaScript code maintainability and readability due to
-nested callbacks and other asynchronous patterns. Writing JavaScript like Lisp is a bit of an generalization. More specifically, I mean write JavaScript like it’s a functional language, which it is. 
+nested callbacks and other asynchronous patterns. This is also highly relevant now with the rise ove backbone.js and searching for best practices. Writing JavaScript like Lisp is a bit of an generalization. More specifically, I mean write JavaScript like it’s a functional language, which it is. 
 By this, I mean write it as small composable functions. I'll show a few patterns I use that can help keep your JavaScript more manageable. Let’s get into some code examples.
 
 ## A standard jQuery Ajax button event.
@@ -69,7 +69,7 @@ Well lets break it up into smaller pieces. More manageable pieces.
     }
 
     function buttonClickHandler(event){
-      $.Ajax({
+      $.ajax({
         url: "http://coolsite.com"
         ,data: {
           "lots": "of"
@@ -143,7 +143,7 @@ In our next example code, we abstract these small objects in to some simple name
     $('button').click(buttonClickHandler);
 {% endhighlight %}
 
-This abstraction lets us contain the objects in to smaller functions that can be unit tested managed much easier.
+This abstraction lets us contain the objects in to smaller functions that can be unit tested and managed much easier.
 Again this is an exaggerated example and a bit overkill in this case, but definitely useful for larger objects.
 
 ## Just for fun.
