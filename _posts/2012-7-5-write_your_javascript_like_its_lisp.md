@@ -23,7 +23,7 @@ The error function does some animation to the button and then does some Ajax to 
 
 {% highlight javascript %}
     $('button').click(function(event){
-      $.Ajax({
+      $.ajax({
         url: "http://coolsite.com"
         ,data: {
           "lots" : "of"
@@ -36,7 +36,7 @@ The error function does some animation to the button and then does some Ajax to 
         },
         error: function(data){
           $('button').animate({top: '20px'}, function(){
-            $.Get("http://coolsite.com/logger", function(){
+            $.get("http://coolsite.com/logger", function(){
                console.log('error happened');
             });
         });
@@ -62,7 +62,7 @@ Well lets break it up into smaller pieces. More manageable pieces.
 
     function ajaxErrorHandler(data){
       $('button').animate({top: data.top}, function(){
-        $.Get("http://coolsite.com/logger", function(){
+        $.get("http://coolsite.com/logger", function(){
           console.log('error happened');
         });
       });
@@ -114,7 +114,7 @@ In our next example code, we abstract these small objects in to some simple name
 
     function ajaxErrorHandler(data){
       $('button').animate({top: data.top}, function(){
-        $.Get("http://coolsite.com/logger", function(){
+        $.get("http://coolsite.com/logger", function(){
           console.log('error happened');
         });
       });
@@ -137,7 +137,7 @@ In our next example code, we abstract these small objects in to some simple name
     }
 
     function buttonClickHandler(event){
-      $.Ajax(buttonClickAjaxObj());
+      $.ajax(buttonClickAjaxObj());
     }
 
     $('button').click(buttonClickHandler);
