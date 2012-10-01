@@ -14,7 +14,7 @@ tags:
 
 ## Or 'How To Avoid Callback Hell'.
 I have been meaning to write this post for some time now. Basically since Node.js came onto the spotlight and people started complaining about JavaScript code maintainability and readability due to
-nested callbacks and other asynchronous patterns. This is also highly relevant now with the rise ove backbone.js and searching for best practices. Writing JavaScript like Lisp is a bit of an generalization. More specifically, I mean write JavaScript like it’s a functional language, which it is. 
+nested callbacks and other asynchronous patterns. This is also highly relevant now with the rise of backbone.js and the discussion for best practices there. Writing JavaScript like Lisp is a bit of an generalization. More specifically, I mean write JavaScript like it’s a functional language, which it is. 
 By this, I mean write it as small composable functions. I'll show a few patterns I use that can help keep your JavaScript more manageable. Let’s get into some code examples.
 
 ## A standard jQuery Ajax button event.
@@ -87,7 +87,7 @@ Well lets break it up into smaller pieces. More manageable pieces.
 We've made a few small abstractions. We've moved the anonymous functions that handle the button click, Ajax success, and Ajax error into separate named functions. 
 Simply giving the anonymous functions names and moving them out of the nested pattern has significantly improved this code. 
 
-Visually the code is now easier to parse. Programmatically, the callbacks are now standalone units that can be tested in isolation.
+Visually the code is now easier to parse. The callbacks are now standalone units that can be tested in isolation.
 We could easily write a unit test for `ajaxSuccessHandler` that called it with a dummy data object and ensured it was functioning correctly. This is significantly harder when nesting anonymous functions.
 
 Stack traces now become more useful as well. Trying to hunt down a bug in a stack trace that is 3 layers deep in anonymous functions is not helpful. If the functions are named its much easier to track down issues.
