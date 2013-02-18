@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Write Your JavaScript Like Its Lisp
+title: How To Manage Javascript Callbacks
 category: Programming
 tags:
   - JavaScript
