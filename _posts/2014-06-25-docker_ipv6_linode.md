@@ -13,5 +13,5 @@ tags:
 * If you want to us ipv6 with docker.io on linode make sure you have the following `sysctl` set
   * `net.ipv6.conf.all.accept_ra = 2`
   * `net.ipv6.conf.all.forwarding = 1`
-* Then you can pretty much follow this post http://zargony.com/2013/10/13/ipv6-in-docker-containers
+* Then you can pretty much follow this post [http://zargony.com/2013/10/13/ipv6-in-docker-containers](http://zargony.com/2013/10/13/ipv6-in-docker-containers#sthash.xNFG3NCx.dpuf)
 * If you want auto configured addresses you can install and configure `radvd`
