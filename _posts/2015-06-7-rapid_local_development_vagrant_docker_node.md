@@ -184,7 +184,7 @@ We can then update our VagrantFile to add a new Docker Volume:
           args: "-v '/vagrant/web:/srv/www'\
                  -v '/vagrant/customModule:/dist/node_modules/customModule'\
                  -e NODE_ENV=development\
-                 -p 5000:5000
+                 -p 5000:5000"
                  
 {% endhighlight %} 
 
