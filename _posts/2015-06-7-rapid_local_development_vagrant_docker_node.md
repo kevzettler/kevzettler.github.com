@@ -1,11 +1,11 @@
 ---
 layout: post
-title: Rapid Local Development with Vagrant, Docker.io and Node.js
+title: Rapid Local Development with Vagrant, Docker and Node.js
 category: Programming
 tags:
   - JavaScript
   - Conventions
-  - Docker.io
+  - Docker
   - Vagrant
   - Node.js
 ---
