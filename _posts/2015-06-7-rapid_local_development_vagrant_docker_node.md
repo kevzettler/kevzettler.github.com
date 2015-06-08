@@ -161,7 +161,7 @@ So in this scenario. Lets assume that `web` has an entry in `package.json` like 
    }
 {% endhighlight %}
 
-`customModule` is a NPM module that we maintain and develop. This package.json setup works fine for production because we just install from the repo and forget about it. In development we want to rapidly make changes to `customModule`and not have to rebuild everything. Normally when developing on local machine. We would `cd` into `web` and do `npm link customModule` which would build a symlink to our `customModule` code that would give us a rapid development setup.
+`customModule` is a NPM module that we maintain and develop. This package.json setup works fine for production because we just install from the repo and forget about it. In development we want to rapidly make changes to `customModule`and not have to rebuild everything. Normally when developing on local machine, we would `cd` into `web` and do `npm link customModule` which would build a symlink to our `customModule` code that would give us a rapid development setup.
 
 When we add Vagrant and Docker to the dev environment this completly breaks NPM Link.
 
