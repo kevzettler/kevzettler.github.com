@@ -137,7 +137,7 @@ Lets look at the run command in more depth.
 We're orverriding the Dockerfiles' `CMD ["forever", "index.js"]` with `forever -w index.js` The `-w` flag restarts our server on code updates which we want to use for development.
 
 ### Bringing it all together
-The Most important part of the `docker run` options is the `-v` flag, which is for Docker Volumes. We are telling our container to mount `/srv/www` as a volume that points to `/vagrant/web/`. If you review our Vagrant setup from earlier you can see that `/srv/www` is actualy a shared directory to our application code directory `/web` on the host machine!.
+The Most important part of the `docker run` options is the `-v` flag, which is for Docker Volumes. We are telling our container to mount `/srv/www` as a volume that points to `/vagrant/web/`. If you review our Vagrant setup from earlier you can see that `/srv/www` is actualy a shared directory to our application code directory `/web` on the host machine!
 
 A quick diagram of this shared filesystem cascade looks like:
 
