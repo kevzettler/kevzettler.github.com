@@ -198,7 +198,7 @@ So we have this symlink in 2 places.
     `node_modules -> /dist/node_modules/`
 
 Docker does not support symlinks when using the `ADD` command in a DockerFile.
-It will drop them from the `ADD` filesystem. Thats why we need the `RUN` symlink in the dockerfile.
+It will drop them from the `ADD` filesystem. That's why we need the `RUN` symlink in the dockerfile.
 
 When we want to do development work we run the container with the `-v` flag to mount our local code. The volume dosen't get attached untill after our container has already been created. At that time the `RUN`symlink exists, however the `-v` option overrides everything in the containers `/srv/www/` with code from the volume wiping out the `RUN` symlink.
 
