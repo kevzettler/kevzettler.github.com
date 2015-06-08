@@ -200,6 +200,6 @@ So we have this symlink in 2 places.
 Docker does not support symlinks when using the `ADD` command in a DockerFile.
 It will drop them from the `ADD` filesystem. That's why we need the `RUN` symlink in the dockerfile.
 
-When we want to do development work we run the container with the `-v` flag to mount our local code. The volume dosen't get attached untill after our container has already been created. At that time the `RUN`symlink exists, however the `-v` option overrides everything in the containers `/srv/www/` with code from the volume wiping out the `RUN` symlink.
+When we want to do development work we run the container with the `-v` flag to mount our local code. The volume dosen't get attached untill after our container has already been created. At that time the `RUN` symlink exists, however the `-v` option overrides everything in the containers `/srv/www/` with code from the volume wiping out the `RUN` symlink.
 
 But wait we have a 'Filesystem' symlink in our shared code. The volume respects this symlink and it routes internallyl to containers filesystem. You don't nessicarilly have to commit the symlink to your repo like I was dong. You just need it around when you build the Docker image. I commited it because I kept forgetting. Try this out an let me know if you have a better solution to it.
