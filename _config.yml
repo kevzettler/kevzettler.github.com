@@ -1,4 +1,3 @@
-auto: true
-pygments: true
+highlighter: pygments
 title: Kev Zettler
 markdown: rdiscount
