@@ -95,7 +95,7 @@ CMD ["forever", "index.js"]
 
 * `RUN ln -s /dist/node_modules /srv/www/node_modules`
 
-   This creates a symlink for `node_modues` from our application code at `/srv/www`. to our `/dist`. This also overrides the symlink that is commited in the web repo. You might be thinking, well what was the point of that then? I promise we'll get to that soon. It is key to the `npm link` style.
+   This creates a symlink for `node_modues` from our application code at `/srv/www`. to our `/dist`. This also overrides the symlink that is commited in the web repo. You might be thinking, well what was the point of that then? I promise we'll get to that soon. It's key to the `npm link` style.
 
 
 ### The Vagrant File
@@ -134,7 +134,7 @@ Lets look at the run command in more depth.
                  
 {% endhighlight %}
 
-We're orverriding the Dockerfiles' `CMD ["forever", "index.js"]` with `forever -w index.js` The `-w` flag restarts our server on code updates which we want to use for development..
+We're orverriding the Dockerfiles' `CMD ["forever", "index.js"]` with `forever -w index.js` The `-w` flag restarts our server on code updates which we want to use for development.
 
 ### Bringing it all together
 The Most important part of the `docker run` options is the `-v` flag, which is for Docker Volumes. We are telling our container to mount `/srv/www` as a volume that points to `/vagrant/web/`. If you review our Vagrant setup from earlier you can see that `/srv/www` is actualy a shared directory to our application code directory `/web` on the host machine!.
@@ -154,7 +154,7 @@ The next challenge I faced was what if I have a NPM module that we want our web 
 
 ## NPM Link Development in a Docker container
 
-So in this scenario. Lets assume that `web` has an entry in it's `package.json` like this:
+So in this scenario. Lets assume that `web` has an entry in `package.json` like this:
 {% highlight json %}
   "dependencies": {
    "customModule": "git://github.com/kevzettler/customModule",
