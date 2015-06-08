@@ -112,7 +112,7 @@ Vagrant.configure(2) do |config|
           cmd: "forever -w bin/server.js",
           args: "-v '/vagrant/web:/srv/www'\
                  -e NODE_ENV=development\
-                 -p 5000:5000
+                 -p 5000:5000"
   end
 
   config.vm.network "forwarded_port", guest: 5000, host: 5000
@@ -130,7 +130,7 @@ Lets look at the run command in more depth.
           cmd: "forever -w index.js",
           args: "-v '/vagrant/web:/srv/www'\
                  -e NODE_ENV=development\
-                 -p 5000:5000
+                 -p 5000:5000"
                  
 {% endhighlight %}
 
@@ -173,7 +173,7 @@ Heres an updated directory diagram of our project with the new `customModule` co
 └── customModule
 {% endhighlight %}
 
-So similliar to the web code. Vagrant will mount our customModule code at `/vagrant/customModule`
+So similliar to the web code, Vagrant will mount our customModule code at `/vagrant/customModule`
 
 We can then update our VagrantFile to add a new Docker Volume:
 `-v '/vagrant/engine:/dist/node_modules/engine'`
