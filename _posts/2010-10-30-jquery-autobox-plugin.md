@@ -1,6 +1,6 @@
 ---
 layout: post
-title: jquery autobox plugin
+title: jQuery Autobox Plugin
 ---
 
 I have worked on several site designs that expect form inputs to render with a default value. Upon focus of the input the default text should clear and allow user input to stick. Sometimes the design calls for this to happen with a password field as well.
