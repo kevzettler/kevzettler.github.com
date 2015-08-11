@@ -1,6 +1,6 @@
 ---
 layout: post
-title: IE button bug
+title: IE Button Bug
 ---
 
 I recently encountered an annoying bug in multiple versions of IE regarding forms and button elements. I am writing about it to remind myself in the future and to hopefully save time for someone else. The bug spawned from my decision to use `<button>` elements over `<input type="submit">` elements as the submit buttons for my forms. I chose button elements because they are generally more consistent in cross browser rendering and also allow for more semantic textual content than text in the input element's type attribute.

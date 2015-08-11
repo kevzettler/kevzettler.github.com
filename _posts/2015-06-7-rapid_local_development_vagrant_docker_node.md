@@ -203,3 +203,5 @@ It will drop them from the `ADD` filesystem. That's why we need the `RUN` symlin
 When we want to do development work, we run the container with the `-v` flag to mount our local code. The volume doesn't get attached until after our container has already been created. At that time, the `RUN` symlink exists; however, the `-v` option overrides everything in the container's `/srv/www/`, wiping out the `RUN` symlink.
 
 But wait! We have a 'Filesystem' symlink in our shared code. The volume respects this symlink and it routes internally to the container's filesystem. You don't necessarily have to commit the symlink to your repo like I was dong. You just need it around when you build the Docker image. I committed it because I kept forgetting. Try this out and let me know if you have a better solution to it.
+
+Thanks to [Gabrielle Nicolet](http://gabriellenicolet.com/) for editing this post.
