@@ -9,10 +9,10 @@ tags:
 ---
 
 # React Data Fetching With Relay
-React is ushering in a new era of Frontend web development. Originally published by Facebook, It has quickly become a popular technology used in production by [many technology companies](https://github.com/facebook/react/wiki/Sites-Using-React). Today we're going to be discussing a new complimentary React framework called Relay. 
+React is ushering in a new era of Frontend web development. Originally published by Facebook. It has quickly become a popular technology used in production by [many technology companies](https://github.com/facebook/react/wiki/Sites-Using-React). Today we're going to be discussing a new complimentary React framework called Relay. 
 
 ## The Problem With Data Fetching In React 
-As React has grown in popularity, the scale and complexity of projects built with React has grown with it. This has caused some teams to hit unknown territory or limitations while building their projects. Facebook has been proactive in offering support during these growing pains. One of these early growing pains for developers was event handling. Facebook responded by publishing Flux, an abstract pattern for handling unidirectional data flow from events in React.
+As React has grown in popularity. The scale and complexity of projects built with React has grown with it. This has caused some teams to hit unknown territory or limitations while building their projects. Facebook has been proactive in offering support during these growing pains. One of these early growing pains for developers was event handling. Facebook responded by publishing Flux. An abstract pattern for handling unidirectional data flow from events in React.
 
 ![Unidirectional Data Flow](https://www.dropbox.com/s/3732cxj0ympozj8/Screenshot%202015-08-10%2020.43.04.png "Unidirectional Data Flow")
 
