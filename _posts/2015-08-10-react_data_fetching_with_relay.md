@@ -9,7 +9,7 @@ tags:
 ---
 
 # React Data Fetching With Relay
-React is ushering in a new era of Frontend web development. Originally published by Facebook. It has quickly become a popular technology used in production by [many technology companies](https://github.com/facebook/react/wiki/Sites-Using-React). Today we're going to be discussing a new complimentary React framework called Relay. 
+React is ushering in a new era of Frontend web development. Published by Facebook, it has quickly become a popular technology used in production by [many technology companies](https://github.com/facebook/react/wiki/Sites-Using-React). Today we're going to be discussing a new complimentary React framework called Relay. 
 
 ## The Problem With Data Fetching In React 
 As React has grown in popularity. The scale and complexity of projects built with React has grown with it. This has caused some teams to hit unknown territory or limitations while building their projects. Facebook has been proactive in offering support during these growing pains. One of these early growing pains for developers was event handling. Facebook responded by publishing Flux. An abstract pattern for handling unidirectional data flow from events in React.
@@ -29,8 +29,6 @@ Relay is built on top of Flux.
 
 ## Current State Of Relay
 Supposedly Facebook will be open sourcing their Relay framework in August.
-<blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr">The cat is out of the bag: <a href="https://twitter.com/hashtag/relayjs?src=hash">#relayjs</a> will be open sourced this August. <a href="https://twitter.com/hashtag/reacteurope?src=hash">#reacteurope</a></p>&mdash; Greg Hurrell (@wincent) <a href="https://twitter.com/wincent/status/616616507326402560">July 2, 2015</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 discuss and share the relay library we'll be using )
 - Building a feed style React app with Relay
