@@ -9,15 +9,13 @@ tags:
 ---
 
 # React Data Fetching With Relay
-React is ushering in a new era of Front end web development. Published by Facebook. It has rapidly become a popular technology used in production by [many technology companies](https://github.com/facebook/react/wiki/Sites-Using-React). In this article we're going to be discussing a new complimentary React framework called Relay.
+React is ushering in a new era of Front end web development. Published by Facebook. It has rapidly become a popular technology used in production by [many technology companies](https://github.com/facebook/react/wiki/Sites-Using-React). In this article. We're going to be discussing a new complimentary React framework called Relay.
 
 ## The Problem With Data Fetching In React
-As React has grown in popularity. The scale and complexity of projects built with React has grown with it. This has caused some teams to hit unknown territory or limitations while building their projects. Facebook has been proactive in offering support during these growing pains. 
+As React has grown in popularity. The scale and complexity of projects built with React has grown with it. This has caused some teams to hit unknown territory. Or limitations while building their projects. Facebook has been proactive in offering support during these growing pains. 
 
 ###Flux
 One of these early growing pains for developers was event handling. Facebook responded by publishing Flux. An abstract pattern for handling unidirectional data flow from events in React.
-
-![Server Data Element](http://www.kevzettler.com/img/react-relay-post/relay.png "Server Data Element" =500px)
 
 We won't be discussing the details of Flux in this article. We'll assume some familiarity. Flux has taken the React ecosystem to a new level. As developers started getting more familiar with Flux. Some new pain points began to emerge. Flux has been great for managing data as application state. But, yet getting that initial state into an application has been a source of friction.
 
@@ -52,13 +50,13 @@ module.exports = Relay.createContainer(ProfilePicture, {
 });
 ```
 #GraphQL
-The above example may look strange. Much of the magic behind Relay is a powered by GraphQL. GraphQL is a query language that specializes in traversing graph data structures. GraphQL could be considered A caveat of using Relay. An existing project most likely is not setup to work with GraphQL out of the box.
+The above example may look strange. Much of the magic behind Relay is a powered by GraphQL. GraphQL is a query language that specializes in traversing graph data structures. GraphQL might be considered A caveat of using Relay. An existing project most likely is not setup to work with GraphQL out of the box.
 
 ## Current State Of Relay
 Facebook recently released an [open source 'Technical Preview' of Relay](https://github.com/facebook/react). They have some great examples in the repository that demonstrate working with Relay. In addition to the repository there is a very thorough documentation site.
 
 ## Relay Without GraphQL
-With the additional overhead of setting up GraphQL. Facebook's Relay might not be the right tool for our project. Luckily there is anoter 'Relay inspired' frame work out there that may be a better fit. [react-transmit](https://github.com/RickWong/react-transmit) is an open source project that aims to be 'Relay without GraphQL'. 
+With the extra overhead of setting up GraphQL. Facebook's Relay might not be the right tool for our project. Luckily there is anoter 'Relay inspired' frame work out there that may be a better fit. [react-transmit](https://github.com/RickWong/react-transmit) is an open source project that aims to be 'Relay without GraphQL'. 
 
 
 
