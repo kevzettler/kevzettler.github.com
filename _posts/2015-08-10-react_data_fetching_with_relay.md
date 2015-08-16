@@ -9,30 +9,56 @@ tags:
 ---
 
 # React Data Fetching With Relay
-React is ushering in a new era of Frontend web development. Published by Facebook, it has quickly become a popular technology used in production by [many technology companies](https://github.com/facebook/react/wiki/Sites-Using-React). Today we're going to be discussing a new complimentary React framework called Relay. 
+React is ushering in a new era of Front end web development. Published by Facebook. It has rapidly become a popular technology used in production by [many technology companies](https://github.com/facebook/react/wiki/Sites-Using-React). In this article we're going to be discussing a new complimentary React framework called Relay.
 
-## The Problem With Data Fetching In React 
-As React has grown in popularity. The scale and complexity of projects built with React has grown with it. This has caused some teams to hit unknown territory or limitations while building their projects. Facebook has been proactive in offering support during these growing pains. One of these early growing pains for developers was event handling. Facebook responded by publishing Flux. An abstract pattern for handling unidirectional data flow from events in React.
+## The Problem With Data Fetching In React
+As React has grown in popularity. The scale and complexity of projects built with React has grown with it. This has caused some teams to hit unknown territory or limitations while building their projects. Facebook has been proactive in offering support during these growing pains. 
 
-![Unidirectional Data Flow](https://www.dropbox.com/s/3732cxj0ympozj8/Screenshot%202015-08-10%2020.43.04.png "Unidirectional Data Flow")
+###Flux
+One of these early growing pains for developers was event handling. Facebook responded by publishing Flux. An abstract pattern for handling unidirectional data flow from events in React.
 
-We won't be discussing the details of Flux in this article. We'll assume some familarity. Flux took the React ecosystem to a new level. The same growing pains we're eventually hit.
+![Server Data Element](http://www.kevzettler.com/img/react-relay-post/relay.png "Server Data Element" =500px)
+
+We won't be discussing the details of Flux in this article. We'll assume some familiarity. Flux has taken the React ecosystem to a new level. As developers started getting more familiar with Flux. Some new pain points began to emerge. Flux has been great for managing data as application state. But, yet getting that initial state into an application has been a source of friction.
+
+Do we have stores call the server and populate themselves? Do we use rehydrate methods from the Dispatcher? Do we call a bunch of Actions on the server to populate the stores? How do we do this asyncronusly and isomorphically?
 
 ## What Is Relay?
-Relay is a new React UI Data fetching framework published by Facebook.
+Relay is a new React Data fetching framework published by Facebook. Relay aims to provide a better experience around the data fetching problems.
 
-## Relay Vs Flux
-Relay is built on top of Flux. 
-    -  are they the same? are they complimentary?
-<blockquote class="twitter-tweet" data-conversation="none" lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/neneodonkor">@neneodonkor</a> Relay is built on top of Flux. There&#39;s a server-side requirement, &amp; that&#39;s not for everyone. It&#39;s a framework, Flux a pattern.</p>&mdash; Bill Fisher (@fisherwebdev) <a href="https://twitter.com/fisherwebdev/status/562880437413232640">February 4, 2015</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+### Relay Vs Flux
+Flux is an abstract pattern or best practice. Relay is a framework. You can install and develop in Relay. Relay is built on the concepts of Flux. It has the same concepts of: Dispatcher, Actions, and Stores. but,yet they are represented a little differently. Relay has a new concept called 'Higher Order Components' or HOCs.
+
+#High Order Components
+HOCs are defined like regular react components. HOCs wrap UI components. The HOC will execute its queries and then render the child UI component passing the query data in as props. Below is a simplified example of a ProfilePicture component and a complimentary HOC. Imagine we have ProfilePicture defined to render user avatars throughout our project. We need to fetch the data to display the user avatar. We then create a Relay HOC to query the user profile pictures from a database. The HOC passes this query data to the child ProfilePicture component.
+
+```
+class ProfilePicture extends React.Component { // A standard Profile Picture component }
+
+// This is our Higher Order Container. It fetches the data to pass
+// as props to Profile Picture
+module.exports = Relay.createContainer(ProfilePicture, {
+  fragments: {
+    user: () => Relay.QL`
+      fragment on User {
+        profilePicture(size: $size) {
+          uri,
+        },
+      }
+    `,
+  },
+});
+```
+#GraphQL
+The above example may look strange. Much of the magic behind Relay is a powered by GraphQL. GraphQL is a query language that specializes in traversing graph data structures. A caveat of Relay and GraphQL is that an existing project most likely is not setup to work with GraphQL out of the box.
 
 ## Current State Of Relay
-Supposedly Facebook will be open sourcing their Relay framework in August.
+Facebook recently released an [open source 'Technical Preview' of Relay](https://github.com/facebook/react). They have some great examples in the repository that demonstrate working with Relay. In addition to the repository there is a very thouroug documentation site 
+
+## Relay Without GraphQL
+...
 
 discuss and share the relay library we'll be using )
 - Building a feed style React app with Relay
-  - Relay HOC's (higher order components)
-  - Demo code and app
 
 - Future of Relay
