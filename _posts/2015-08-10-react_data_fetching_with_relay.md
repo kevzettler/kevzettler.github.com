@@ -58,6 +58,4 @@ Facebook recently released an [open source 'Technical Preview' of Relay](https:/
 ## Relay Without GraphQL
 With the extra overhead of setting up GraphQL. Facebook's Relay might not be the right tool for our project. Luckily there is anoter 'Relay inspired' frame work out there that may be a better fit. [react-transmit](https://github.com/RickWong/react-transmit) is an open source project that aims to be 'Relay without GraphQL'. 
 
-
-
-- Future of Relay
+## Future of Relay
