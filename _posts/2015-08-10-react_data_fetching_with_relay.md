@@ -8,7 +8,7 @@ tags:
   - React
 ---
 
-# React Data Fetching With Relay
+# Introduction To React Data Fetching With Relay
 React is ushering in a new era of Front end web development. Published by Facebook. It has rapidly become a popular technology used in production by [many technology companies](https://github.com/facebook/react/wiki/Sites-Using-React). In this article. We're going to be discussing a new complimentary React framework called Relay.
 
 ## The Problem With Data Fetching In React
@@ -28,7 +28,7 @@ Relay is a new React Data fetching framework published by Facebook. Relay aims t
 Flux is an abstract pattern or best practice. Relay is a framework. Relay is built on the concepts of Flux. It has the same concepts of: Dispatcher, Actions, and Stores. but,yet they are represented a little differently. Relay has a new concept called 'Higher Order Components' or HOCs. 
 
 #Higher Order Components
-HOCs are defined like regular react components. HOCs wrap child UI components. The HOC will execute its queries and then render the child UI component passing the query data in as props. The Flux flow is now managed by the HOC. The HOC will act as a dispatcher. It has methods like `setQueryParams` that can be considered a Flux Action. Calling `setQueryParams` triggers to Flux flow. The queries defined in HOC are updated, new data is fetched and persisted in the HOC. The HOC is acting as a Flux Store by persisting this data.
+HOCs are defined like regular react components. HOCs wrap child UI components. The HOC will execute its queries and then render the child UI component passing the query data in as props. The Flux flow is now managed by the HOC. The HOC will act as a dispatcher. It has methods like `setQueryParams` that can be considered a Flux Action. Calling `setQueryParams` triggers the Flux flow. The queries defined in the HOC are updated, new data is fetched and persisted in the HOC. The HOC is acting as a Flux Store by persisting this data.
 
 Below is a simplified example of a ProfilePicture component and a complimentary HOC. Imagine we have ProfilePicture defined to render user avatars throughout our project. We need to fetch the data to display the user avatar. We then create a Relay HOC to query the user profile pictures from a database. The HOC passes this query data to the child ProfilePicture component.
 
@@ -50,12 +50,30 @@ module.exports = Relay.createContainer(ProfilePicture, {
 });
 ```
 #GraphQL
-The above example may look strange. Much of the magic behind Relay is a powered by GraphQL. GraphQL is a query language that specializes in traversing graph data structures. GraphQL might be considered A caveat of using Relay. An existing project most likely is not setup to work with GraphQL out of the box.
+The above example may look strange. Particularily this part:
 
-## Current State Of Relay
-Facebook recently released an [open source 'Technical Preview' of Relay](https://github.com/facebook/react). They have some great examples in the repository that demonstrate working with Relay. In addition to the repository there is a very thorough documentation site.
+```javascript
+Relay.QL`
+      fragment on User {
+        profilePicture(size: $size) {
+          uri,
+        },
+      }
+    `,
+```
+
+Much of the magic behind Relay is a powered by GraphQL. GraphQL is a new query language from Facebook that specializes in operating on graph data structures. GraphQL might be considered A caveat of using Relay. An existing project will not be setup to work with GraphQL out of the box. The first steps to [getting started with Relay](https://facebook.github.io/relay/docs/getting-started.html#content) are :
+
+* Create a GraphQL Schema
+* Create a GraphQL Server
+
+When starting a project from scratch it might make more sense to use Relay immediatly. Facebook provides a [Relay Starter Kit](https://github.com/facebook/relay-starter-kit)
 
 ## Relay Without GraphQL
-With the extra overhead of setting up GraphQL. Facebook's Relay might not be the right tool for our project. Luckily there is anoter 'Relay inspired' frame work out there that may be a better fit. [react-transmit](https://github.com/RickWong/react-transmit) is an open source project that aims to be 'Relay without GraphQL'. 
+With the extra overhead of setting up GraphQL. Facebook's Relay might not be the right tool for existing projects. Luckily there is anoter 'Relay inspired' frame work out there that may be a better fit. [react-transmit](https://github.com/RickWong/react-transmit) is an open source project that aims to be 'Relay without GraphQL'. 
+
+## Current State Of Relay
+Facebook has released an [open source 'Technical Preview' of Relay](https://facebook.github.io/react/blog/2015/08/11/relay-technical-preview.html). They have some great examples in the repository that demonstrate working with Relay. In addition to the repository there is a very thorough [documentation site](https://facebook.github.io/relay/).
 
 ## Future of Relay
+Relay aims to provide adapters for other data storage types so that you don't have to use or convert your project to GraphQL
