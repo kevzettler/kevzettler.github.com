@@ -12,7 +12,7 @@ tags:
 React is ushering in a new era of front end web development. Published by Facebook, it has rapidly become a popular technology used in production by [many technology companies](https://github.com/facebook/react/wiki/Sites-Using-React). In this article, we're going to be discussing a new complimentary React framework called Relay.
 
 ## The Problem With Data Fetching In React
-As React has grown in popularity, the scale and complexity of projects built with React has grown with it. React is primarily a view layer technology. This has caused some teams to hit unknown territory or limitations while building their projects. Facebook has been proactive in offering support and guidance during these growing pains.
+As React has grown in popularity, the scale and complexity of projects built with React has grown with it. React is primarily a view layer technology. This has caused some teams to hit unknown territory or limitations while building projects that require more infrastructure. Facebook has been proactive in offering support and guidance during these growing pains.
 
 ###Flux
 One of these early growing pains for developers using React was event handling. Facebook responded by publishing Flux, an abstract pattern that encouraged unidirectional data flow for handling events in React.
@@ -27,10 +27,10 @@ Relay is a new React Data fetching framework published by Facebook. Relay aims t
 Relay has a few main selling points : 
 
 * #####Declarative
-Also a selling point of React. Relay leverages a declaritive code style defintion for data dependencies, very similar view components are defined. A rereshing change from traditional impaerative data fetching APIs.
+Also a main feature of React. Relay leverages a declaritive code style defintion for data dependencies, very similar to how view components are defined. This is a rereshing change from traditional impaerative data fetching APIs.
 
 * #####Colocation
-Data dependency definitions live along side companion component definitions. Making it much easier to reason about what data a UI component requires to render. This makses reasnoing about a projects code base much easier. looking at a file that contains a react component definition and its immedtialy obvious what data it needs to function.
+Data dependency definitions live along side companion component definitions. Making it much easier to reason about what data a UI component requires to render. This makes troubleshooting a projects code base much easier. looking at a file that contains a react component definition and its immedtialy obvious what data it needs to function.
 
 * #####Mutations
 Mutations enable an experince of seamless modifcation to data that a React view is subscribed to and populates those modifications to the data persistence layer. 
@@ -107,10 +107,12 @@ The react-transmit example looks very similiar to the Relay example. However in 
 ## Current State Of Relay
 Facebook has released an [open source 'Technical Preview' of Relay](https://facebook.github.io/react/blog/2015/08/11/relay-technical-preview.html). They have some great examples in the repository that demonstrate working with Relay. In addition to the repository there is a very thorough [documentation site](https://facebook.github.io/relay/).
 
-It doesn't appear that Relay is suitable for an isomorphic application at this time. There is no way to tell Relay to "Wait for all of our data dependencies to have been loaded" before rendering its child view. [Facebook has plans to provide proper hooks](https://github.com/facebook/relay/issues/136) This is a pattern that react-transmit is more suited to at the current time.
+It doesn't appear that Relay is suitable for isomorphic applications at this time. There is no way to tell Relay to "Wait for all of our data dependencies to have been loaded" before rendering its child view. A work flow that is needed on the server. There is on going disscussion regarding how [Relay will work on the server](https://github.com/facebook/relay/issues/136). This is a pattern that react-transmit is more suited to at the current time.
 
 ## Future of Relay
 The immediate future road map for Relay aims to provide a few key features. 
 * Adapters for other data storage types so theres no hard dependency on GraphQL. 
-* Better isomorphic support [Facebook has plans to provide proper hooks](https://github.com/facebook/relay/issues/136)
+* [Better isomorphic support](https://github.com/facebook/relay/issues/136) as disscussed earlier.
+
+
 
