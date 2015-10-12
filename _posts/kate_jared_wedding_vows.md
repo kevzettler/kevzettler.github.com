@@ -4,11 +4,11 @@
 
 Dearly beloved, Friends and family. We are gathered here today to observer and participate in the ageless tradition of marriage. We're here to witness and support Kate and Jared. Today is a ceremony to celebrate a union of two individuals. A union that will enhance the lives of them as individuals and the world around them as a couple.
 
-We all have our own experiences and definitions of love. Love to me is a powerful force that I heard about in Motown songs growing up. Its a chemical reaction composed of several different neurotransmitters, OxyTocin and Vasopressin drive feelings of Attachment. Dopamine and Serotonin drive feelings of Attraction. I'm probably the worst person to be leading this ceremony. I"m borderline Aspergers and don't know if I can relate to feelings of love.
+We all have our own experiences and definitions of love. Love to me is a powerful force that I heard about in Motown songs growing up. Its a chemical reaction composed of several different neurotransmitters, OxyTocin and Vasopressin drive feelings of Attachment. Dopamine and Serotonin drive feelings of Attraction. I'm probably the worst person to be leading this ceremony. I'm borderline Aspergers and don't know if I can relate to feelings of love.
 
-People say true Love is supposed to be unconditional. As a programmer I cant really relate to that. My brain is constantly thinking if-this-do-that. I don't really think unconditionally. When I see Kate and Jared interact together. I know the unconditional part is true. I've seen them in some annoying and frustraing situations and they've consitently treated each other well. Kates straight up told me no matter what happens she just always loves Jared. Thats real talk
+People say true Love is supposed to be unconditional. As a programmer I cant really relate to that. My brain is constantly thinking if-this-do-that. I don't really think unconditionally. When I see Kate and Jared interact together. I know the unconditional part is true. I've seen them in some annoying and frustrating situations and they've consistently treated each other well. Kate's straight up told me no matter what happens she just always loves Jared. Thats real talk
 
-An observation on their pair dynamic. Jared isn't known as Mellow J because it sounds cool. Nothing phases him and hes an anchor for Kate. Kate is relentsly resourceful supportive and encourgning. They are both brilliantly talented artests in their own mediums and when they come together on projects real magic happens.
+Kate and Jared are a great pair.. Jared isn't known as Mellow J because it sounds cool. Nothing phases him and hes an anchor for Kate. Kate is relentlessly resourceful supportive and encouraging. They are both brilliantly talented attests in their own mediums and when they come together on projects real magic happens.
 
 
 ## Vows
