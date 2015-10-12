@@ -6,9 +6,11 @@ Dearly beloved, Friends and family. We are gathered here today to observer and p
 
 We all have our own experiences and definitions of love. Love to me is a powerful force that I heard about in Motown songs growing up. Its a chemical reaction composed of several different neurotransmitters, OxyTocin and Vasopressin drive feelings of Attachment. Dopamine and Serotonin drive feelings of Attraction. I'm probably the worst person to be leading this ceremony. I'm borderline Aspergers and don't know if I can relate to feelings of love.
 
-People say true Love is supposed to be unconditional. As a programmer I cant really relate to that. My brain is constantly thinking if-this-do-that. I don't really think unconditionally. When I see Kate and Jared interact together. I know the unconditional part is true. I've seen them in some annoying and frustrating situations and they've consistently treated each other well. Kate's straight up told me no matter what happens she just always loves Jared. Thats real talk
+People say true Love is supposed to be unconditional. As a programmer I cant really relate to that. My brain is constantly thinking if-this-do-that. I don't really think unconditionally. When I see Kate and Jared interact together. I know the unconditional part is true. I've seen them in some annoying and frustrating situations and they've consistently treated each other well. Kate's straight up told me no matter what happens she just always loves Jared. Thats real talk.
 
-Kate and Jared are a great pair.. Jared isn't known as Mellow J because it sounds cool. Nothing phases him and hes an anchor for Kate. Kate is relentlessly resourceful supportive and encouraging. They are both brilliantly talented attests in their own mediums and when they come together on projects real magic happens.
+Kate and Jared are a great couple. Jared isn't known as MellowJ because it sounds cool. Nothing phases him and he is an anchor for Kate. When Kate gets overwhelmed or stressed out Jared is there to be an anchor and keep things cool. Kate is relentlessly resourceful supportive and encouraging. She pushes Jared to try grow and learn more. They both do that for each other.  They are both talented artists in their own mediums and when they come together on projects real magic happens. That is really straight up value add to the whole world. 
+
+
 
 
 ## Vows
@@ -27,17 +29,17 @@ JARED & KATE: We will.
 
 ## Ring exchange
 
-OFFICIANT: You’ve both chosen to wear rings as a reminder of these promises. People often say wedding bands are a perfect circle, with no beginning and no end. 
+OFFICIANT: You've both chosen to wear rings as a reminder of these promises. People often say wedding bands are a perfect circle, with no beginning and no end. 
 
-I ask Ben to give Kate’s ring to Jared.
-Jared, place the ring on Kate’s finger and repeat after me....
+I ask Ben to give Kate's ring to Jared.
+Jared, place the ring on Kate's finger and repeat after me....
 I give you this ring.
 Wear it with love and joy. 
 As this ring has no end,
 My love is also forever.
 
-Ben, now please give Jared’s ring to Kate.
-Kate, place the ring on Jared’s finger and repeat after me....
+Ben, now please give Jared's ring to Kate.
+Kate, place the ring on Jared's finger and repeat after me....
 With this ring,
 I marry you.
 Wear this ring forever
