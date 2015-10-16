@@ -45,19 +45,25 @@ JARED & KATE: We will.
 
 OFFICIANT: You've both chosen to wear rings as a reminder of these promises. 
 
-I ask Ben to give Kate's ring to Jared.
+I ask Ben to give Kate's ring to Jared. 
+(Pause until Ben has given Jared the ring and is back in his spot)
 Jared, place the ring on Kate's finger and repeat after me....
 I give you this ring.
 Wear it with love and joy. 
+(Pause - wait for Jared to repeat the first 2 lines)
 As this ring has no end,
 My love is also forever.
+(Pause - wait for Jared to repeat the last 2 lines)
 
 Ben, now please give Jared's ring to Kate.
+(Pause until Ben has given Kate the ring and is back in his spot)
 Kate, place the ring on Jared's finger and repeat after me....
 With this ring,
 I marry you.
+(Pause - wait for Kate to repeat the first 2 lines)
 Wear this ring forever
 As a sign of my love.
+(Pause - wait for Kate to repeat the last 2 lines)
 
 May the wedding rings you exchanged today remind you always that you are surrounded by enduring love.
 
