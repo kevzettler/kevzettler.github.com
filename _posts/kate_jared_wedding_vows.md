@@ -12,7 +12,7 @@ Everyone has their own experience and definition of love. Love to me is a powerf
 
 Over the last 7 years, I’ve seen Kate & Jared’s story develop and during that time I could always tell they were very special to each other. Kate and Jared are a great couple. Jared isn't known as MellowJ just because it sounds cool. Nothing phases him and he is always there to anchor Kate. When Kate gets overwhelmed or stressed out, Jared is there to keep things cool. Kate is relentlessly resourceful, supportive and encouraging. She pushes Jared to try, grow and learn. They both do that for each other. They are both talented artists in their own mediums and when they come together on projects, real magic happens. That is really straight up value added to the whole world.
 
-People say true Love is supposed to be unconditional. As a programmer I cant really relate to that. My brain is constantly thinking if-this-do-that. I don't really think unconditionally. But when I see Kate and Jared interact together, I know the unconditional part is true. I've seen them in some annoying and frustrating situations and they've consistently treated each other well. Kate's straight up told me no matter what happens, she just always loves Jared. That's real talk.
+People say true love is supposed to be unconditional. As a programmer I cant really relate to that. My brain is constantly thinking if-this-do-that. I don't really think unconditionally. But when I see Kate and Jared interact together, I know the unconditional part is true. I've seen them in some annoying and frustrating situations and they've consistently treated each other well. Kate's straight up told me no matter what happens, she just always loves Jared. That's real talk.
 
 And that brings them here. Let's pause, look back, and smile at all the moments that brought them here. And look ahead at all the moments that are still to come.
 
@@ -43,7 +43,7 @@ JARED & KATE: We will.
 
 ## Ring exchange
 
-OFFICIANT: You've both chosen to wear rings as a reminder of these promises. (ADD SOMETHING ELSE HERE?) 
+OFFICIANT: You've both chosen to wear rings as a reminder of these promises. 
 
 I ask Ben to give Kate's ring to Jared.
 Jared, place the ring on Kate's finger and repeat after me....
