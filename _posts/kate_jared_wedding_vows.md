@@ -4,7 +4,7 @@
 
 Friends & Family. Today is a celebration. A celebration of love, of commitment, of friendship, of family, and of two people who are in it for forever. Today, we celebrate Kate and Jared. 
 
-Wedding ceremonies are kind of weird, right? You have two good locking people on a stage, being admired by everyone they've met in the past 20 years. So why do people do it? The marriage ceremony has been an important feature across nearly every culture, religion, generation, and society. We have thousands of important moments that happen throughout our lives, but this is regarded as one so critical, we acknowledge its special status by sharing it with others. Why is this so imporant?
+Wedding ceremonies are kind of weird, right? You have two good looking people on a stage, being admired by everyone they've met in the past 20 years. So why do people do it? The marriage ceremony has been an important feature across nearly every culture, religion, generation, and society. We have thousands of important moments that happen throughout our lives, but this is regarded as one so critical, we acknowledge its special status by sharing it with others. Why is this so imporant?
 
 Because no matter how differnt we all are. Love is the great unifier. No matter who we are, where we've come from, what we believe, we know. love is what we're doing right. That's why *these two* are standing here. That's why *everyone else* is here to watch them. We've all loved in our lifetimes, and in this moment, we're reminded that the ability to love is the very best part of humanity.
 
