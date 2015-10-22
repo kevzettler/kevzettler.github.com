@@ -16,7 +16,7 @@ People say true love is supposed to be unconditional. As a programmer I cant rea
 
 And that brings them here today. Let's pause, look back, and smile at all the moments that brought them here. And look ahead at all the moments that are still yet to come.
 
-Kate and Jared. I'm here — we're all here — because we want those moments for you. We're here to hope with you, to support you, to be proud of you, and to remind you that love isn't happily ever after, love is the experience of writing your story. It's not one moment — not even this moment. It's every moment. Big ones like saying "I love you," moving in together, getting engaged — but mostly a million little ones that come in between the big moments. Falling asleep next to one another, making dinner together, going to punk rock shows together, spending holidays with your families, getting a big hug when you get home from work. These everyday moments fuse together into one big experience.
+Kate and Jared. I'm here — we're all here — because we want those moments for you. We're here to hope with you, to support you, to be proud of you, and to remind you that love isn't happily ever after, love is the experience of writing your story. It's not one moment — not even this moment. It's every moment. Big ones like saying "I love you," moving in together, getting engaged — but mostly a million little ones that come in between the big moments. Making dinner together, going to punk rock shows together, getting a big hug when you get home from work. These everyday moments fuse together into one big experience.
 
 And even though this experience is so incredible, words fail us when we try and explain it. That's just the way it is with love — it's meant to be felt, not described.
 
