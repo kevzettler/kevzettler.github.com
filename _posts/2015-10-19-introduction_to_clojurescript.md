@@ -9,11 +9,13 @@ tags:
 ---
 
 # Introduction to ClojureScript
-In this article we will be discussing ClojureScript
-a compile-to-javascript language. 
+In this article we will be discussing ClojureScript a compile-to-javascript language. We'll be looking at the benefits of working with ClojureScript and how you can quickly get setup to use NPM and your favorite familiar Node.js libraries.
 
 ## Why ClojureScript?
-There are many articles on line explaining the benefits of ClojureScript
+There are many articles online explaining the benefits of ClojureScript. Some aggregated high level points are:
+
+* Simplicity
+    Specifically regarding syntax. ClojureScript is a Lisp based language. Lisp languages have minimal syntax. So minimal in fact we will be able to cover the syntax in this article.
 
 * Safety
     This means less bugs! ClojureScript, and other functional programming languages have many properties that help reduce and mitigate common bugs. 
@@ -25,10 +27,10 @@ There are many articles on line explaining the benefits of ClojureScript
     The ClojureScript ecosystem provides many tools to enable 'live coding'. This meaning, once you change your code its instantly reflected in your live project. In this article we'll be looking at [Figwheel](https://github.com/bhauman/lein-figwheel).
 
 * Code Reuse
-    ClojureScript can be run universally or isomorphically. This mean you can run the same code on your client and server. This has become a popular pattern in the Node.js ecosystem. In addition ClojureScript can import libraries from the Node and Java ecosystems.
+    ClojureScript can be run universally or isomorphically. This means you can run the same code on your client and server. This has become a popular pattern in the Node.js ecosystem. In addition ClojureScript can import libraries from the Node and Java ecosystems.
 
-## Setting up the ClojureScript tool chain
-In this article we will be installing the tool chain on a Mac Osx Environment. We need the latest Java version.
+## Setting up the Clojure(Script) tool chain
+In this article we will be installing the tool chain on a Mac OSX Environment. We need the latest Java version.
 
 ### Installing Leiningen
 Leiningen is a build tool for Clojure projects. It will 
@@ -41,7 +43,7 @@ Now that we have leningen installed we can start getting familiar with ClojureSc
 
 execute the following command at a terminal `lein repl`
 
-You should get output that looks similiar to:
+You should get output that looks similar to:
 
 ```
 Kevins-MacBook-Pro:_posts kevzettler$ lein repl
@@ -63,6 +65,7 @@ We're now in a ClojureScript Repl. This will allow us quickly execute ClojureScr
 
 
 ## ClojureScript Syntax
+ClojureScript is a functional language. This means it has functions and limited other language constructs. It is a Lisp style language.
 
 ### Primitives
 
@@ -113,11 +116,31 @@ We're now in a ClojureScript Repl. This will allow us quickly execute ClojureScr
     ```
 
 ### Functions
-ClojureScript is a Lisp language. Everything in ClojureScript is 
+```
+(functionName argument1 argument2)
+```
+
+Operators are functions. In imperative programing languages there are special "Operators" or keywords. In Javascript some of these are `+ - = if`
+
+```
+user=> (+ 2 3)
+5
+```
+
+```
+user=> (if true "do true stuff here" "do false stuff here")
+"do true stuff here"
+```
+
+For more great examples of [Javascript to ClojureScript synonyms checkout this site](https://kanaka.github.io/clojurescript/web/synonym.html)
 
 
 ## Creating a Node.js - ClojureScript project
+Starting a ClojureScript project is simple. Leningen offers project templates that will give you a ready to go starter kit for a project.
+
+`lein install figwheel hello-world`
 
 ## Using Express.js for a webserver
+`npm install express`
 
-### building out an express webapp
+### integrating Express
