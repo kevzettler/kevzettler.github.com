@@ -14,19 +14,24 @@ In this article we will be discussing ClojureScript a compile-to-javascript lang
 ## Why ClojureScript?
 There are many articles online explaining the benefits of ClojureScript. Some aggregated high level points are:
 
-* Simplicity
+* __Simplicity__
+
     Specifically regarding syntax. ClojureScript is a Lisp based language. Lisp languages have minimal syntax. So minimal in fact we will be able to cover the syntax in this article.
 
-* Safety
+* __Safety__
+
     This means less bugs! ClojureScript, and other functional programming languages have many properties that help reduce and mitigate common bugs. 
 
-* Performance
+* __Performance__
+
     ClojureScript utilizes [Google's Closure Compiler](http://code.google.com/closure/compiler/docs/api-tutorial3.html) This allows ClojureScript to utilize dead code elimination and other features.
 
-* Live Coding
+* __Live Coding__
+
     The ClojureScript ecosystem provides many tools to enable 'live coding'. This meaning, once you change your code its instantly reflected in your live project. In this article we'll be looking at [Figwheel](https://github.com/bhauman/lein-figwheel).
 
-* Code Reuse
+* __Code Reuse__
+
     ClojureScript can be run universally, also known as isomorphically. This means you can run the same code on your client and server. This has become a popular pattern in the Node.js ecosystem. In addition ClojureScript can import libraries from the Node and Java ecosystems.
 
 ## Setting up the Clojure(Script) tool chain
@@ -171,16 +176,16 @@ This will create a new ClojureScript project in the directory `./hello-world`, c
 
 ### Points of interest
 
-* package.json
+* `package.json`
 This should be familiar from Node.js projects. Our NPM dependencies will be added here.
 
-* project.clj
+* `project.clj`
 This file is the ClojureScript project configuration file. This is ClojureScripts version of package.json. This is where we configure Clojure dependencies and compilation targets. This file also contains project details like title and description.
 
-* figwheel.js
+* `figwheel.js`
 This file is specific to Figweel projects. It is the bootstrap file for our project it points Figwheel to our source code so it can monitor it for updates. We will be running it with `node figwheel.js`
 
-* ./src/hello_world/core.cljs
+* `./src/hello_world/core.cljs`
 This is our entry-point source file. This is where we will start the project. Think of it similar to a index.js file in a Node project.
 I've added comments below to explain whats going on.
 ```
@@ -207,7 +212,7 @@ This will start figwheel waiting for updates to build. Leave this terminal runni
 
 ```node figwheel.js```
 
-You should see output like
+You should see "Hello world" output like:
 
 ```
 $ node figwheel.js
@@ -217,8 +222,13 @@ Figwheel: socket connection established
 ```
 
 ## Using Express.js for a webserver
+Now that we have the base of a ClojureScript project setup lets start working with some familiar libraries
+In our `hello_wolrd` directory execute: 
+
 `npm install express`
 
+Update `./src/hello_world/core.cljs` to the following:
 
-
-### integrating Express
+now when you run `node figwheel.js` on the project you should see output saying
+running on 3000
+in your browser hit http://localhost:3000/hello and you should see the return of our express route saying hello world.
