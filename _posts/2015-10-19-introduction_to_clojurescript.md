@@ -16,7 +16,7 @@ There are many articles online explaining the benefits of ClojureScript. Some ag
 
 * __Simplicity__
 
-    Specifically regarding syntax. ClojureScript is a Lisp based language. Lisp languages have minimal syntax. So minimal in fact we will be able to cover the syntax in this article.
+    Specifically regarding syntax. ClojureScript is a Lisp based language. Lisp languages have minimal syntax. So minimal in fact, we will be able to cover the syntax in this article.
 
 * __Safety__
 
@@ -199,7 +199,9 @@ I've added comments below to explain whats going on.
 ;; it prints "Hello World!" to stdout
 (defn -main []
   (println "Hello world!"))
-;;
+
+;; *main-cli-fn* is a semi-magic var that's used to set the entry
+;; *point for a node app
 (set! *main-cli-fn* -main)
 ```
 
@@ -229,6 +231,39 @@ In our `hello_wolrd` directory execute:
 
 Update `./src/hello_world/core.cljs` to the following:
 
+```
+(ns hello_world.core
+  (:require [cljs.nodejs :as nodejs]
+            [clojure.string :as string]))
+
+(nodejs/enable-util-print!)
+
+(defonce express (nodejs/require "express"))
+(defonce http (nodejs/require "http"))
+(defonce server-port 3000)
+
+;; app gets redefined on reload
+(def app (express))
+
+(. app (get "/hello"
+      (fn [req res] (. res (send "Hello world")))))
+
+(def -main 
+  (fn []
+    (doto (.createServer http #(app %1 %2))
+      (.listen server-port))))
+    (println (string/join " " ["Server running on" server-port]) )
+    
+
+(set! *main-cli-fn* -main)
+```
+
 now when you run `node figwheel.js` on the project you should see output saying
 running on 3000
 in your browser hit http://localhost:3000/hello and you should see the return of our express route saying hello world.
+
+
+## Conclusion
+to wrap up this article, we've discussed how to setup a new ClojureScript project and install a popular Node dependency in it. This gives us a great base to get more familliar with ClojureScript as a language. I've also put together source code for [this project here](https://github.com/kevzettler/clojurescript-express-react) Its goes a bit beyond the article and demonstrates how to integrate React server side rendering.
+
+
