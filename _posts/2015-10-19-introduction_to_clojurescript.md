@@ -225,7 +225,7 @@ Figwheel: socket connection established
 
 ## Using Express.js for a webserver
 Now that we have the base of a ClojureScript project setup, let's start working with some familiar libraries.
-In our `hello_wolrd` directory execute: 
+In our `hello_world` directory execute: 
 
 `npm install express`
 
