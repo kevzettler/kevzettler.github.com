@@ -44,8 +44,8 @@ In this article, we'll be installing the tool chain on a Mac OSX Environment. We
 ClojureScript requires the latest Java version. Version 8 at the time of this post. If anytime during these exercises you encounter an error running `lein` that looks like:
 
 ```
-Exception in thread "main" java.util.regex.PatternSyntaxException: Unknown inline modifier near index 2
-(?U)^[\p{Alpha}_$]^, compiling:(cljs/util.clj:158:33)
+Exception in thread "main" java.util.regex.PatternSyntaxException: 
+    Unknown inline modifier near index 2 (?U)^[\p{Alpha}_$]^, compiling:(cljs/util.clj:158:33)
 ```
 
 You need the latest Java.
