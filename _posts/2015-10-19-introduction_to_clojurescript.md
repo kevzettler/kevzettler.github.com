@@ -8,7 +8,7 @@ tags:
   - ClojureScript
 ---
 
-# Introduction to ClojureScript
+# Introduction To ClojureScript
 In this article, we will be discussing ClojureScript a compile-to-javascript language. We'll be looking at the benefits of working with ClojureScript and how you can quickly get set up to use NPM and your favorite Node.js libraries.
 
 ## Why ClojureScript?
@@ -16,7 +16,7 @@ There are many articles online explaining the benefits of ClojureScript. Some ag
 
 * __Simplicity__
 
-    With regard to syntax, ClojureScript is a Lisp based language. Lisp languages have minimal syntax, so minimal in fact, that we will be able to cover the syntax in this article.
+    With regard to syntax, ClojureScript is a Lisp based language. Lisp languages have minimal syntax, so minimal in fact, that we will be able to cover the syntax in this article. In addition to the simple syntax. ClojureScript also offers tools to help simplify asynchronous code.
 
 * __Safety__
 
@@ -28,22 +28,52 @@ There are many articles online explaining the benefits of ClojureScript. Some ag
 
 * __Live Coding__
 
-    The ClojureScript ecosystem provides many tools to enable 'live coding'. This means that once you change your code, it's instantly reflected in your live project. In this article, we'll be looking at [Figwheel](https://github.com/bhauman/lein-figwheel).
+    The ClojureScript ecosystem provides many tools to enable "live coding". This means that once you change your code, it's instantly reflected in your live project. In this article, we'll be looking at [Figwheel](https://github.com/bhauman/lein-figwheel).
 
 * __Code Reuse__
 
     ClojureScript can be run universally which is also called "isomorphically." This means you can run the same code on your client and your server. This has become a popular pattern in the Node.js ecosystem. In addition, ClojureScript can import libraries from the Node and Java ecosystems.
 
-## Setting up the Clojure(Script) tool chain
-In this article, we will be installing the tool chain on a Mac OSX Environment. We will need the latest Java version.
+## Setting Up The Clojure(Script) Tool Chain
+In this article, we will be installing the tool chain on a Mac OSX Environment. We will need a few system dependencies to get started.
+
+### [Homebrew](https://github.com/Homebrew/homebrew) 
+  the popular osx package manager.
+
+### The latest Java version. 
+Version 8 at the time of this post. If anytime during these exercises you encounter an error running `lein` that looks like:
+
+```
+Exception in thread "main" java.util.regex.PatternSyntaxException: Unknown inline modifier near index 2
+(?U)^[\p{Alpha}_$]^, compiling:(cljs/util.clj:158:33)
+```
+
+You need the latest Java.
+
+```
+brew tap caskroom/cask
+brew install brew-cask
+```
+
+If you get the error "already installed", follow the instructions to unlink it, then install again:
+
+```
+brew unlink brew-cask
+brew install brew-cask
+```
+And then finally:
+
+```
+brew cask install java
+```
+
 
 ### Installing Leiningen
-Leiningen is a build tool for Clojure projects. It will 
-http://leiningen.org/#install
+Leiningen is a [build tool for Clojure projects](http://leiningen.org/#install). We will use it to run ClojureScript code and install dependencies. This next step assumes that [Homebrew](https://github.com/Homebrew/homebrew) is installed giving us the `brew` command.
 
 `brew install leiningen`
 
-### Using the Repl
+## Using The Repl
 Now that we have Leningen installed, we can start getting familiar with ClojureScript syntax.
 
 Execute the following command at a terminal: `lein repl`
@@ -120,7 +150,7 @@ ClojureScript is a functional language. This means it has functions and limited 
     #{"hello" 3.14 :bar}
     ```
 
-### Functions all the way down
+### Functions All The Way Down
 Functions are the building blocks of ClojureScript. To define a function, you even call a function `defn`.
 
 ```
@@ -141,7 +171,7 @@ user=> (myfunction "hello world")
 "hello world"
 ```
 
-In non-functional programming languages there are special "Operators" or keywords. 
+In non-functional programming languages there are special "operators" or keywords. 
 In Javascript, some commonly used operators are are `+ - == if`. In ClojureScript and other Lisp languages, there are no special operators. These are just regular functions. 
 
 If statements are functions
@@ -162,7 +192,7 @@ user=> (* 2 3)
 
 For more great examples of [Javascript to ClojureScript synonyms checkout this site](https://kanaka.github.io/clojurescript/web/synonym.html)
 
-## Creating a Node.js - ClojureScript project
+## Creating A Node.js - ClojureScript Project
 Starting a ClojureScript project is simple. Leningen offers project templates that will get you up and running with a boilerplate project.
 Templates are a great resource to play around with and see other uses and configurations for ClojureScript projects. [Clojars.org has a collection of templates](https://clojars.org/search?q=template) and others can be found searching the web. For our project we'll be using a [Nodejs Figwheel project template](https://github.com/malyn/figwheel-node-template). At your terminal, run:
 
@@ -174,7 +204,7 @@ $ npm install
 
 This will create a new ClojureScript project in the directory `./hello-world`. Change to that directory and install NPM dependencies.
 
-### Points of interest
+### Points Of Interest
 
 * `package.json`
 This should be familiar from Node.js projects. Our NPM dependencies will be added here.
@@ -193,6 +223,7 @@ I've added comments below to explain what's going on.
 (ns hello-world.core
   (:require [cljs.nodejs :as nodejs]))
 
+;; This updates the default println method to write to Node.js stdout
 (nodejs/enable-util-print!)
 
 ;; The main function of the module
@@ -205,7 +236,7 @@ I've added comments below to explain what's going on.
 (set! *main-cli-fn* -main)
 ```
 
-### Running the project
+### Running The Project
 
 To execute the current project, open a terminal window and change directories to our hello_world project directory. Execute the following:
 ```lein figwheel```
@@ -223,7 +254,7 @@ Figwheel: trying to open cljs reload socket
 Figwheel: socket connection established
 ```
 
-## Using Express.js for a webserver
+## Using Express.js For A Webserver
 Now that we have the base of a ClojureScript project setup, let's start working with some familiar libraries.
 In our `hello_world` directory execute: 
 
