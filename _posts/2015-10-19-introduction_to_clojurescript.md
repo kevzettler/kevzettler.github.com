@@ -96,7 +96,7 @@ Java HotSpot(TM) 64-Bit Server VM 1.6.0_65-b14-466.1-11M4716
 user=> 
 ```
 
-We're now in a ClojureScript Repl. This will allow us quickly execute ClojureScript and view the result.
+We're now in a ClojureScript Repl. This allows us quickly execute ClojureScript and view the result.
 
 
 ## ClojureScript Syntax
@@ -191,6 +191,7 @@ user=> (* 2 3)
 ```
 
 For more great examples of [Javascript to ClojureScript synonyms checkout this site](https://kanaka.github.io/clojurescript/web/synonym.html)
+To exit the repl press `Control+D`
 
 ## Creating A Node.js - ClojureScript Project
 Starting a ClojureScript project is simple. Leningen offers project templates that will get you up and running with a boilerplate project.
@@ -202,7 +203,7 @@ $ cd hello-world
 $ npm install
 ```
 
-This will create a new ClojureScript project in the directory `./hello-world`. Change to that directory and install NPM dependencies.
+This creates a new ClojureScript project in the directory `./hello-world`. The rest of this post assumes `hello-world` was used as the project name. You may have issues if using a different name. Change to that directory and install NPM dependencies.
 
 ### Points Of Interest
 
@@ -241,7 +242,7 @@ I've added comments below to explain what's going on.
 To execute the current project, open a terminal window and change directories to our hello_world project directory. Execute the following:
 ```lein figwheel```
 
-This will start figwheel waiting for updates to build. Leave this terminal running. In a separate terminal, again change to the project directory and execute:
+This will start Figwheel waiting for updates to build. Leave this terminal running. In a separate terminal, again change to the project directory and execute:
 
 ```node figwheel.js```
 
@@ -256,9 +257,9 @@ Figwheel: socket connection established
 
 ## Using Express.js For A Webserver
 Now that we have the base of a ClojureScript project setup, let's start working with some familiar libraries.
-In our `hello_world` directory execute: 
+In a new terminal. In our `hello_world` directory execute: 
 
-`npm install express`
+`npm install --save express`
 
 Update `./src/hello_world/core.cljs` to the following:
 
@@ -279,7 +280,7 @@ Update `./src/hello_world/core.cljs` to the following:
 (. app (get "/hello"
       (fn [req res] (. res (send "Hello world")))))
 
-(def -main 
+(def -main
   (fn []
     (doto (.createServer http #(app %1 %2))
       (.listen server-port))))
