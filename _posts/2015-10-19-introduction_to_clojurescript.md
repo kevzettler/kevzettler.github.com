@@ -9,14 +9,14 @@ tags:
 ---
 
 # Introduction To ClojureScript
-In this article, we will be discussing ClojureScript a compile-to-javascript language. We'll be looking at the benefits of working with ClojureScript and how you can quickly get set up to use NPM and your favorite Node.js libraries.
+In this article, we'll be discussing ClojureScript a compile-to-javascript language. We'll be looking at the benefits of working with ClojureScript and how you can quickly get set up to use NPM and your favorite Node.js libraries.
 
 ## Why ClojureScript?
 There are many articles online explaining the benefits of ClojureScript. Some aggregated high level points are:
 
 * __Simplicity__
 
-    With regard to syntax, ClojureScript is a Lisp based language. Lisp languages have minimal syntax, so minimal in fact, that we will be able to cover the syntax in this article. In addition to the simple syntax. ClojureScript also offers tools to help simplify asynchronous code.
+    With regard to syntax, ClojureScript is a Lisp based language. Lisp languages have minimal syntax, so minimal in fact, that we'll be able to cover the syntax in this article. In addition to the simple syntax. ClojureScript also offers tools to help simplify asynchronous code.
 
 * __Safety__
 
@@ -28,20 +28,20 @@ There are many articles online explaining the benefits of ClojureScript. Some ag
 
 * __Live Coding__
 
-    The ClojureScript ecosystem provides many tools to enable "live coding". This means that once you change your code, it's instantly reflected in your live project. In this article, we'll be looking at [Figwheel](https://github.com/bhauman/lein-figwheel).
+    The ClojureScript ecosystem provides many tools to enable "live coding". This means that once you change your code, it is instantly reflected in your live project. In this article, we'll be looking at [Figwheel](https://github.com/bhauman/lein-figwheel).
 
 * __Code Reuse__
 
     ClojureScript can be run universally which is also called "isomorphically." This means you can run the same code on your client and your server. This has become a popular pattern in the Node.js ecosystem. In addition, ClojureScript can import libraries from the Node and Java ecosystems.
 
 ## Setting Up The Clojure(Script) Tool Chain
-In this article, we will be installing the tool chain on a Mac OSX Environment. We will need a few system dependencies to get started.
+In this article, we'll be installing the tool chain on a Mac OSX Environment. We'll need a few system dependencies to get started.
 
 ### [Homebrew](https://github.com/Homebrew/homebrew) 
   the popular osx package manager.
 
 ### The latest Java version. 
-Version 8 at the time of this post. If anytime during these exercises you encounter an error running `lein` that looks like:
+ClojureScript requires the latest Java version. Version 8 at the time of this post. If anytime during these exercises you encounter an error running `lein` that looks like:
 
 ```
 Exception in thread "main" java.util.regex.PatternSyntaxException: Unknown inline modifier near index 2
@@ -69,7 +69,7 @@ brew cask install java
 
 
 ### Installing Leiningen
-Leiningen is a [build tool for Clojure projects](http://leiningen.org/#install). We will use it to run ClojureScript code and install dependencies. This next step assumes that [Homebrew](https://github.com/Homebrew/homebrew) is installed giving us the `brew` command.
+Leiningen is a [build tool for Clojure projects](http://leiningen.org/#install). We'll use it to run ClojureScript code and install dependencies. This next step assumes that [Homebrew](https://github.com/Homebrew/homebrew) is installed giving us the `brew` command.
 
 `brew install leiningen`
 
@@ -151,12 +151,12 @@ ClojureScript is a functional language. This means it has functions and limited 
     ```
 
 ### Functions All The Way Down
-Functions are the building blocks of ClojureScript. To define a function, you even call a function `defn`.
+Functions are the building blocks of ClojureScript. You even define your own functions using the built in `defn` function.
 
 ```
 user=> (defn myfunction [argument1] argment1)
 ```
-Here we've defined a function named `myfunction`. It takes one argument `argument1` and returns it. It's not a very useful function but it's a good example of syntax. This is equivalent to the following Javascript:
+Here we've defined a function named `myfunction`. It takes one argument `argument1` and returns it. It is not a very useful function but it is a good example of syntax. This is equivalent to the following Javascript:
 
 ```javascript
 function myfunction(argument1){
@@ -174,14 +174,14 @@ user=> (myfunction "hello world")
 In non-functional programming languages there are special "operators" or keywords. 
 In Javascript, some commonly used operators are are `+ - == if`. In ClojureScript and other Lisp languages, there are no special operators. These are just regular functions. 
 
-If statements are functions
+If statements are functions:
 
 ```
 user=> (if true "do true stuff here" "do false stuff here")
 "do true stuff here"
 ```
 
-Math operators are functions
+Math operators are functions:
 
 ```
 user=> (+ 2 3)
@@ -213,10 +213,10 @@ This should be familiar from Node.js projects. Our NPM dependencies will be adde
 This file is the ClojureScript project configuration file. This is ClojureScripts version of package.json. This is where we configure Clojure dependencies and compilation targets. This file also contains project details like title and description.
 
 * `figwheel.js`
-This file is specific to Figweel projects. It is the bootstrap file for our project. It points Figwheel to our source code so that it can monitor it for updates. We will be running it with `node figwheel.js`
+This file is specific to Figweel projects. It is the bootstrap file for our project. It points Figwheel to our source code so that it can monitor it for updates. We'll be running it with `node figwheel.js`
 
 * `./src/hello_world/core.cljs`
-This is our entry-point source file. This is where we will start the project. Think of it similar to a index.js file in a Node project.
+This is our entry-point source file. This is where we'll start the project. Think of it similar to a index.js file in a Node project.
 I've added comments below to explain what's going on.
 ```
 ;; This defines a namespace and necesscary dependencies for the current file
