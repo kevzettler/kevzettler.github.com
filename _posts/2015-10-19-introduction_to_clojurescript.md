@@ -40,7 +40,7 @@ In this article, we'll be installing the tool chain on a Mac OSX Environment. We
 ### [Homebrew](https://github.com/Homebrew/homebrew) 
   the popular osx package manager.
 
-### The latest Java version. 
+### Install The Latest Java Version. 
 ClojureScript requires the latest Java version. Version 8 at the time of this post. If anytime during these exercises you encounter an error running `lein` that looks like:
 
 ```
