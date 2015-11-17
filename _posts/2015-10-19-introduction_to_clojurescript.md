@@ -73,6 +73,8 @@ Leiningen is a [build tool for Clojure projects](http://leiningen.org/#install).
 
 `brew install leiningen`
 
+If this step fails a [manual installation](https://github.com/technomancy/leiningen#installation) may be required.
+
 ## Using The Repl
 Now that we have Leningen installed, we can start getting familiar with ClojureScript syntax.
 
@@ -216,7 +218,7 @@ This file is the ClojureScript project configuration file. This is ClojureScript
 * `figwheel.js`
 This file is specific to Figweel projects. It is the bootstrap file for our project. It points Figwheel to our source code so that it can monitor it for updates. We'll be running it with `node figwheel.js`
 
-* `./src/hello_world/core.cljs`
+* `./src/hello-world/core.cljs`
 This is our entry-point source file. This is where we'll start the project. Think of it similar to a index.js file in a Node project.
 I've added comments below to explain what's going on.
 ```
@@ -239,7 +241,7 @@ I've added comments below to explain what's going on.
 
 ### Running The Project
 
-To execute the current project, open a terminal window and change directories to our hello_world project directory. Execute the following:
+To execute the current project, open a terminal window and change directories to our hello-world project directory. Execute the following:
 ```lein figwheel```
 
 This will start Figwheel waiting for updates to build. Leave this terminal running. In a separate terminal, again change to the project directory and execute:
@@ -261,10 +263,10 @@ In a new terminal. In our `hello_world` directory execute:
 
 `npm install --save express`
 
-Update `./src/hello_world/core.cljs` to the following:
+Update `./src/hello-world/core.cljs` to the following:
 
 ```
-(ns hello_world.core
+(ns hello-world.core
   (:require [cljs.nodejs :as nodejs]
             [clojure.string :as string]))
 
@@ -282,8 +284,9 @@ Update `./src/hello_world/core.cljs` to the following:
 
 (def -main
   (fn []
-    (doto (.createServer http #(app %1 %2))
-      (.listen server-port))))
+    (let [server (.createServer http (fn [req res]
+                                       (app req res)))]
+      (.listen server))))
     (println (string/join " " ["Server running on" server-port]) )
     
 
