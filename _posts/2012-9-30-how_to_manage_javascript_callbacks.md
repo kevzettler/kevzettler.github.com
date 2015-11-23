@@ -17,7 +17,7 @@ I have been meaning to write this post for some time now. Basically since Node.j
 nested callbacks and other asynchronous patterns. This is also highly relevant now with the rise of backbone.js and the discussion for best practices there. Writing JavaScript like Lisp is a bit of an generalization. More specifically, I mean write JavaScript like it’s a functional language, which it is. 
 By this, I mean write it as small composable functions. I'll show a few patterns I use that can help keep your JavaScript more manageable. Let’s get into some code examples.
 
-## A standard jQuery Ajax button event.
+## A Standard jQuery Ajax Button Event.
 This is fairly common pattern. A button click event triggers an Ajax request. The Ajax request has callbacks for success and error. The success callback triggers another procedure of rendering or possibly another Ajax chain.
 The error function does some animation to the button and then does some Ajax to log the error. 
 
@@ -50,7 +50,7 @@ While this is not necessarily a bad practice, it can promote the growth of unman
 
 A familiar scenario, someone might declare a local variable at the top of the click handler declaration and then reference it throughout the nested anonymous functions. This will essentially cause the `success` and `error` callbacks to be dependent on their nested position.
 
-## How can we make this better?
+## How Can We Make This Better?
 Well lets break it up into smaller pieces. More manageable pieces.
 
 {% highlight javascript %}
@@ -83,7 +83,7 @@ Well lets break it up into smaller pieces. More manageable pieces.
     $('button').click(buttonClickHandler);
 {% endhighlight %}
 
-## Its Okay to use named functions.
+## Its Okay To Use Named Functions.
 We've made a few small abstractions. We've moved the anonymous functions that handle the button click, Ajax success, and Ajax error into separate named functions. 
 Simply giving the anonymous functions names and moving them out of the nested pattern has significantly improved this code. 
 
@@ -99,7 +99,7 @@ This opens up the opportunity to add strict type checking to our JavaScript.
 Expanding on our re-factor, we could have abstracted the anonymous callbacks passed to the `fadeOut` and `animate` invocations. Also the callback passed to our `$.Get` call is ripe for naming as well.
 For this small example we'll skip editing them as its a bit overkill. In larger code bases you'll see those functions swell.
 
-## Generate large objects from named functions.
+## Generate Large Objects From Named Functions.
 This next example is a bit exaggerated but gets the concept across. 
 Often times you may have some JavaScript objects defined inline as a parameter or local variable.
 In our example, we have the `$.ajax` method which takes an Object as its parameter and a child object as the `data:` value.
@@ -146,13 +146,13 @@ In our next example code, we abstract these small objects in to some simple name
 This abstraction lets us contain the objects in to smaller functions that can be unit tested and managed much easier.
 Again this is an exaggerated example and a bit overkill in this case, but definitely useful for larger objects.
 
-## Just for fun.
+## Just For Fun.
 For fun let’s look at the above example in some bad pseudo Lisp. 
 
 > __Disclaimer__ I am by no means a certified Lisper. 
 > The extent of my experience with Lisp is a few toy projects in Scheme and Common Lisp. The following code is meant to be more of visual aid than a functional program.
 
-### Our nested Ajax procedure.
+### Our Nested Ajax Procedure.
 I've simplified `success` and `error` callbacks for this example to make them simple calls to `alert`
 You can see this is visually similar to the way JavaScript nests anonymous functions.
 This example makes use of Lisps anonymous functions with `lambda`. `lambda` is equivalent to JavaScripts `(function(){})`
@@ -168,7 +168,7 @@ This example makes use of Lisps anonymous functions with `lambda`. `lambda` is e
         
 {% endhighlight %}
   
-## After our re-factor.
+## After Our Re-factor.
 Below you can see that a similar clarity arises to our Lisp code when we abstract the anonymous functions in to named ones.
 We now have self-contained small units of code that are much more manageable.
 {% highlight cl %}
@@ -184,7 +184,7 @@ We now have self-contained small units of code that are much more manageable.
 
 {% endhighlight %}
 
-## In conclusion
+## In Conclusion
 
 If you're coming from a traditionally synchronous, procedural programming background. These patterns may not be a silver bullet for you. 
 This doesn't eliminate the need for callbacks. Hopefully it will help you manage them better. The code, in parts, is still written and executed in a non-sequential order. 
