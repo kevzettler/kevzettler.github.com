@@ -62,7 +62,7 @@ With the `BaseWeb` Dockerfile inplace I then have my Nodejs application. It's st
 Take note here that my `node_modules` is actually a symlink to `/dist/node_modules/` this is committed to my repo. This may seem odd but it's key to letting us rapidly develop on a custom module. It enables a `npm link` style work flow.
 
 
-### The Vagrant setup
+### The Vagrant Setup
 
 Assume we have a Vagrantfile outside of our web project like so:
 
@@ -89,7 +89,7 @@ EXPOSE 5000
 CMD ["forever", "index.js"]
 {% endhighlight %}
 
-#### Points of interest
+#### Points Of Interest
 
 * The key to this whole thing here is the `node_modules` setup. We don't do the `npm install` in the application code directory. We create a `/dist/` directory and copy `package.json` there. We then `npm install` in `/dist` and get `/dist/node_modules`. This is really the seceret sauce. In production you don’t rebuild your modules each time you re-build your container. If your `package.json` file changes then your modules will be rebuilt. I got this from  [Building Efficient Dockerfiles](http://bitjudo.com/blog/2014/03/13/building-efficient-dockerfiles-node-dot-js/)
 
@@ -136,7 +136,7 @@ Let's look at the run command more in-depth.
 
 We're overriding the Dockerfiles' `CMD ["forever", "index.js"]` with `forever -w index.js` The `-w` flag restarts our server on code updates, which is what we want in a development environment.
 
-### Bringing it all together
+### Bringing It All Together
 The Most important part of the `docker run` options is the `-v` flag, which is for Docker Volumes. We are telling our container to mount `/srv/www` as a volume that points to `/vagrant/web/`. If you review our Vagrant setup from earlier you can see that `/srv/www` is actualy a shared directory to our application code directory `/web` on the host machine!
 
 A quick diagram of this shared filesystem cascade looks like this:
@@ -152,7 +152,7 @@ At this point you're set up to rapidly develop on your application code and have
 
 The next challenge I faced was figuring out how to handle a local NPM module dependency that I wanted to iterate on in the same rapid manner.
 
-## NPM Link Development in a Docker container
+## NPM Link Development In A Docker Container
 
 So in this scenario. Lets assume that `web` has an entry in `package.json` like this:
 {% highlight json %}
@@ -188,7 +188,7 @@ We can then update our VagrantFile to add a new Docker Volume:
                  
 {% endhighlight %} 
 
-### What's all this symlink business then?
+### What's All This Symlink Business Then?
 So we have this symlink in 2 places.
 
 * The `RUN` symlink in Web Dockerfile
