@@ -1,0 +1,18 @@
+#+TITLE: The E-ink Experience
+#+LAYOUT: post
+#+TAGS: hardware workflow
+
+I spend a lot of time staring at screens. Alternating between laptop/desktop and mobile phone. My eyes get strained, things get blurry and I have to stop. I feel that I can't be as productive as I like.
+
+I spend a lot of this time doing:
+  + consumption activities
+    + news
+    + white papers
+    + technical blogs
+    + books
+  + creation activities
+    + writing
+    + coding
+
+
+ I am a big fan of E-ink monitors.

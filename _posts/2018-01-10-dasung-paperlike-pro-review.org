@@ -1,0 +1,10 @@
+#+TITLE: Dasung Paperlike Pro Review
+#+LAYOUT: post
+#+TAGS: e-ink hardware workflow
+#+liquid: enabled
+
+** Coding on a Dasung Paperlike Pro 13.3 E-ink monitor
+video below
+
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/zp8-eUmAnhg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
