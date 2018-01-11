@@ -1,0 +1,11 @@
+* How to use
+
+Start local dev server
+#+BEGIN_SRC
+jekyll s
+#+END_SRC
+
+This uses ~jekyll-org~ gem:
+https://github.com/eggcaker/jekyll-org
+
+add new posts in ~_posts~
