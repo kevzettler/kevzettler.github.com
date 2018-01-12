@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-01-12T14:19:25-08:00</updated><id>/</id><title type="html">Kev Zettler</title><entry><title type="html">Dasung Paperlike Pro(grammer) Review</title><link href="/2018/01/12/dasung-paperlike-pro-review.html" rel="alternate" type="text/html" title="Dasung Paperlike Pro(grammer) Review" /><published>2018-01-12T00:00:00-08:00</published><updated>2018-01-12T00:00:00-08:00</updated><id>/2018/01/12/dasung-paperlike-pro-review</id><content type="html" xml:base="/2018/01/12/dasung-paperlike-pro-review.html">&lt;p&gt;I recently purchased a &lt;a href=&quot;http://www.dasung.com/english/&quot;&gt;Dasung Paperlike Pro 13.3 E-ink monitor&lt;/a&gt; to use for coding, reading, and terminal work. I have many thoughts on the overall e-ink market and consumer experience. I will save them for another post. This post will be brief and focused on personal expectations with the Dasung. Additionally, there are &lt;a href=&quot;https://www.youtube.com/results?search_query=dasung+paperlike+pro&quot;&gt;many other, more thorough reviews&lt;/a&gt; online demonstrating the capabilities of the monitor.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-01-12T14:29:31-08:00</updated><id>/</id><title type="html">Kev Zettler</title><entry><title type="html">Dasung Paperlike Pro(grammer) Review</title><link href="/2018/01/12/dasung-paperlike-pro-review.html" rel="alternate" type="text/html" title="Dasung Paperlike Pro(grammer) Review" /><published>2018-01-12T00:00:00-08:00</published><updated>2018-01-12T00:00:00-08:00</updated><id>/2018/01/12/dasung-paperlike-pro-review</id><content type="html" xml:base="/2018/01/12/dasung-paperlike-pro-review.html">&lt;p&gt;I recently purchased a &lt;a href=&quot;http://www.dasung.com/english/&quot;&gt;Dasung Paperlike Pro 13.3 E-ink monitor&lt;/a&gt; to use for coding, reading, and terminal work. I have many thoughts on the overall e-ink market and consumer experience. I will save them for another post. This post will be brief and focused on personal expectations with the Dasung. Additionally, there are &lt;a href=&quot;https://www.youtube.com/results?search_query=dasung+paperlike+pro&quot;&gt;many other, more thorough reviews&lt;/a&gt; online demonstrating the capabilities of the monitor.&lt;/p&gt;
 &lt;p&gt;After telling people I purchased this monitor the common reaction is:&lt;/p&gt;
 &lt;blockquote&gt;
   &lt;p&gt;&amp;#8220;E-ink? Isn&amp;#8217;t that slow!? How do you code on that?&amp;#8221; - Tech Friend&lt;/p&gt;
@@ -38,7 +38,198 @@
 &lt;p&gt;At times the monitor goes in to some kind of &amp;#8220;sleep mode&amp;#8221; even while plugged into an active computer. The screen goes black and unresponsive. By messing with a combination of the hardware buttons on the screen you can wake it up.&lt;/p&gt;
 &lt;p&gt;Unfortunatly, the driver UI defaults to Chinese, I was able to navigate it blindly and change to English. It should detect the operating system&amp;#8217;s language setting.&lt;/p&gt;
 &lt;h1&gt;Summary&lt;/h1&gt;
-&lt;p&gt;Overall I think the Dasung is a pretty awesome piece of equipment. I am majorly dissapointed about the reflective glass screen. I am happy with my purchase and hope funds go to help further improve the company and product line. If you spend a lot of time editing text or reading with tired eyes I would recommend one. You can use it as a dedicated text editor or terminal screen to great success.&lt;/p&gt;</content><author><name></name></author><category term="e-ink hardware workflow" /></entry><entry><title type="html">How To Route Docker.io Containers To Public IPV6 on Linode</title><link href="/programming/2014/06/25/docker_ipv6_linode.html" rel="alternate" type="text/html" title="How To Route Docker.io Containers To Public IPV6 on Linode" /><published>2014-06-25T00:00:00-07:00</published><updated>2014-06-25T00:00:00-07:00</updated><id>/programming/2014/06/25/docker_ipv6_linode</id><content type="html" xml:base="/programming/2014/06/25/docker_ipv6_linode.html">&lt;ul&gt;
+&lt;p&gt;Overall I think the Dasung is a pretty awesome piece of equipment. I am majorly dissapointed about the reflective glass screen. I am happy with my purchase and hope funds go to help further improve the company and product line. If you spend a lot of time editing text or reading with tired eyes I would recommend one. You can use it as a dedicated text editor or terminal screen to great success.&lt;/p&gt;</content><author><name></name></author><category term="e-ink hardware workflow" /></entry><entry><title type="html">Rapid Local Development with Vagrant, Docker and Node.js</title><link href="/programming/2015/06/07/rapid_local_development_vagrant_docker_node.html" rel="alternate" type="text/html" title="Rapid Local Development with Vagrant, Docker and Node.js" /><published>2015-06-07T00:00:00-07:00</published><updated>2015-06-07T00:00:00-07:00</updated><id>/programming/2015/06/07/rapid_local_development_vagrant_docker_node</id><content type="html" xml:base="/programming/2015/06/07/rapid_local_development_vagrant_docker_node.html">&lt;h3 id=&quot;tldr&quot;&gt;TLDR&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Using a cascade of Vagrant shared directories, Docker volumes and cleverly placed symlinks, you can rig Vagrant and Docker to instantly reflect your local application code updates.&lt;/li&gt;
+  &lt;li&gt;Docker volume -&amp;gt; Vagrant shared directory -&amp;gt; Host machine code.&lt;/li&gt;
+  &lt;li&gt;Enable NPM link style development in Docker container.&lt;/li&gt;
+  &lt;li&gt;Dosen’t cover &lt;code class=&quot;highlighter-rouge&quot;&gt;gulp&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;webpack&lt;/code&gt; asset generation but you can figure it out.&lt;/li&gt;
+  &lt;li&gt;There might be a better way to do this or improvements to make. Leave it in the comments.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;the-problem&quot;&gt;The Problem&lt;/h2&gt;
+&lt;p&gt;I wanted to use &lt;a href=&quot;https://github.com/js-platform/node-webrtc&quot;&gt;isomorphic WebRTC&lt;/a&gt; with the awesome &lt;a href=&quot;https://github.com/feross/simple-peer&quot;&gt;SimplePeer&lt;/a&gt; in a recent Node.js project. However the server WebRTC has a bunch of system level dependencies that are a pain to install. Luckily they provide a &lt;a href=&quot;https://github.com/js-platform/node-webrtc/blob/develop/Dockerfile&quot;&gt;Dockerfile&lt;/a&gt; which does it all for you. I didn’t end up using their exact Dockerfile but copy pasted the majority of it to my project to use as a &lt;code class=&quot;highlighter-rouge&quot;&gt;Base web&lt;/code&gt; Dockerfile.&lt;/p&gt;
+
+&lt;p&gt;I also wanted to do development on a custom Node module. Usually on your local machine you would do &lt;code class=&quot;highlighter-rouge&quot;&gt;npm link&lt;/code&gt; which creates a symlink to your module’s code directory and you can rapidly iterate there. However, working with Vagrant and Docker makes this more complicated.&lt;/p&gt;
+
+&lt;p&gt;I wanted all this to work without having to rebuild Docker images, rerun docker containers, or reprovision Vagrant.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-base-web-image&quot;&gt;The Base Web Image&lt;/h2&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-docker&quot; data-lang=&quot;docker&quot;&gt;&lt;span class=&quot;c&quot;&gt;# baseweb Dockerfile&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; ubuntu:14.04&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; DEBIAN_FRONTEND noninteractive&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;RUN &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo &lt;/span&gt;debconf shared/accepted-oracle-license-v1-1 &lt;span class=&quot;k&quot;&gt;select &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt; | debconf-set-selections
+&lt;span class=&quot;k&quot;&gt;RUN &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo &lt;/span&gt;debconf shared/accepted-oracle-license-v1-1 seen &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt; | debconf-set-selections
+
+&lt;span class=&quot;k&quot;&gt;RUN &lt;/span&gt;apt-get update &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt-get &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; software-properties-common
+&lt;span class=&quot;k&quot;&gt;RUN &lt;/span&gt;add-apt-repository ppa:webupd8team/java &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; add-apt-repository ppa:chris-lea/node.js &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt-get update
+
+&lt;span class=&quot;k&quot;&gt;RUN &lt;/span&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; git subversion g++ python libnss3-dev libasound2-dev libpulse-dev &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;libjpeg62-dev libxv-dev libgtk2.0-dev libexpat1-dev libxss-dev libudev-dev libdrm-dev libgconf2-dev &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;libgcrypt11-dev libpci-dev libxtst-dev libgnome-keyring-dev libssl-dev nodejs oracle-java6-installer oracle-java6-set-default
+
+&lt;span class=&quot;k&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; JAVA_HOME /usr/lib/jvm/java-6-oracle/&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; PATH $PATH:/usr/lib/jvm/java-6-oracle/jre/bin/&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;RUN &lt;/span&gt;npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-g&lt;/span&gt; forever&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;With the &lt;code class=&quot;highlighter-rouge&quot;&gt;BaseWeb&lt;/code&gt; Dockerfile inplace I then have my Nodejs application. It’s structured as follows.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-web-application-code&quot;&gt;The Web Application Code&lt;/h2&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;/Projects/demo/web
+├── Dockerfile
+├── index.js
+├── node_modules -&amp;gt; /dist/node_modules/
+└── package.json&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Take note here that my &lt;code class=&quot;highlighter-rouge&quot;&gt;node_modules&lt;/code&gt; is actually a symlink to &lt;code class=&quot;highlighter-rouge&quot;&gt;/dist/node_modules/&lt;/code&gt; this is committed to my repo. This may seem odd but it’s key to letting us rapidly develop on a custom module. It enables a &lt;code class=&quot;highlighter-rouge&quot;&gt;npm link&lt;/code&gt; style work flow.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-vagrant-setup&quot;&gt;The Vagrant Setup&lt;/h3&gt;
+
+&lt;p&gt;Assume we have a Vagrantfile outside of our web project like so:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;/Projects/demo/
+├── Vagrantfile
+└── web&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;This will automatically mount the web code as a shared directory inside the Vagrant machine at &lt;code class=&quot;highlighter-rouge&quot;&gt;/vagrant/web&lt;/code&gt;. At this point we can &lt;code class=&quot;highlighter-rouge&quot;&gt;vagrant up&lt;/code&gt; and edit the application code on the host machine as usual and Vagrant will pickup the changes. This dosen’t help us yet because the code is dependent on the ismorphic WebRTC dependences. We need Vagrant to run the Docker containers.&lt;/p&gt;
+
+&lt;p&gt;Before we get to the &lt;code class=&quot;highlighter-rouge&quot;&gt;Vagrantfile&lt;/code&gt; let’s look at the Web Applications’ Dockerfile.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-web-application-dockerfile&quot;&gt;The Web Application Dockerfile&lt;/h2&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-dockerfile&quot; data-lang=&quot;dockerfile&quot;&gt;&lt;span class=&quot;c&quot;&gt;# web DockerFile&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; base_web&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;COPY&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; package.json /dist/package.json&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;RUN &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; /dist/node_modules &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /dist &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;ADD&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; . /srv/www&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;RUN &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ln&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; /dist/node_modules /srv/www/node_modules
+&lt;span class=&quot;k&quot;&gt;WORKDIR&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; /srv/www&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;EXPOSE&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; 5000&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;CMD&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; [&quot;forever&quot;, &quot;index.js&quot;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h4 id=&quot;points-of-interest&quot;&gt;Points Of Interest&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;The key to this whole thing here is the &lt;code class=&quot;highlighter-rouge&quot;&gt;node_modules&lt;/code&gt; setup. We don’t do the &lt;code class=&quot;highlighter-rouge&quot;&gt;npm install&lt;/code&gt; in the application code directory. We create a &lt;code class=&quot;highlighter-rouge&quot;&gt;/dist/&lt;/code&gt; directory and copy &lt;code class=&quot;highlighter-rouge&quot;&gt;package.json&lt;/code&gt; there. We then &lt;code class=&quot;highlighter-rouge&quot;&gt;npm install&lt;/code&gt; in &lt;code class=&quot;highlighter-rouge&quot;&gt;/dist&lt;/code&gt; and get &lt;code class=&quot;highlighter-rouge&quot;&gt;/dist/node_modules&lt;/code&gt;. This is really the seceret sauce. In production you don’t rebuild your modules each time you re-build your container. If your &lt;code class=&quot;highlighter-rouge&quot;&gt;package.json&lt;/code&gt; file changes then your modules will be rebuilt. I got this from  &lt;a href=&quot;http://bitjudo.com/blog/2014/03/13/building-efficient-dockerfiles-node-dot-js/&quot;&gt;Building Efficient Dockerfiles&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;RUN ln -s /dist/node_modules /srv/www/node_modules&lt;/code&gt;&lt;/p&gt;
+
+    &lt;p&gt;This creates a symlink for &lt;code class=&quot;highlighter-rouge&quot;&gt;node_modues&lt;/code&gt; from our application code at &lt;code class=&quot;highlighter-rouge&quot;&gt;/srv/www&lt;/code&gt;. to our &lt;code class=&quot;highlighter-rouge&quot;&gt;/dist&lt;/code&gt;. This also overrides the symlink that is committed in the web repo. You might be thinking, “well what was the point of that then?”. I promise we’ll get to that soon. It’s key to the &lt;code class=&quot;highlighter-rouge&quot;&gt;npm link&lt;/code&gt; style.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;the-vagrant-file&quot;&gt;The Vagrant File&lt;/h3&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;Vagrant&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;configure&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;vm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;box&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Ubuntu 14.04 with Docker enabled&quot;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;vm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;box_url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;https://github.com/jose-lpa/packer-ubuntu_14.04/releases/download/v2.0/ubuntu-14.04.box&quot;&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;vm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;provision&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;docker&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;build_image&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;/vagrant/Dockerfiles/base_web&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;args: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'-t &quot;base_web&quot;'&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;build_image&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;/vagrant/web&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;args: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'-t &quot;web&quot;'&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;run&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;web&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+          &lt;span class=&quot;ss&quot;&gt;cmd: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;forever -w bin/server.js&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+          &lt;span class=&quot;ss&quot;&gt;args: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;-v '/vagrant/web:/srv/www'\
+                 -e NODE_ENV=development\
+                 -p 5000:5000&quot;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;vm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;network&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;forwarded_port&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;guest: &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;host: &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5000&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h4 id=&quot;points-of-interest-1&quot;&gt;Points of interest&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;We use a ‘Docker enabled’ image for our Docker box.&lt;/li&gt;
+  &lt;li&gt;We use Vagrant’s built-in Docker provisioner.&lt;/li&gt;
+  &lt;li&gt;We then run our container with some new arguments.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Let’s look at the run command more in-depth.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;    &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;run&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;web&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+          &lt;span class=&quot;ss&quot;&gt;cmd: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;forever -w index.js&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+          &lt;span class=&quot;ss&quot;&gt;args: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;-v '/vagrant/web:/srv/www'\
+                 -e NODE_ENV=development\
+                 -p 5000:5000&quot;&lt;/span&gt;
+                 &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;We’re overriding the Dockerfiles’ &lt;code class=&quot;highlighter-rouge&quot;&gt;CMD [&quot;forever&quot;, &quot;index.js&quot;]&lt;/code&gt; with &lt;code class=&quot;highlighter-rouge&quot;&gt;forever -w index.js&lt;/code&gt; The &lt;code class=&quot;highlighter-rouge&quot;&gt;-w&lt;/code&gt; flag restarts our server on code updates, which is what we want in a development environment.&lt;/p&gt;
+
+&lt;h3 id=&quot;bringing-it-all-together&quot;&gt;Bringing It All Together&lt;/h3&gt;
+&lt;p&gt;The Most important part of the &lt;code class=&quot;highlighter-rouge&quot;&gt;docker run&lt;/code&gt; options is the &lt;code class=&quot;highlighter-rouge&quot;&gt;-v&lt;/code&gt; flag, which is for Docker Volumes. We are telling our container to mount &lt;code class=&quot;highlighter-rouge&quot;&gt;/srv/www&lt;/code&gt; as a volume that points to &lt;code class=&quot;highlighter-rouge&quot;&gt;/vagrant/web/&lt;/code&gt;. If you review our Vagrant setup from earlier you can see that &lt;code class=&quot;highlighter-rouge&quot;&gt;/srv/www&lt;/code&gt; is actualy a shared directory to our application code directory &lt;code class=&quot;highlighter-rouge&quot;&gt;/web&lt;/code&gt; on the host machine!&lt;/p&gt;
+
+&lt;p&gt;A quick diagram of this shared filesystem cascade looks like this:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;Docker &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;/srv/www&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt; -&amp;gt;
+Vagrant &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;/vagrant/web -&amp;gt;
+Host &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;/web&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;/&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;At this point you’re set up to rapidly develop on your application code and have updates reflected in your Docker container.&lt;/p&gt;
+
+&lt;p&gt;The next challenge I faced was figuring out how to handle a local NPM module dependency that I wanted to iterate on in the same rapid manner.&lt;/p&gt;
+
+&lt;h2 id=&quot;npm-link-development-in-a-docker-container&quot;&gt;NPM Link Development In A Docker Container&lt;/h2&gt;
+
+&lt;p&gt;So in this scenario. Lets assume that &lt;code class=&quot;highlighter-rouge&quot;&gt;web&lt;/code&gt; has an entry in &lt;code class=&quot;highlighter-rouge&quot;&gt;package.json&lt;/code&gt; like this:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-json&quot; data-lang=&quot;json&quot;&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;dependencies&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+   &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;customModule&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;git://github.com/kevzettler/customModule&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+   &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;customModule&lt;/code&gt; is a NPM module that we maintain and develop. This package.json setup works fine for production because we just install from the repo and forget about it. In development we want to rapidly make changes to &lt;code class=&quot;highlighter-rouge&quot;&gt;customModule&lt;/code&gt;and not have to rebuild everything. Normally when developing on local machine, we would &lt;code class=&quot;highlighter-rouge&quot;&gt;cd&lt;/code&gt; into &lt;code class=&quot;highlighter-rouge&quot;&gt;web&lt;/code&gt; and do &lt;code class=&quot;highlighter-rouge&quot;&gt;npm link customModule&lt;/code&gt; which would build a symlink to our &lt;code class=&quot;highlighter-rouge&quot;&gt;customModule&lt;/code&gt; code that would give us a rapid development setup.&lt;/p&gt;
+
+&lt;p&gt;When we add Vagrant and Docker to the dev environment, this completly breaks NPM Link.&lt;/p&gt;
+
+&lt;p&gt;Here’s an updated directory diagram of our project with the new &lt;code class=&quot;highlighter-rouge&quot;&gt;customModule&lt;/code&gt; code:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;/Projects/demo/
+├── Vagrantfile
+├── web
+└── customModule&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;So similliar to the web code, Vagrant will mount our customModule code at &lt;code class=&quot;highlighter-rouge&quot;&gt;/vagrant/customModule&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;We can then update our VagrantFile to add a new Docker Volume:
+&lt;code class=&quot;highlighter-rouge&quot;&gt;-v '/vagrant/engine:/dist/node_modules/engine'&lt;/code&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;    &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;run&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;web&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+          &lt;span class=&quot;ss&quot;&gt;cmd: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;forever -w index.js&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+          &lt;span class=&quot;ss&quot;&gt;args: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;-v '/vagrant/web:/srv/www'\
+                 -v '/vagrant/customModule:/dist/node_modules/customModule'\
+                 -e NODE_ENV=development\
+                 -p 5000:5000&quot;&lt;/span&gt;
+                 &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;whats-all-this-symlink-business-then&quot;&gt;What’s All This Symlink Business Then?&lt;/h3&gt;
+&lt;p&gt;So we have this symlink in 2 places.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;RUN&lt;/code&gt; symlink in Web Dockerfile
+  &lt;code class=&quot;highlighter-rouge&quot;&gt;RUN ln -s /dist/node_modules /srv/www/node_modules&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;In ‘Filesystem’ symlink 
+  &lt;code class=&quot;highlighter-rouge&quot;&gt;node_modules -&amp;gt; /dist/node_modules/&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Docker does not support symlinks when using the &lt;code class=&quot;highlighter-rouge&quot;&gt;ADD&lt;/code&gt; command in a DockerFile.
+It will drop them from the &lt;code class=&quot;highlighter-rouge&quot;&gt;ADD&lt;/code&gt; filesystem. That’s why we need the &lt;code class=&quot;highlighter-rouge&quot;&gt;RUN&lt;/code&gt; symlink in the dockerfile.&lt;/p&gt;
+
+&lt;p&gt;When we want to do development work, we run the container with the &lt;code class=&quot;highlighter-rouge&quot;&gt;-v&lt;/code&gt; flag to mount our local code. The volume doesn’t get attached until after our container has already been created. At that time, the &lt;code class=&quot;highlighter-rouge&quot;&gt;RUN&lt;/code&gt; symlink exists; however, the &lt;code class=&quot;highlighter-rouge&quot;&gt;-v&lt;/code&gt; option overrides everything in the container’s &lt;code class=&quot;highlighter-rouge&quot;&gt;/srv/www/&lt;/code&gt;, wiping out the &lt;code class=&quot;highlighter-rouge&quot;&gt;RUN&lt;/code&gt; symlink.&lt;/p&gt;
+
+&lt;p&gt;But wait! We have a ‘Filesystem’ symlink in our shared code. The volume respects this symlink and it routes internally to the container’s filesystem. You don’t necessarily have to commit the symlink to your repo like I was dong. You just need it around when you build the Docker image. I committed it because I kept forgetting. Try this out and let me know if you have a better solution to it.&lt;/p&gt;
+
+&lt;p&gt;Thanks to &lt;a href=&quot;http://gabriellenicolet.com/&quot;&gt;Gabrielle Nicolet&lt;/a&gt; for editing this post.&lt;/p&gt;</content><author><name></name></author><category term="Programming" /><category term="JavaScript" /><category term="Conventions" /><category term="Docker" /><category term="Vagrant" /><category term="Node.js" /><summary type="html">TLDR Using a cascade of Vagrant shared directories, Docker volumes and cleverly placed symlinks, you can rig Vagrant and Docker to instantly reflect your local application code updates. Docker volume -&amp;gt; Vagrant shared directory -&amp;gt; Host machine code. Enable NPM link style development in Docker container. Dosen’t cover gulp webpack asset generation but you can figure it out. There might be a better way to do this or improvements to make. Leave it in the comments.</summary></entry><entry><title type="html">How To Route Docker.io Containers To Public IPV6 on Linode</title><link href="/programming/2014/06/25/docker_ipv6_linode.html" rel="alternate" type="text/html" title="How To Route Docker.io Containers To Public IPV6 on Linode" /><published>2014-06-25T00:00:00-07:00</published><updated>2014-06-25T00:00:00-07:00</updated><id>/programming/2014/06/25/docker_ipv6_linode</id><content type="html" xml:base="/programming/2014/06/25/docker_ipv6_linode.html">&lt;ul&gt;
   &lt;li&gt;If you want to us ipv6 with docker.io on linode make sure you have the following &lt;code class=&quot;highlighter-rouge&quot;&gt;sysctl&lt;/code&gt; set
     &lt;ul&gt;
       &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;net.ipv6.conf.all.accept_ra = 2&lt;/code&gt;&lt;/li&gt;
