@@ -9,3 +9,13 @@ This uses ~jekyll-org~ gem:
 https://github.com/eggcaker/jekyll-org
 
 add new posts in ~_posts~
+
+
+** The build
+because this is using a custom jekyll-org plugin the github will not auto build this for security purposes the source code lives in git branch
+
+`source-DO_NOT_DELETE`
+
+Updates are done there and then the contents of ./src directory copied to the root of the master branch
+
+follows this guy: http://arademaker.github.io/blog/2011/12/01/github-pages-jekyll-plugins.html
