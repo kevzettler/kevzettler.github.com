@@ -1,6 +1,6 @@
 highlighter: rouge
 title: Kev Zettler
-markdown: rdiscount
+#markdown: rdiscount
 plugins:
   - jekyll-org
   - jekyll-feed
