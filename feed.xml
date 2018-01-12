@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-01-12T13:37:25-08:00</updated><id>/</id><title type="html">Kev Zettler</title><entry><title type="html">Dasung Paperlike Pro(grammer) Review</title><link href="/2018/01/10/dasung-paperlike-pro-review.html" rel="alternate" type="text/html" title="Dasung Paperlike Pro(grammer) Review" /><published>2018-01-10T00:00:00-08:00</published><updated>2018-01-10T00:00:00-08:00</updated><id>/2018/01/10/dasung-paperlike-pro-review</id><content type="html" xml:base="/2018/01/10/dasung-paperlike-pro-review.html">&lt;p&gt;I recently purchased a &lt;a href=&quot;http://www.dasung.com/english/&quot;&gt;Dasung Paperlike Pro 13.3 E-ink monitor&lt;/a&gt; to use for coding, reading and terminal work. I have many thoughts on the overall e-ink market and consumer experience. I will save them for another post. This post will be brief and focused on personal expectations with the Dasung. Additionally, there are &lt;a href=&quot;https://www.youtube.com/results?search_query=dasung+paperlike+pro&quot;&gt;many other, more thorough reviews&lt;/a&gt; online demonstrating the capabilities of the monitor.&lt;/p&gt;
+&lt;p&gt;After telling people I purchased this monitor the common reaction is:&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;&amp;#8220;E-ink? Isn&amp;#8217;t that slow!? How do you code on that? - Tech Friend&amp;#8221;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This is an understandable concern as most people&amp;#8217;s personal experience with E-ink has been on smaller low powered devices like Kindles or other E-readers.  The smaller e-reader screens tend to have an extended &amp;#8216;refresh&amp;#8217; rate built in. This is an attempt to conserve battery.&lt;/p&gt;
+&lt;p&gt;The Dasung doesn&amp;#8217;t have to make this compromise, it has a dedicated power source. The Dasung monitor performance runs at about 40 FPS on HDMI hookup. This thing can play videos.&lt;/p&gt;
+&lt;h2&gt;Coding in Emacs on a Dasung Paperlike Pro 13.3 E-ink monitor&lt;/h2&gt;
+&lt;p&gt;Below is a video I sent to a few friends demonstrating the responsiveness and performance&lt;/p&gt;
+&lt;p&gt;e-ink emacs video:&lt;/p&gt;
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/zp8-eUmAnhg&quot; frameborder=&quot;0&quot; allow=&quot;autoplay; encrypted-media&quot; allowfullscreen&gt;&lt;/iframe&gt;
+&lt;h2&gt;The pros&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;The overall physical design and form factor of the monitor is great.
+    &lt;p&gt;The monitor has a solid one-piece construction. As a bonus, it comes with a stand. HDMI hookup&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Works excellent for Emacs
+    &lt;p&gt;Can be a dedicated Emacs monitor.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Dasung support was fast, friendly and shipping was quick&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Dasung driver and software performance&lt;/h3&gt;
+&lt;p&gt;Dasung packages software to help drive and configure the monitor on popular operating systems Windows, OSX, and 64bit Ubuntu. I primarily used the monitor on an OSX system.&lt;/p&gt;
+&lt;p&gt;The Monitor has 3 primary rendering modes. &lt;b&gt;Floyd&lt;/b&gt;, &lt;b&gt;A2&lt;/b&gt;, &lt;b&gt;A16&lt;/b&gt;. I find my self-spending most of the time in the &lt;b&gt;A2&lt;/b&gt; mode. The different modes correspond to different algorithms that the monitor uses to convert the colored display pixel data into grey-scale e-ink data. The numbers in the &lt;b&gt;A2&lt;/b&gt; and &lt;b&gt;A16&lt;/b&gt; modes are the different shades of grey each pixel will render. The &lt;b&gt;A2&lt;/b&gt; mode is a hard binary contrast containing only 2 colors, black and white pixels. I found this great for text editing and reading.&lt;/p&gt;
+&lt;p&gt;The &lt;b&gt;A16&lt;/b&gt; mode maps color pixels into one of 16 shades of grey. This mode is useful for viewing operating system UI and Apps that don&amp;#8217;t render well in a black and white mode.&lt;/p&gt;
+&lt;p&gt;The &lt;b&gt;Floyd&lt;/b&gt; mode is apparently a proprietary custom Dasung algorithm that is based on [https://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm][The Floyd-Warshall algorithim]. Overall the &lt;b&gt;Floyd&lt;/b&gt; mode renders multi shade grey output and a high frame rate. You can watch videos in this mode. Wikipedia states that:&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;the Floyd–Warshall algorithm is an algorithm for finding shortest paths in a weighted graph with positive or negative edge weights (but with no negative cycles).&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I am not sure how Dasung applies that graph pathfinding algorithm data to the pixel data of the display output. I haven&amp;#8217;t thought too hard about this yet. I would appreciate any ideas left in the comments below.&lt;/p&gt;
+&lt;h2&gt;The cons&lt;/h2&gt;
+&lt;h3&gt;Reflective screen glare&lt;/h3&gt;
+&lt;p&gt;As you can see in the video above, there is an obvious glare on the screen. The video was captured in a moderately lit room. The monitor actually ships with a plastic anti-glare protective screen cover to help alleviate this. This is a huge problem and defeats the purpose of the monitor. Dasung&amp;#8217;s advertising is aggressive on claims of &amp;#8220;Relax Your Eyes&amp;#8221;, &amp;#8220;Ultimate Eye Protection&amp;#8221; &amp;#8220;No blue light, No flashing, No backlight, No glossy&amp;#8221;.&lt;/p&gt;
+&lt;p&gt;Unfortunately, putting a reflective pane of glass over the e-ink display is a bad move.&lt;/p&gt;
+&lt;h3&gt;Dasung driver and software issues&lt;/h3&gt;
+&lt;p&gt;I listed the Dasung software as a Pro, unfortunately, it also has some frustrating issues. Again my experience was on MacOSX your experience may be different.&lt;/p&gt;
+&lt;p&gt;The monitor has a &amp;#8220;change mode&amp;#8221; hardware button that lets you cycle through these differnt modes. There is a software driver UI that also changes these modes. It seems the software can get out of sync with the hardware. You can set a resolution and contrast and mode in the software. Then press a hardware button and that resolution will be lost.&lt;/p&gt;
+&lt;p&gt;At times the monitor goes in to some kind of &amp;#8220;sleep mode&amp;#8221; even while plugged into an active computer. The screen goes black and unresponsive. By messing with a combination of the hardware buttons on the screen you can wake it up.&lt;/p&gt;
+&lt;p&gt;The UI for the drivers is by default in Chineese making it unreadable. I was able to navigate it blindly and change to english. It should detect the operating systems language setting.&lt;/p&gt;
+&lt;h1&gt;Summary&lt;/h1&gt;
+&lt;p&gt;Overall I think the Dasung is a pretty awesome peice of equipment. I am majorly bummed about the reflective glass screen though. I am happy with my purchase and hope funds go to help further improve the company and product line. If you spend a lot of time editing text or reading with tired eyes I would recommend one. You can use it as a dedicated text editor or terminal screen to great success.&lt;/p&gt;</content><author><name></name></author><category term="e-ink hardware workflow" /></entry><entry><title type="html">How To Route Docker.io Containers To Public IPV6 on Linode</title><link href="/programming/2014/06/25/docker_ipv6_linode.html" rel="alternate" type="text/html" title="How To Route Docker.io Containers To Public IPV6 on Linode" /><published>2014-06-25T00:00:00-07:00</published><updated>2014-06-25T00:00:00-07:00</updated><id>/programming/2014/06/25/docker_ipv6_linode</id><content type="html" xml:base="/programming/2014/06/25/docker_ipv6_linode.html">&lt;ul&gt;
+  &lt;li&gt;If you want to us ipv6 with docker.io on linode make sure you have the following &lt;code class=&quot;highlighter-rouge&quot;&gt;sysctl&lt;/code&gt; set
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;net.ipv6.conf.all.accept_ra = 2&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;net.ipv6.conf.all.forwarding = 1&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Then you can pretty much follow this post &lt;a href=&quot;http://zargony.com/2013/10/13/ipv6-in-docker-containers#sthash.xNFG3NCx.dpuf&quot;&gt;http://zargony.com/2013/10/13/ipv6-in-docker-containers&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;If you want auto configured addresses you can install and configure &lt;code class=&quot;highlighter-rouge&quot;&gt;radvd&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="Programming" /><category term="JavaScript" /><category term="Conventions" /><category term="Docker.io" /><category term="IPV6" /><category term="Linode" /><summary type="html">If you want to us ipv6 with docker.io on linode make sure you have the following sysctl set net.ipv6.conf.all.accept_ra = 2 net.ipv6.conf.all.forwarding = 1 Then you can pretty much follow this post http://zargony.com/2013/10/13/ipv6-in-docker-containers If you want auto configured addresses you can install and configure radvd</summary></entry><entry><title type="html">Disable Any Element With jQuery</title><link href="/code/2012/07/05/Disable_any_element_with_jquery.html" rel="alternate" type="text/html" title="Disable Any Element With jQuery" /><published>2012-07-05T00:00:00-07:00</published><updated>2012-07-05T00:00:00-07:00</updated><id>/code/2012/07/05/Disable_any_element_with_jquery</id><content type="html" xml:base="/code/2012/07/05/Disable_any_element_with_jquery.html">&lt;p&gt;In HTML the &lt;a href=&quot;http://www.w3schools.com/tags/att_input_disabled.asp&quot;&gt;disabled attribute&lt;/a&gt; alows you to mark an input element as ‘disabled’ Which will trigger 
+the browser to render the input in a ‘greyed out’ style:&lt;/p&gt;
+
+&lt;table style=&quot;padding:20px;&quot;&gt;
+  &lt;tr&gt;
+    &lt;td&gt;
+      &lt;form&gt;
+        &lt;p&gt;Enabled elements&lt;/p&gt;
+        &lt;button&gt;Click&lt;/button&gt;&lt;br /&gt;&lt;br /&gt;
+        &lt;input type=&quot;text&quot; value=&quot;text&quot; /&gt;&lt;br /&gt;
+        &lt;select&gt;&lt;br /&gt;
+          &lt;option&gt;Select&lt;/option&gt;
+        &lt;/select&gt;
+      &lt;/form&gt;
+    &lt;/td&gt;
+    &lt;td&gt;
+      &lt;form style=&quot;padding-left:40px;&quot;&gt;
+        &lt;p&gt;Disabled elements&lt;/p&gt;
+        &lt;button disabled=&quot;disabled&quot;&gt;Click&lt;/button&gt;&lt;br /&gt;&lt;br /&gt;
+        &lt;input type=&quot;text&quot; disabled=&quot;disabled&quot; value=&quot;text&quot; /&gt;&lt;br /&gt;
+        &lt;select disabled=&quot;disabled&quot;&gt;&lt;br /&gt;
+          &lt;option&gt;Select&lt;/option&gt;
+        &lt;/select&gt;
+      &lt;/form&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;p&gt;This is helpful for limiting user interaction when an app is in an unknown state. Like waiting for an Ajax response. However this attribute is only available on form input elements.
+This is unfortunate if you are heavily using your own custom UI components. Say you have a bunch of buttons throughout your UI that are actually &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;a&amp;gt;&lt;/code&gt; elements.&lt;/p&gt;
+
+&lt;p&gt;I’ve ran into this problem on several projects and developed a pattern which grew into a plugin I now use on most projects. You can get the plugin here &lt;a href=&quot;https://github.com/kevzettler/jquery.disable/downloads&quot;&gt;download jquery.disable&lt;/a&gt;
+or check it out and contribute to &lt;a href=&quot;https://github.com/kevzettler/jquery.disable&quot;&gt;jquery.disable on github&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><category term="Code" /><summary type="html">In HTML the disabled attribute alows you to mark an input element as ‘disabled’ Which will trigger the browser to render the input in a ‘greyed out’ style:</summary></entry><entry><title type="html">jQuery Autobox Plugin</title><link href="/2010/10/30/jquery-autobox-plugin.html" rel="alternate" type="text/html" title="jQuery Autobox Plugin" /><published>2010-10-30T00:00:00-07:00</published><updated>2010-10-30T00:00:00-07:00</updated><id>/2010/10/30/jquery-autobox-plugin</id><content type="html" xml:base="/2010/10/30/jquery-autobox-plugin.html">&lt;p&gt;I have worked on several site designs that expect form inputs to render with a default value. Upon focus of the input the default text should clear and allow user input to stick. Sometimes the design calls for this to happen with a password field as well.&lt;/p&gt;
+
+&lt;p&gt;Password fields are a special condition as the text is rendered as dots. You cannot dynamically change the ‘type’ attribute of a password input field. This is a browser security feature. To obtain this behavior with password fields you need to dynamically create a text field on top of the password and hide it on focus. This plugin handles this.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &quot;You cannot dynamically change the 'type' attribute of a password input field.&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Handle any font colors or styling with css.&lt;/p&gt;
+
+&lt;p&gt;Downloads&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/kevzettler/jquery.autobox/tarball/master&quot;&gt;download - tar.gz&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/kevzettler/jquery.autobox/zipball/master&quot;&gt;download - .zip&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Installation&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;script src=&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js&quot; type=&quot;text/javascript&quot;&amp;gt;&amp;lt;/script&amp;gt;  
+&amp;lt;script src=&quot;jquery.autobox.js&quot; type=&quot;text/javascript&quot;&amp;gt;&amp;lt;/script&amp;gt;  
+&amp;lt;script type=&quot;text/javascript&quot;&amp;gt;&amp;lt;/script&amp;gt;  
+&amp;lt;form&amp;gt; &amp;lt;input value=&quot;default text&quot; type=&quot;text&quot; /&amp;gt; &amp;lt;input value=&quot;default pass&quot; type=&quot;pass&quot; /&amp;gt; &amp;lt;/form&amp;gt;  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Demo
+See it live &lt;a href=&quot;http://www.callmekev.com/demo&quot;&gt;here&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">I have worked on several site designs that expect form inputs to render with a default value. Upon focus of the input the default text should clear and allow user input to stick. Sometimes the design calls for this to happen with a password field as well.</summary></entry><entry><title type="html">IE Button Bug</title><link href="/2010/09/05/IE-button-bug.html" rel="alternate" type="text/html" title="IE Button Bug" /><published>2010-09-05T00:00:00-07:00</published><updated>2010-09-05T00:00:00-07:00</updated><id>/2010/09/05/IE-button-bug</id><content type="html" xml:base="/2010/09/05/IE-button-bug.html">&lt;p&gt;I recently encountered an annoying bug in multiple versions of IE regarding forms and button elements. I am writing about it to remind myself in the future and to hopefully save time for someone else. The bug spawned from my decision to use &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;button&amp;gt;&lt;/code&gt; elements over &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;input type=&quot;submit&quot;&amp;gt;&lt;/code&gt; elements as the submit buttons for my forms. I chose button elements because they are generally more consistent in cross browser rendering and also allow for more semantic textual content than text in the input element’s type attribute.
+The behavior of modern browsers matched my own expected behavior. That is:&lt;/p&gt;
+
+&lt;p&gt;if a from element contains a button element, and no input &lt;code class=&quot;highlighter-rouge&quot;&gt;type='submit'&lt;/code&gt;, that button should trigger the submit event of the form&lt;/p&gt;
+
+&lt;p&gt;However, IE does not.&lt;/p&gt;
+
+&lt;p&gt;“IE will not fire a form submit event on a &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;button&amp;gt;&amp;lt;/button&amp;gt;&lt;/code&gt; click by default.”&lt;/p&gt;
+
+&lt;p&gt;I found this out after testing in IE and discovering that none of the forms on a site would submit. I first assumed that it was some bug with an inline validation plugin that I had used. The submission bug remained after disabling the plugin.&lt;/p&gt;
+
+&lt;p&gt;Solutions to this bug were:&lt;/p&gt;
+
+&lt;p&gt;Replace all the button elements with input &lt;code class=&quot;highlighter-rouge&quot;&gt;type='submit'&lt;/code&gt; and apply the button styles. 
+Or attach an explicit click event to the button elements that would fire the parent form elements submit event.&lt;/p&gt;</content><author><name></name></author><summary type="html">I recently encountered an annoying bug in multiple versions of IE regarding forms and button elements. I am writing about it to remind myself in the future and to hopefully save time for someone else. The bug spawned from my decision to use &amp;lt;button&amp;gt; elements over &amp;lt;input type=&quot;submit&quot;&amp;gt; elements as the submit buttons for my forms. I chose button elements because they are generally more consistent in cross browser rendering and also allow for more semantic textual content than text in the input element’s type attribute. The behavior of modern browsers matched my own expected behavior. That is:</summary></entry></feed>

@@ -1,22 +1,168 @@
----
-layout: default
----
-{% assign posts = site.posts %}
-  {% for post in posts limit: listing_limit %}
+<!DOCTYPE html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!-- Consider specifying the language of your content by adding the `lang` attribute to <html> -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Kev Zettler" />
+
+    
+    <title>Kev Zettler</title>
+    
+
+    <meta name="description" content="">
+
+    <!-- Mobile viewport optimized: h5bp.com/viewport -->
+    <meta name="viewport" content="width=device-width">
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/solarized.css" />
+    <style>
+     body {
+       padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+     }
+    </style>
+    <link href="/css/bootstrap-responsive.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/main.css" />
+
+
+
+    <!-- All JavaScript at the bottom, except this Modernizr build.
+         Modernizr enables HTML5 elements & feature detects for optimal performance.
+         Create your own custom Modernizr build: www.modernizr.com/download/ -->
+    <script src="/js/vendor/modernizr-2.5.3.min.js"></script>
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">stLight.options({publisher: "e8005f24-cf8c-4f87-837e-d269f4401148"}); </script>
+  </head>
+  <body>
+    <!--[if lt IE 7]><p class="chromeframe">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="/">Kev Zettler</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="">
+                <a href="/">Blog</a>
+              </li>
+              <li class="">
+                <a href="/about">About</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      
+  
   <div class="post cell">
-    <h2><a href="{{ post.url }}" class="dark-link">{{ post.title }}</a></h2>
+    <h2><a href="/2018/01/10/dasung-paperlike-pro-review.html" class="dark-link">Dasung Paperlike Pro(grammer) Review</a></h2>
     <h4 class="low-top">
-      Posted on {{ post.date | date: "%d %B %Y" }}
-      {% unless no_category %}
-      {% if post.category %}
-      in <a href="/categories/{{ post.category | slugize }}">{{ post.category }}</a>
-      {% endif %}
-      {% endunless %}
+      Posted on 10 January 2018
+      
+      
+      
     </h4>
 
 
-    <p>{{ post.content | strip_html | truncatewords: 75 }}</p>
-    <p><a href="{{ post.url }}">Read more...</a></p>
+    <p>I recently purchased a Dasung Paperlike Pro 13.3 E-ink monitor to use for coding, reading and terminal work. I have many thoughts on the overall e-ink market and consumer experience. I will save them for another post. This post will be brief and focused on personal expectations with the Dasung. Additionally, there are many other, more thorough reviews online demonstrating the capabilities of the monitor. After telling people I purchased this monitor the common reaction...</p>
+    <p><a href="/2018/01/10/dasung-paperlike-pro-review.html">Read more...</a></p>
   </div>
-  {% endfor %}
+  
+  <div class="post cell">
+    <h2><a href="/programming/2014/06/25/docker_ipv6_linode.html" class="dark-link">How To Route Docker.io Containers To Public IPV6 on Linode</a></h2>
+    <h4 class="low-top">
+      Posted on 25 June 2014
+      
+      
+      in <a href="/categories/Programming">Programming</a>
+      
+      
+    </h4>
 
+
+    <p>
+  If you want to us ipv6 with docker.io on linode make sure you have the following sysctl set
+    
+      net.ipv6.conf.all.accept_ra = 2
+      net.ipv6.conf.all.forwarding = 1
+    
+  
+  Then you can pretty much follow this post http://zargony.com/2013/10/13/ipv6-in-docker-containers
+  If you want auto configured addresses you can install and configure radvd
+
+</p>
+    <p><a href="/programming/2014/06/25/docker_ipv6_linode.html">Read more...</a></p>
+  </div>
+  
+  <div class="post cell">
+    <h2><a href="/code/2012/07/05/Disable_any_element_with_jquery.html" class="dark-link">Disable Any Element With jQuery</a></h2>
+    <h4 class="low-top">
+      Posted on 05 July 2012
+      
+      
+      in <a href="/categories/Code">Code</a>
+      
+      
+    </h4>
+
+
+    <p>In HTML the disabled attribute alows you to mark an input element as ‘disabled’ Which will trigger the browser to render the input in a ‘greyed out’ style: Enabled elements Click Select Disabled elements Click Select This is helpful for limiting user interaction when an app is in an unknown state. Like waiting for an Ajax response. However this attribute is only available on form input elements. This is unfortunate if you are heavily using...</p>
+    <p><a href="/code/2012/07/05/Disable_any_element_with_jquery.html">Read more...</a></p>
+  </div>
+  
+  <div class="post cell">
+    <h2><a href="/2010/10/30/jquery-autobox-plugin.html" class="dark-link">jQuery Autobox Plugin</a></h2>
+    <h4 class="low-top">
+      Posted on 30 October 2010
+      
+      
+      
+    </h4>
+
+
+    <p>I have worked on several site designs that expect form inputs to render with a default value. Upon focus of the input the default text should clear and allow user input to stick. Sometimes the design calls for this to happen with a password field as well. Password fields are a special condition as the text is rendered as dots. You cannot dynamically change the ‘type’ attribute of a password input field. This is a...</p>
+    <p><a href="/2010/10/30/jquery-autobox-plugin.html">Read more...</a></p>
+  </div>
+  
+  <div class="post cell">
+    <h2><a href="/2010/09/05/IE-button-bug.html" class="dark-link">IE Button Bug</a></h2>
+    <h4 class="low-top">
+      Posted on 05 September 2010
+      
+      
+      
+    </h4>
+
+
+    <p>I recently encountered an annoying bug in multiple versions of IE regarding forms and button elements. I am writing about it to remind myself in the future and to hopefully save time for someone else. The bug spawned from my decision to use &lt;button&gt; elements over &lt;input type="submit"&gt; elements as the submit buttons for my forms. I chose button elements because they are generally more consistent in cross browser rendering and also allow for more...</p>
+    <p><a href="/2010/09/05/IE-button-bug.html">Read more...</a></p>
+  </div>
+  
+
+
+    </div>
+    <script src="/js/bootstrap.min.js"></script>
+    <script>
+     var _gaq=[['_setAccount','UA-33186180-1'],['_trackPageview']];
+     (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+       g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+       s.parentNode.insertBefore(g,s)}(document,'script'));
+    </script>
+
+</body>
+</html>
