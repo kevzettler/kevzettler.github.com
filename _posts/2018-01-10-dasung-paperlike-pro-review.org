@@ -1,0 +1,66 @@
+#+TITLE: Dasung Paperlike Pro(grammer) Review
+#+LAYOUT: post
+#+TAGS: e-ink hardware workflow
+
+I recently purchased a [[http://www.dasung.com/english/][Dasung Paperlike Pro 13.3 E-ink monitor]] to use for coding, reading and terminal work. I have many thoughts on the overall e-ink market and consumer experience. I will save them for another post. This post will be brief and focused on personal expectations with the Dasung. Additionally, there are [[https://www.youtube.com/results?search_query=dasung+paperlike+pro][many other, more thorough reviews]] online demonstrating the capabilities of the monitor.
+
+After telling people I purchased this monitor the common reaction is:
+
+#+BEGIN_QUOTE
+"E-ink? Isn't that slow!? How do you code on that? - Tech Friend"
+#+END_QUOTE
+
+This is an understandable concern as most people's personal experience with E-ink has been on smaller low powered devices like Kindles or other E-readers.  The smaller e-reader screens tend to have an extended 'refresh' rate built in. This is an attempt to conserve battery.
+
+The Dasung doesn't have to make this compromise, it has a dedicated power source. The Dasung monitor performance runs at about 40 FPS on HDMI hookup. This thing can play videos.
+
+** Coding in Emacs on a Dasung Paperlike Pro 13.3 E-ink monitor
+Below is a video I sent to a few friends demonstrating the responsiveness and performance
+
+e-ink emacs video:
+#+HTML: <iframe width="560" height="315" src="https://www.youtube.com/embed/zp8-eUmAnhg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+** The pros
++ The overall physical design and form factor of the monitor is great.
+
+    The monitor has a solid one-piece construction. As a bonus, it comes with a stand. HDMI hookup
+
++ Works excellent for Emacs
+
+    Can be a dedicated Emacs monitor.
+
++ Dasung support was fast, friendly and shipping was quick
+
+*** Dasung driver and software performance
+Dasung packages software to help drive and configure the monitor on popular operating systems Windows, OSX, and 64bit Ubuntu. I primarily used the monitor on an OSX system.
+
+The Monitor has 3 primary rendering modes. *Floyd*, *A2*, *A16*. I find my self-spending most of the time in the *A2* mode. The different modes correspond to different algorithms that the monitor uses to convert the colored display pixel data into grey-scale e-ink data. The numbers in the *A2* and *A16* modes are the different shades of grey each pixel will render. The *A2* mode is a hard binary contrast containing only 2 colors, black and white pixels. I found this great for text editing and reading.
+
+The *A16* mode maps color pixels into one of 16 shades of grey. This mode is useful for viewing operating system UI and Apps that don't render well in a black and white mode.
+
+The *Floyd* mode is apparently a proprietary custom Dasung algorithm that is based on [https://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm][The Floyd-Warshall algorithim]. Overall the *Floyd* mode renders multi shade grey output and a high frame rate. You can watch videos in this mode. Wikipedia states that:
+
+#+BEGIN_QUOTE
+ the Floyd–Warshall algorithm is an algorithm for finding shortest paths in a weighted graph with positive or negative edge weights (but with no negative cycles).
+#+END_QUOTE
+
+I am not sure how Dasung applies that graph pathfinding algorithm data to the pixel data of the display output. I haven't thought too hard about this yet. I would appreciate any ideas left in the comments below.
+
+** The cons
+
+*** Reflective screen glare
+As you can see in the video above, there is an obvious glare on the screen. The video was captured in a moderately lit room. The monitor actually ships with a plastic anti-glare protective screen cover to help alleviate this. This is a huge problem and defeats the purpose of the monitor. Dasung's advertising is aggressive on claims of "Relax Your Eyes", "Ultimate Eye Protection" "No blue light, No flashing, No backlight, No glossy".
+
+Unfortunately, putting a reflective pane of glass over the e-ink display is a bad move.
+
+*** Dasung driver and software issues
+I listed the Dasung software as a Pro, unfortunately, it also has some frustrating issues. Again my experience was on MacOSX your experience may be different.
+
+The monitor has a "change mode" hardware button that lets you cycle through these differnt modes. There is a software driver UI that also changes these modes. It seems the software can get out of sync with the hardware. You can set a resolution and contrast and mode in the software. Then press a hardware button and that resolution will be lost.
+
+ At times the monitor goes in to some kind of "sleep mode" even while plugged into an active computer. The screen goes black and unresponsive. By messing with a combination of the hardware buttons on the screen you can wake it up.
+
+The UI for the drivers is by default in Chineese making it unreadable. I was able to navigate it blindly and change to english. It should detect the operating systems language setting.
+
+* Summary
+Overall I think the Dasung is a pretty awesome peice of equipment. I am majorly bummed about the reflective glass screen though. I am happy with my purchase and hope funds go to help further improve the company and product line. If you spend a lot of time editing text or reading with tired eyes I would recommend one. You can use it as a dedicated text editor or terminal screen to great success.

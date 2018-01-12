@@ -2,6 +2,10 @@ body pre{
     background-color: rgba(251, 244, 222, 70);
 }
 
+body > .container {
+    max-width: 900px;
+}
+
 #disqus_thread{
     margin-top: 25px;
 }
@@ -32,4 +36,9 @@ header nav a{
 
 .content{
     padding-top: 10px;
+}
+
+
+li p{
+    margin-left: 10px;
 }
