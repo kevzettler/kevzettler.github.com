@@ -33,3 +33,8 @@ header nav a{
 .content{
     padding-top: 10px;
 }
+
+
+li p{
+    margin-left: 10px;
+}

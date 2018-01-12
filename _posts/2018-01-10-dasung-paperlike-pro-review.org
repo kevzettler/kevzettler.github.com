@@ -1,10 +1,42 @@
-#+TITLE: Dasung Paperlike Pro Review
+#+TITLE: Dasung Paperlike Programmer Review
 #+LAYOUT: post
 #+TAGS: e-ink hardware workflow
-#+liquid: enabled
 
-** Coding on a Dasung Paperlike Pro 13.3 E-ink monitor
-video below
+I recently purchased a [[http://www.dasung.com/english/][Dasung Paperlike Pro 13.3 E-ink monitor]] to use for coding and reading. I have many thoughts on the overall e-ink market and consumer experience. I will save them for another post. This post will be brief and focused on personal expectations with the Dasung. Additionally, there are [[https://www.youtube.com/results?search_query=dasung+paperlike+pro][many other, more through reviews]] online demonstrating the capabilities of the monitor.
 
+After telling people I purchased this monitor the common reaction is:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/zp8-eUmAnhg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+#+BEGIN_QUOTE
+"E-ink? Isn't that slow!? How do you code on that? - Tech Friend"
+#+END_QUOTE
+
+This is an understandable concern as most people's personal experience with E-ink has been on smaller low powered devices like Kindles or other E-readers.  The smaller e-reader screens tend to have an extended 'refresh' rate built in. This is an attempt to conserve battery.
+
+The Dasung doesn't have to make this compromise, it has a dedicated power source. The Dasung monitor performance runs at about 40 FPS on HDMI hookup. This thing can play videos.
+
+** Coding in Emacs on a Dasung Paperlike Pro 13.3 E-ink monitor
+Below is a video I sent to a few friends demonstrating the responsiveness and performance
+
+e-ink emacs video:
+#+HTML: <iframe width="560" height="315" src="https://www.youtube.com/embed/zp8-eUmAnhg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+** The pros
++ The overall physical design and form factor of the monitor is great.
+
+    The monitor has a solid one piece construction. As a bonus, it comes with stand. HDMI hookup
+
++ Works excellent for Emacs
+
+    Can be a dedicated Emacs monitor.
+
++ Dasung support was fast, friendly and shipping was quick
+
+*** Dasung driver's and software
+Dasung packages software to help drive and configure the monitor on popular operating systems Windows, OSX, and 64bit Ubuntu.
+
+** The cons
+
+*** Glare on screen
+As you can see in the video above, there is an obvious glare on the screen. The video was captured in a moderately lit room. The monitor actually ships with a plastic anti-glare protective screen cover to help alleviate this. This is a huge problem and defeats the purpose of the monitor. Dasung's advertising is aggressive on claims of "Relax Your Eyes", "Ultimate Eye Protection" "No blue light, No flashing, No backlight, No glossy".
+
+Unfortunately putting a reflective pane of glass over the e-ink display is a bad move.

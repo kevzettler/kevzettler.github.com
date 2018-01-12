@@ -8,7 +8,7 @@ layout: default
     Posted on {{ page.date | date: "%d %B %Y" }}
     {% if page.category %} in <a href="/categories/{{ page.category | slugize }}">{{ page.category }}</a> {% endif %}
   </h4>
-  
+
   <div class="content">
     {{ content }}
   </div>
@@ -17,19 +17,19 @@ layout: default
     <hr />
     <div style="overflow:hidden;">
       <p style="float:left;">
-        If this article helped you, consider following me <a href="https://www.twitter.com/kevzettler">on Twitter</a>
+        If you enjoyed this article, consider following me <a href="https://www.twitter.com/kevzettler">on Twitter</a> or <a rel="alternate" type="application/rss+xml" href="/feed.xml">RSS</a>
       </p>
       <div style="float:right;">
         <span class='st_twitter_hcount' displayText='Tweet'></span>
         <span class='st_email_hcount' displayText='Email'></span>
       </div>
     </div>
-    
+
     <hr />
   </div>
 
 
-  
+
   {% if page.tags %}
     Tagged in
     {% for tag in page.tags %}
@@ -43,21 +43,21 @@ layout: default
     {% if page.previous.url %}
       &laquo;&nbsp;<a href="{{ page.previous.url }}" rel="previous" title="{{ page.previous.title }}">{{ page.previous.title }}</a>
     {% endif %}
-  
+
     {% if page.previous.url %}
       {% if page.next.url %}
         |
       {% endif %}
     {% endif %}
-    
-  
+
+
     {% if page.next.url %}
       <a href="{{ page.next.url }}" rel="next" title="{{ page.next.title }}">{{ page.next.title }}</a>&nbsp;&raquo;
     {% endif %}
-  
+
     <br />
   </div>
-  
+
   {% unless page.no_comments %}
     {% include comments.html %}
   {% endunless %}
