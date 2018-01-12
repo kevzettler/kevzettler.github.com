@@ -63,4 +63,4 @@ The monitor has a "change mode" hardware button that lets you cycle through thes
 Unfortunatly, the driver UI defaults to Chinese, I was able to navigate it blindly and change to English. It should detect the operating system's language setting.
 
 * Summary
-Overall I think the Dasung is a pretty awesome peice of equipment. I am majorly dissapointed about the reflective glass screen. I am happy with my purchase and hope funds go to help further improve the company and product line. If you spend a lot of time editing text or reading with tired eyes I would recommend one. You can use it as a dedicated text editor or terminal screen to great success.
+Overall I think the Dasung is a pretty awesome piece of equipment. I am majorly dissapointed about the reflective glass screen. I am happy with my purchase and hope funds go to help further improve the company and product line. If you spend a lot of time editing text or reading with tired eyes I would recommend one. You can use it as a dedicated text editor or terminal screen to great success.
