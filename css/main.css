@@ -42,3 +42,10 @@ header nav a{
 li p{
     margin-left: 10px;
 }
+
+img {
+    width: 80%;
+    padding: 10%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
