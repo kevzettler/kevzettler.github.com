@@ -16,7 +16,15 @@
     <title>{{ site.title }}</title>
     {% endif %}
 
+    {% if page.header-img %}
+    <meta property="og:image" content="{{ site.url }}/{{ page.image }}" />
+    {% endif %}
+
+    <meta property="og:description" content="{{ page.subtitle }}" />
     <meta name="description" content="{% if page.description %}{{page.description}}{% endif %}">
+    {% if page.description %}
+      <meta property="og:description" content="{{ page.description }}" />
+    {% endif %}
 
     <!-- Mobile viewport optimized: h5bp.com/viewport -->
     <meta name="viewport" content="width=device-width">
