@@ -11,6 +11,9 @@
 />
 #+END_HTML
 
+#+BEGIN_QUOTE
+*Disclaimer* This is my first real electronics, hardware project. I'm picking this up as I go. I don't yet have a mature mental model on electronics. I appreciate any guidance and coaching in the comments.
+#+END_QUOTE
 
 ** Building a DIY E-ink or Epaper laptop
 This is a follow up to my previous [[dasung-paperlike-pro-review.html][Dasung Paperlike Pro Review]] post. For visitors landing here, a quick recap. The Dasung Paperlike Pro is billed as "The worlds first HDMI e-ink monitor" It is high performance for a e-ink display and renders at about 40fps. Check the review post for more info.
@@ -62,7 +65,7 @@ My main objective in purchasing the Dasung, was to confirm what e-ink display mo
 This step was sensitive. The Display module is attached by a fragile ribbon cable to a latch bracket. This is called a ZIF (Zero Insertion Force) connector. It took me a bit to track down how to open it. You Lift the black latch off and can remove the ribbon cable.
 #+BEGIN_HTML
 <a href='/img/dasung_teardown/2017-12-26 20.28.23.jpg'>
-  <img src='/img/dasung_teardown/2017-12-26 20.28.23.jpg' alt="" title="" />
+  <img src='/img/dasung_teardown/2017-12-26 20.28.23.jpg' alt="How to open ZIF (Zero Insertion Force) connector" title="How to open ZIF (Zero Insertion Force) connector" />
 </a>
 #+END_HTML
 
@@ -124,7 +127,7 @@ When I first saw this control board I was shocked at how large it is and how man
 </a>
 #+END_HTML
 
-On further look, all the chip components have had their labels chemically peeled off to prevernt reverse engineering.
+On closer inspection all the chip components have had their labels chemically peeled off to prevernt reverse engineering.
 
 There are actually two PCBs. A smaller PCB towards the top of the enclosure is a USB port with an IC and wires hooked to the main board.
 
@@ -134,7 +137,13 @@ There are actually two PCBs. A smaller PCB towards the top of the enclosure is a
 </a>
 #+END_HTML
 
-The Dasung manual claims that this port should only be used to update firm ware
+The Dasung manual claims that this USB port is intended to be used as a interface for a USB external lamp. Then elsewhere, on the included accessors section of a 'quick start' sheet, it says
+
++ A USB to USB cable for firmware upgrade in some emergency (non standard).
+
+This implies that the USB interface can used for firmware updates.
+
+There are only two input ports to the device. The USB on top, and the mini HDMI in the bottom left.
 
 ** TODO encorporate feedback
    SCHEDULED: <2018-02-07 Wed>
