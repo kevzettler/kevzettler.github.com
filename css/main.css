@@ -44,8 +44,9 @@ li p{
 }
 
 img {
-    width: 80%;
-    padding: 10%;
+    max-width: 80%;
+    max-height: 400px;
+    margin: 0 auto;
     padding-top: 5px;
     padding-bottom: 5px;
 }
