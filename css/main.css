@@ -24,7 +24,11 @@ header{
 }
 
 header nav a{
-  margin-right: 10px;
+    margin-right: 10px;
+}
+
+a img:hover{
+    opacity: 0.7;
 }
 
 
@@ -41,4 +45,12 @@ header nav a{
 
 li p{
     margin-left: 10px;
+}
+
+img {
+    max-width: 80%;
+    max-height: 400px;
+    margin: 0 auto;
+    padding-top: 5px;
+    padding-bottom: 15px;
 }

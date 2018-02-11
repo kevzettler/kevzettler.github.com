@@ -1,4 +1,4 @@
-* How to use
+* Development
 
 Start local dev server
 #+BEGIN_SRC
@@ -9,3 +9,10 @@ This uses ~jekyll-org~ gem:
 https://github.com/eggcaker/jekyll-org
 
 add new posts in ~_posts~
+
+
+* Publishing
+http://arademaker.github.io/blog/2011/12/01/github-pages-jekyll-plugins.html
+copy site to root directory on master branch
+
+cp -r _site/* . && rm -rf _site/ && touch .nojekyll
