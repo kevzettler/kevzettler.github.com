@@ -1,8 +1,8 @@
 #+TITLE: Dasung Paperlike Pro Teardown
 #+LAYOUT: post
-#+TAGS: e-ink hardware workflow
-#+IMAGE: /img/dasung_teardown/title.png
-#+DESCRIPTION: A hardware teardown of the Dasung Paperlike Pro E-ink monitor as part of an effort to build an DIY E-ink laptop
+#+TAGS: e-ink hardware workflow laptop
+#+IMAGE: img/dasung_teardown/title.png
+#+DESCRIPTION: A hardware teardown of the Dasung Paperlike Pro E-ink monitor as part of a research effort to build an DIY E-ink laptop
 
 #+BEGIN_HTML
 <img src='/img/dasung_teardown/title.png'
@@ -50,7 +50,7 @@ The Dasung has a seemingly, solid one piece construction. It took me a few days 
 </a>
 #+END_HTML
 
-** The Dasung E-ink Display Module
+** The Dasung E-ink display module
 
 My main objective in purchasing the Dasung, was to confirm what e-ink display module was in use. I had suspected it was the [[http://shopkits.eink.com/product/13-3%CB%9D-epaper-display-ed133ut2/][13.3˝ ePaper Display (ED133UT2)]] However other notes from Dasung about a "Carta" version change lead me to doubt that. One of my biggest complaints in my [[dasung-paperlike-pro-review.html][Dasung Paperlike Pro Review]] post, was that the monitor display was reflective and has an aggressive glare.
 
@@ -98,16 +98,16 @@ The tag on the display module has a model number *ED133UT2* that confirms my sus
 
 It is hugely disappointing that Dasung went with the *D* model as I suspect the *S* model would be an [[http://shopkits.eink.com/product/13-3%CB%9D-epaper-display-es133ut2/][anti-glare e-ink display module]] solving a major problem with the Dasung. I could almost see a mistake being made during production ordering because of the very close model identifiers.
 
-On further exploration of these model numbers I found a [[http://www.panelook.com/product_cat.php?catid=73&pl=photo&st=&tag=74&panel_size_inch=1330][PaneLook.com a whole sale display panel site]] which list other 13.3 e paper, display models:
+On further exploration of these model numbers I found a [[http://www.panelook.com/product_cat.php?catid=73&pl=photo&st=&tag=74&panel_size_inch=1330][PaneLook.com a whole sale display panel site]] which lists other 13.3 e paper, display models:
 
-*EN133UT1*
-*ES133UT1*
-*ED133UT1*
-*ED133TT1*
-*ES133TT2*
-*ES133TE1*
-*ED133UT2*
-*ES133TT3*
++ *EN133UT1*
++ *ES133UT1*
++ *ED133UT1*
++ *ED133TT1*
++ *ES133TT2*
++ *ES133TE1*
++ *ED133UT2*
++ *ES133TT3*
 
 Panelook curiously does not have a listing for *ES133UT2*
 
@@ -129,6 +129,7 @@ When I first saw this control board I was shocked at how large it is and how man
 
 On closer inspection all the chip components have had their labels chemically peeled off to prevernt reverse engineering.
 
+*** Two PCBs ?
 There are actually two PCBs. A smaller PCB towards the top of the enclosure is a USB port with an IC and wires hooked to the main board.
 
 #+BEGIN_HTML
@@ -141,16 +142,22 @@ The Dasung manual claims that this USB port is intended to be used as a interfac
 
 + A USB to USB cable for firmware upgrade in some emergency (non standard).
 
-This implies that the USB interface can used for firmware updates.
+This implies that the USB interface can used for firmware updates. I suspect with some further hacking this could be used to load custom firmware or maybe dump the existing firmware of the board.
 
 There are only two input ports to the device. The USB on top, and the mini HDMI in the bottom left.
 
-** TODO encorporate feedback
-   SCHEDULED: <2018-02-07 Wed>
->some kind of IO breakout, maybe an MCU for platform management, might actually be running the whole show and below is just a display controller
->main SoC, probably contains display driver they're using for just the internal screen
->the two little ones are DRAM
->an FPGA, used as glue logic and DMA buffer for both displays
->highly integrated hdmi controller, handles the full spec + audio and just clocks in a frame
+* Dasung Paperlike Pro control board components
+I am way too junior in electronics to accurately identify the components of the board. I leave this as an exercise for any readers, and a learning challenge for myself. I reached out to some 3rd party help and the best lead I got was:
+
+#+BEGIN_QUOTE
+from top to bottom...
+some kind of IO breakout, maybe an MCU for platform management, might actually be running the whole show and below is just a display controller
+main SoC, probably contains display driver they're using for just the internal screen
+the two little ones are DRAM
+an FPGA, used as glue logic and DMA buffer for both displays
+highly integrated hdmi controller, handles the full spec + audio and just clocks in a frame
 
 the collection of shit in the white boxes are various power regulators for the display etc, on the far top left you have a power management controller and support circuitry, handles just about all the IC and IO voltages by the looks.
+#+END_QUOTE
+
+Looking forward to further discussion in the comments.

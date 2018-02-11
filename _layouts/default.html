@@ -16,14 +16,20 @@
     <title>{{ site.title }}</title>
     {% endif %}
 
-    {% if page.header-img %}
+    {% if page.image %}
     <meta property="og:image" content="{{ site.url }}/{{ page.image }}" />
     {% endif %}
 
-    <meta property="og:description" content="{{ page.subtitle }}" />
     <meta name="description" content="{% if page.description %}{{page.description}}{% endif %}">
     {% if page.description %}
-      <meta property="og:description" content="{{ page.description }}" />
+    <meta property="og:description" content="{{ page.description }}" />
+    {% endif %}
+
+
+    {% if page.tags %}
+      <meta name="keywords" content="{% for tag in page.tags %}{{ tag }}{% endfor %}" />
+    {% else %}
+      <meta name="keywords" content="Oakland Bay Area Freelance Web Developer React Tech Writer" />
     {% endif %}
 
     <!-- Mobile viewport optimized: h5bp.com/viewport -->
