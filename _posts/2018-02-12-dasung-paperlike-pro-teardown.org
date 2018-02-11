@@ -147,7 +147,9 @@ This implies that the USB interface can used for firmware updates. I suspect wit
 There are only two input ports to the device. The USB on top, and the mini HDMI in the bottom left.
 
 * Dasung Paperlike Pro control board components
-I am way too junior in electronics to accurately identify the components of the board. I leave this as an exercise for any readers, and a learning challenge for myself. I reached out to some 3rd party help and the best lead I got was:
+I am way too junior in electronics to accurately identify the components of the board. I leave this as an exercise for any readers, and a learning challenge for myself. I will pursue this in future work.
+
+I reached out to some 3rd party help and the best lead I got was:
 
 #+BEGIN_QUOTE
 from top to bottom...
