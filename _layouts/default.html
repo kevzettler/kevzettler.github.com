@@ -27,7 +27,7 @@
 
 
     {% if page.tags %}
-      <meta name="keywords" content="{% for tag in page.tags %}{{ tag }}{% endfor %}" />
+      <meta name="keywords" content="{% for tag in page.tags %}{{ tag }},{% endfor %}" />
     {% else %}
       <meta name="keywords" content="Oakland Bay Area Freelance Web Developer React Tech Writer" />
     {% endif %}
