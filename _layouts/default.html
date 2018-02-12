@@ -16,7 +16,21 @@
     <title>{{ site.title }}</title>
     {% endif %}
 
+    {% if page.image %}
+    <meta property="og:image" content="{{ site.url }}/{{ page.image }}" />
+    {% endif %}
+
     <meta name="description" content="{% if page.description %}{{page.description}}{% endif %}">
+    {% if page.description %}
+    <meta property="og:description" content="{{ page.description }}" />
+    {% endif %}
+
+
+    {% if page.tags %}
+      <meta name="keywords" content="{% for tag in page.tags %}{{ tag }},{% endfor %}" />
+    {% else %}
+      <meta name="keywords" content="Oakland Bay Area Freelance Web Developer React Tech Writer" />
+    {% endif %}
 
     <!-- Mobile viewport optimized: h5bp.com/viewport -->
     <meta name="viewport" content="width=device-width">
@@ -40,7 +54,7 @@
          Create your own custom Modernizr build: www.modernizr.com/download/ -->
     <script src="/js/vendor/modernizr-2.5.3.min.js"></script>
     <script type="text/javascript">var switchTo5x=true;</script>
-    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript" src="https://w.sharethis.com/button/buttons.js"></script>
     <script type="text/javascript">stLight.options({publisher: "e8005f24-cf8c-4f87-837e-d269f4401148"}); </script>
   </head>
   <body>
