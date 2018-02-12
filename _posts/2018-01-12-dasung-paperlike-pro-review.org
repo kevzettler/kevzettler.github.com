@@ -38,10 +38,10 @@ The Monitor has three primary rendering modes: *Floyd*, *A2*, *A16*. I find myse
 
 The *A16* mode maps color pixels into one of 16 shades of grey. This mode is useful for viewing operating system UI and Apps that don't render well in a black and white mode.
 
-The *Floyd* mode is apparently a proprietary custom Dasung algorithm that is based on [[https://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm][The Floyd-Warshall algorithim]]. Overall the *Floyd* mode renders multi shade grey output at a high frame rate. You can watch videos in this mode. Wikipedia states that:
+The *Floyd* mode is apparently a proprietary custom Dasung algorithm that is based on +[[https://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm][The Floyd-Warshall algorithim]]+ [[https://en.wikipedia.org/wiki/Floyd%E2%80%93Steinberg_dithering][Floyd–Steinberg dithering algorithim]]. Overall the *Floyd* mode renders multi shade grey output at a high frame rate. You can watch videos in this mode. Wikipedia states that:
 
 #+BEGIN_QUOTE
- the Floyd–Warshall algorithm is an algorithm for finding shortest paths in a weighted graph with positive or negative edge weights (but with no negative cycles).
++the Floyd–Warshall algorithm is an algorithm for finding shortest paths in a weighted graph with positive or negative edge weights (but with no negative cycles).+
 #+END_QUOTE
 
 I am not sure how Dasung applies that graph pathfinding algorithm to the pixel data of the display output. I haven't thought too hard about this yet, I would appreciate any ideas left in the comments below.
@@ -64,3 +64,8 @@ Unfortunatly, the driver UI defaults to Chinese, I was able to navigate it blind
 
 * Summary
 Overall I think the Dasung is a pretty awesome piece of equipment. I am majorly dissapointed about the reflective glass screen. I am happy with my purchase and hope funds go to help further improve the company and product line. If you spend a lot of time editing text or reading with tired eyes I would recommend one. You can use it as a dedicated text editor or terminal screen to great success.
+
+* Updates
+
+** 2018/02/02:
+[[https://kevzettler.com/2018/01/12/dasung-paperlike-pro-review#comment-3754833721][Jon Hendry]] in the comments pointed out that the Dasung PaperlikePro Floyd mode is probably the [[https://en.wikipedia.org/wiki/Floyd%E2%80%93Steinberg_dithering][Floyd–Steinberg dithering algorithim]] and not the Floyd-Warshall I pointed out above. This makes much more sense I have updated the content above
