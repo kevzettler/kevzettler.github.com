@@ -16,7 +16,7 @@
 #+END_QUOTE
 
 ** Building a DIY E-ink or Epaper laptop
-This is a follow up to my previous [[dasung-paperlike-pro-review.html][Dasung Paperlike Pro Review]] post. For visitors landing here, a quick recap. The Dasung Paperlike Pro is billed as "The worlds first HDMI e-ink monitor" It is high performance for a e-ink display and renders at about 40fps. Check the review post for more info.
+This is a follow up to my previous [[/2018/01/12/dasung-paperlike-pro-review][Dasung Paperlike Pro Review]] post. For visitors landing here, a quick recap. The Dasung Paperlike Pro is billed as "The worlds first HDMI e-ink monitor" It is high performance for a e-ink display and renders at about 40fps. Check the review post for more info.
 
  I Bought the Dasung with intentions to tear it down for 'research' purposes. Mainly to confirm what e-ink display module they were using. This research was for the goal of building an [[https://www.youtube.com/watch?v=4-cVNJwhAqo][e-ink laptop]]. In this post I will walk through my experience dismantling the Dasung and discuss its internal components. Hopefully readers will find this useful in their own e-ink hardware projects, or in the chance they need to repair a Dasung.
 
@@ -52,7 +52,7 @@ The Dasung has a seemingly, solid one piece construction. It took me a few days 
 
 ** The Dasung E-ink display module
 
-My main objective in purchasing the Dasung, was to confirm what e-ink display module was in use. I had suspected it was the [[http://shopkits.eink.com/product/13-3%CB%9D-epaper-display-ed133ut2/][13.3˝ ePaper Display (ED133UT2)]] However other notes from Dasung about a "Carta" version change lead me to doubt that. One of my biggest complaints in my [[dasung-paperlike-pro-review.html][Dasung Paperlike Pro Review]] post, was that the monitor display was reflective and has an aggressive glare.
+My main objective in purchasing the Dasung, was to confirm what e-ink display module was in use. I had suspected it was the [[http://shopkits.eink.com/product/13-3%CB%9D-epaper-display-ed133ut2/][13.3˝ ePaper Display (ED133UT2)]] However other notes from Dasung about a "Carta" version change lead me to doubt that. One of my biggest complaints in my [[2018/01/12/dasung-paperlike-pro-review][Dasung Paperlike Pro Review]] post, was that the monitor display was reflective and has an aggressive glare.
 
 #+BEGIN_HTML
 <a href='/img/dasung_teardown/2017-12-26 19.56.24.jpg'>
