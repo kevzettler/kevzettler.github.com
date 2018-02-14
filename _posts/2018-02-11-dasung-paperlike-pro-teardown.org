@@ -163,3 +163,14 @@ the collection of shit in the white boxes are various power regulators for the d
 #+END_QUOTE
 
 Looking forward to further discussion in the comments.
+
+
+* Updates
+
+** 2018/02/14
+User thomasjfox on [https://hackaday.com/2018/02/14/tearing-down-a-1000-e-ink-display/#comment-4362437][hackaday comments] suggests:
+#+BEGIN_QUOTE
+On the bottom left is a HDMI signal decoder that feeds directly into a FPGA with RAM chips next to it.
+The FPGA is connected to the eink controller on the right. I couldn’t make out the largish chip above the eink controller.
+Wild guess: A MCU to configure the HDMI signal decoder + eink controller.
+#+END_QUOTE
