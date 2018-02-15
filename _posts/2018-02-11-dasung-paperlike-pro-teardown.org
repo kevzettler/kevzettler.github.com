@@ -168,7 +168,7 @@ Looking forward to further discussion in the comments.
 * Updates
 
 ** 2018/02/14
-User thomasjfox on [https://hackaday.com/2018/02/14/tearing-down-a-1000-e-ink-display/#comment-4362437][hackaday comments] suggests:
+User thomasjfox on [[https://hackaday.com/2018/02/14/tearing-down-a-1000-e-ink-display/#comment-4362437][hackaday comments]] suggests:
 #+BEGIN_QUOTE
 On the bottom left is a HDMI signal decoder that feeds directly into a FPGA with RAM chips next to it.
 The FPGA is connected to the eink controller on the right. I couldn’t make out the largish chip above the eink controller.
