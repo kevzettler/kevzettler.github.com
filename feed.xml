@@ -1,4 +1,66 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-02-12T11:03:01-08:00</updated><id>/</id><title type="html">Kev Zettler</title><entry><title type="html">Dasung Paperlike Pro Teardown</title><link href="/2018/02/11/dasung-paperlike-pro-teardown.html" rel="alternate" type="text/html" title="Dasung Paperlike Pro Teardown" /><published>2018-02-11T00:00:00-08:00</published><updated>2018-02-11T00:00:00-08:00</updated><id>/2018/02/11/dasung-paperlike-pro-teardown</id><content type="html" xml:base="/2018/02/11/dasung-paperlike-pro-teardown.html">&lt;img src='/img/dasung_teardown/title.png'
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-12-14T16:16:08-08:00</updated><id>/</id><title type="html">Kev Zettler</title><entry><title type="html">Dasung Linux Driver Decompiled</title><link href="/2018/12/13/dasung-linux-driver-decompiled.html" rel="alternate" type="text/html" title="Dasung Linux Driver Decompiled" /><published>2018-12-13T00:00:00-08:00</published><updated>2018-12-13T00:00:00-08:00</updated><id>/2018/12/13/dasung-linux-driver-decompiled</id><content type="html" xml:base="/2018/12/13/dasung-linux-driver-decompiled.html">&lt;p&gt;This is a follow up to the &lt;a href=&quot;https://kevzettler.com/2018/02/11/dasung-paperlike-pro-teardown&quot;&gt;Dasung teardown&lt;/a&gt; post in which I decompile the software drivers. Dasung ships their monitors with a Linux driver that is sadly limited to the Ubuntu amd64 architecture. The driver can be downloaded from:
+  &lt;a href=&quot;http://www.dasungtech.com/sta/en/software_en0310.html&quot;&gt;Dasung driver download page&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;I have decompiled the drivers and uploaded them to github at:
+  &lt;a href=&quot;https://github.com/kevzettler/decompiled_dasung_drivers&quot;&gt;Dasung linux drivers source code decompiled&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;I was naively hoping I could hack this to be ARM compatible so I could use the Dasung with a Raspberry PI. I have been told that is not feasible due to architecture differences and OS API compatibility concerns. However these Drivers can potentiall be used to make mods for other AMD64 systems.&lt;/p&gt;
+&lt;p&gt;When looking at the &amp;#8216;drivers&amp;#8217; provided by Dasung the contents of the Ubuntu folder are as follows:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;-rwxrwxrwx@ &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; kev  staff  &lt;span class=&quot;m&quot;&gt;67646&lt;/span&gt; Nov  &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;  &lt;span class=&quot;m&quot;&gt;2017&lt;/span&gt; DS.ico
+-rwxrwxrwx@ &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; kev  staff  &lt;span class=&quot;m&quot;&gt;29404&lt;/span&gt; Nov  &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;  &lt;span class=&quot;m&quot;&gt;2017&lt;/span&gt; paperlikepro_1.0.5_amd64.deb
+-rwxrwxrwx@ &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; kev  staff    &lt;span class=&quot;m&quot;&gt;180&lt;/span&gt; Nov  &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;  &lt;span class=&quot;m&quot;&gt;2017&lt;/span&gt; readme
+&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;DS.ico&lt;/code&gt;
+    &lt;p&gt;is an icon file of the Dasung logo&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;readme&lt;/code&gt;
+    &lt;p&gt;is a text file explaining how to install the driver on Ubuntu systems&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;paperlikepro_1.0.5_amd64.deb&lt;/code&gt;
+    &lt;p&gt;is a Debian package archive containing the compiled driver and other data. The &lt;code&gt;deb&lt;/code&gt; file can be extracted to the following contents:&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;paperlikepro_1.0.5_amd64.deb contents&lt;/h2&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;-rw-r--r--@ &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; kev  staff    &lt;span class=&quot;m&quot;&gt;279&lt;/span&gt; Aug  &lt;span class=&quot;m&quot;&gt;4&lt;/span&gt;  &lt;span class=&quot;m&quot;&gt;2017&lt;/span&gt; control.tar.gz
+-rw-r--r--@ &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; kev  staff  &lt;span class=&quot;m&quot;&gt;28932&lt;/span&gt; Aug  &lt;span class=&quot;m&quot;&gt;4&lt;/span&gt;  &lt;span class=&quot;m&quot;&gt;2017&lt;/span&gt; data.tar.xz
+-rw-r--r--@ &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; kev  staff      &lt;span class=&quot;m&quot;&gt;4&lt;/span&gt; Aug  &lt;span class=&quot;m&quot;&gt;4&lt;/span&gt;  &lt;span class=&quot;m&quot;&gt;2017&lt;/span&gt; debian-binary
+&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;debian-binary&lt;/code&gt;
+    is a text file that contains a version number
+    &lt;code&gt;$ cat debian-binary 2.0&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;control.tar.gz&lt;/code&gt;
+    is an archive that can be extracted using &lt;code&gt;tar&lt;/code&gt;
+    it expands to a text file &lt;code&gt;control&lt;/code&gt; with the following content:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ cat control
+Package: PaperlikePro
+Version: 1.0.5
+Section: x11
+Priority: standard
+Architecture: amd64
+Depends:
+Installed-Size: 200
+Maintainer: support@dasung.com
+Description: Paperlike Pro Software
+&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;data.tar.xz&lt;/code&gt;
+    &lt;p&gt;This is where things get interesting. It is another tar archive which contains the executables of the driver. When extracted it produces the following:&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ tar -xzvf data.tar.xz
+x ./
+x ./usr/
+x ./usr/local/
+x ./usr/local/sbin/
+x ./usr/local/sbin/PaperlikePro
+x ./usr/local/sbin/DS.ico
+x ./usr/local/sbin/ResChange
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This is meant to be installed at &lt;code&gt;/usr/local/sbin&lt;/code&gt; on Ubuntu. We have already seen &lt;code&gt;DS.ico&lt;/code&gt; and know it is the Dasung logo.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;PaperLikePro&lt;/code&gt; and &lt;code&gt;ResChange&lt;/code&gt; are both executables. I am assuming that &lt;code&gt;PaperlikePro&lt;/code&gt; is the UI management tool found on other platforms and that &lt;code&gt;ResChange&lt;/code&gt; is a resolution driving tool.&lt;/p&gt;
+&lt;h1&gt;Converting amd64 binaries to other format&lt;/h1&gt;
+&lt;p&gt;Using the &lt;a href=&quot;https://github.com/yegord/snowman&quot;&gt;Snowman decompiler&lt;/a&gt; tool against &lt;code&gt;PaperlikePro&lt;/code&gt; and &lt;code&gt;ResChange&lt;/code&gt; binaries I was able to produce some C++ decompiled source code. I have not attempted to re compile them and see if they work as expected. I have uploaded the decompiled code to github at &lt;a href=&quot;https://github.com/kevzettler/decompiled_dasung_drivers&quot;&gt;https://github.com/kevzettler/decompiled_dasung_drivers&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><category term="e-ink hardware workflow laptop" /></entry><entry><title type="html">Dasung Paperlike Pro Teardown</title><link href="/2018/02/11/dasung-paperlike-pro-teardown.html" rel="alternate" type="text/html" title="Dasung Paperlike Pro Teardown" /><published>2018-02-11T00:00:00-08:00</published><updated>2018-02-11T00:00:00-08:00</updated><id>/2018/02/11/dasung-paperlike-pro-teardown</id><content type="html" xml:base="/2018/02/11/dasung-paperlike-pro-teardown.html">&lt;img src='/img/dasung_teardown/title.png'
  alt='Dasung Paperlike Pro control board says. Oops, you have lost the warranty :-('
  title='Dasung Paperlike Pro control board says. Oops, you have lost the warranty :-('
 /&gt;
@@ -6,7 +68,7 @@
   &lt;p&gt;&lt;b&gt;Disclaimer&lt;/b&gt; This is my first real electronics, hardware project. I&amp;#8217;m picking this up as I go. I don&amp;#8217;t yet have a mature mental model on electronics. I appreciate any guidance and coaching in the comments.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;Building a DIY E-ink or Epaper laptop&lt;/h2&gt;
-&lt;p&gt;This is a follow up to my previous &lt;a href=&quot;dasung-paperlike-pro-review.html&quot;&gt;Dasung Paperlike Pro Review&lt;/a&gt; post. For visitors landing here, a quick recap. The Dasung Paperlike Pro is billed as &amp;#8220;The worlds first HDMI e-ink monitor&amp;#8221; It is high performance for a e-ink display and renders at about 40fps. Check the review post for more info.&lt;/p&gt;
+&lt;p&gt;This is a follow up to my previous &lt;a href=&quot;/2018/01/12/dasung-paperlike-pro-review&quot;&gt;Dasung Paperlike Pro Review&lt;/a&gt; post. For visitors landing here, a quick recap. The Dasung Paperlike Pro is billed as &amp;#8220;The worlds first HDMI e-ink monitor&amp;#8221; It is high performance for a e-ink display and renders at about 40fps. Check the review post for more info.&lt;/p&gt;
 &lt;p&gt;I Bought the Dasung with intentions to tear it down for &amp;#8216;research&amp;#8217; purposes. Mainly to confirm what e-ink display module they were using. This research was for the goal of building an &lt;a href=&quot;https://www.youtube.com/watch?v=4-cVNJwhAqo&quot;&gt;e-ink laptop&lt;/a&gt;. In this post I will walk through my experience dismantling the Dasung and discuss its internal components. Hopefully readers will find this useful in their own e-ink hardware projects, or in the chance they need to repair a Dasung.&lt;/p&gt;
 &lt;p&gt;You can click through any of the images below for full high res versions.&lt;/p&gt;
 &lt;h2&gt;How to open the Dasung Paperlike Pro&lt;/h2&gt;
@@ -24,7 +86,7 @@
   &lt;img src='/img/dasung_teardown/2017-12-26 19.54.26.jpg' alt=&quot;How to unscrew Dasung Paperlike Pro&quot; title=&quot;How to unscrew Dasung Paperlike Pro dissasembly&quot; /&gt;
 &lt;/a&gt;
 &lt;h2&gt;The Dasung E-ink display module&lt;/h2&gt;
-&lt;p&gt;My main objective in purchasing the Dasung, was to confirm what e-ink display module was in use. I had suspected it was the &lt;a href=&quot;http://shopkits.eink.com/product/13-3%CB%9D-epaper-display-ed133ut2/&quot;&gt;13.3˝ ePaper Display (ED133UT2)&lt;/a&gt; However other notes from Dasung about a &amp;#8220;Carta&amp;#8221; version change lead me to doubt that. One of my biggest complaints in my &lt;a href=&quot;dasung-paperlike-pro-review.html&quot;&gt;Dasung Paperlike Pro Review&lt;/a&gt; post, was that the monitor display was reflective and has an aggressive glare.&lt;/p&gt;
+&lt;p&gt;My main objective in purchasing the Dasung, was to confirm what e-ink display module was in use. I had suspected it was the &lt;a href=&quot;http://shopkits.eink.com/product/13-3%CB%9D-epaper-display-ed133ut2/&quot;&gt;13.3˝ ePaper Display (ED133UT2)&lt;/a&gt; However other notes from Dasung about a &amp;#8220;Carta&amp;#8221; version change lead me to doubt that. One of my biggest complaints in my &lt;a href=&quot;2018/01/12/dasung-paperlike-pro-review&quot;&gt;Dasung Paperlike Pro Review&lt;/a&gt; post, was that the monitor display was reflective and has an aggressive glare.&lt;/p&gt;
 &lt;a href='/img/dasung_teardown/2017-12-26 19.56.24.jpg'&gt;
   &lt;img src='/img/dasung_teardown/2017-12-26 19.56.24.jpg' alt=&quot;&quot; title=&quot;&quot; /&gt;
 &lt;/a&gt;
@@ -79,7 +141,7 @@
 &lt;a href='/img/dasung_teardown/2017-12-26 20.22.38.jpg' &gt;
   &lt;img src='/img/dasung_teardown/2017-12-26 20.22.38.jpg' alt=&quot;Dasung Paperlike control board&quot; title=&quot;Dasung Paperlike Pro control board&quot; /&gt;
 &lt;/a&gt;
-&lt;p&gt;The Dasung manual claims that this USB port is intended to be used as a interface for a USB external lamp. Then elsewhere, on the included accessors section of a &amp;#8216;quick start&amp;#8217; sheet, it says&lt;/p&gt;
+&lt;p&gt;The Dasung manual claims that this USB port is intended to be used as an interface for a USB external lamp. Then elsewhere, on the included accessories section of a &amp;#8216;quick start&amp;#8217; sheet, it says:&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;A USB to USB cable for firmware upgrade in some emergency (non standard).&lt;/li&gt;
 &lt;/ul&gt;
@@ -122,9 +184,9 @@
 &lt;p&gt;Dasung packages software to help drive and configure the monitor on popular operating systems: Windows, OSX, and 64bit Ubuntu. I primarily used the monitor on an OSX system.&lt;/p&gt;
 &lt;p&gt;The Monitor has three primary rendering modes: &lt;b&gt;Floyd&lt;/b&gt;, &lt;b&gt;A2&lt;/b&gt;, &lt;b&gt;A16&lt;/b&gt;. I find myself spending most of the time in the &lt;b&gt;A2&lt;/b&gt; mode. The different modes correspond to different algorithms that the monitor uses to convert the colored display pixel data into grey-scale e-ink data. The numbers in the &lt;b&gt;A2&lt;/b&gt; and &lt;b&gt;A16&lt;/b&gt; modes are the different shades of grey each pixel will render. The &lt;b&gt;A2&lt;/b&gt; mode is a hard binary contrast containing only 2 colors, black and white. I found this great for text editing and reading.&lt;/p&gt;
 &lt;p&gt;The &lt;b&gt;A16&lt;/b&gt; mode maps color pixels into one of 16 shades of grey. This mode is useful for viewing operating system UI and Apps that don&amp;#8217;t render well in a black and white mode.&lt;/p&gt;
-&lt;p&gt;The &lt;b&gt;Floyd&lt;/b&gt; mode is apparently a proprietary custom Dasung algorithm that is based on &lt;a href=&quot;https://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm&quot;&gt;The Floyd-Warshall algorithim&lt;/a&gt;. Overall the &lt;b&gt;Floyd&lt;/b&gt; mode renders multi shade grey output at a high frame rate. You can watch videos in this mode. Wikipedia states that:&lt;/p&gt;
+&lt;p&gt;The &lt;b&gt;Floyd&lt;/b&gt; mode is apparently a proprietary custom Dasung algorithm that is based on &lt;del&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm&quot;&gt;The Floyd-Warshall algorithim&lt;/a&gt;&lt;/del&gt; &lt;a href=&quot;https://en.wikipedia.org/wiki/Floyd%E2%80%93Steinberg_dithering&quot;&gt;Floyd–Steinberg dithering algorithim&lt;/a&gt;. Overall the &lt;b&gt;Floyd&lt;/b&gt; mode renders multi shade grey output at a high frame rate. You can watch videos in this mode. Wikipedia states that:&lt;/p&gt;
 &lt;blockquote&gt;
-  &lt;p&gt;the Floyd–Warshall algorithm is an algorithm for finding shortest paths in a weighted graph with positive or negative edge weights (but with no negative cycles).&lt;/p&gt;
+  &lt;p&gt;&lt;del&gt;the Floyd–Warshall algorithm is an algorithm for finding shortest paths in a weighted graph with positive or negative edge weights (but with no negative cycles).&lt;/del&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;I am not sure how Dasung applies that graph pathfinding algorithm to the pixel data of the display output. I haven&amp;#8217;t thought too hard about this yet, I would appreciate any ideas left in the comments below.&lt;/p&gt;
 &lt;h2&gt;The cons&lt;/h2&gt;
@@ -137,7 +199,10 @@
 &lt;p&gt;At times the monitor goes in to some kind of &amp;#8220;sleep mode&amp;#8221; even while plugged into an active computer. The screen goes black and unresponsive. By messing with a combination of the hardware buttons on the screen you can wake it up.&lt;/p&gt;
 &lt;p&gt;Unfortunatly, the driver UI defaults to Chinese, I was able to navigate it blindly and change to English. It should detect the operating system&amp;#8217;s language setting.&lt;/p&gt;
 &lt;h1&gt;Summary&lt;/h1&gt;
-&lt;p&gt;Overall I think the Dasung is a pretty awesome piece of equipment. I am majorly dissapointed about the reflective glass screen. I am happy with my purchase and hope funds go to help further improve the company and product line. If you spend a lot of time editing text or reading with tired eyes I would recommend one. You can use it as a dedicated text editor or terminal screen to great success.&lt;/p&gt;</content><author><name></name></author><category term="e-ink hardware workflow" /></entry><entry><title type="html">Rapid Local Development with Vagrant, Docker and Node.js</title><link href="/programming/2015/06/07/rapid_local_development_vagrant_docker_node.html" rel="alternate" type="text/html" title="Rapid Local Development with Vagrant, Docker and Node.js" /><published>2015-06-07T00:00:00-07:00</published><updated>2015-06-07T00:00:00-07:00</updated><id>/programming/2015/06/07/rapid_local_development_vagrant_docker_node</id><content type="html" xml:base="/programming/2015/06/07/rapid_local_development_vagrant_docker_node.html">&lt;h3 id=&quot;tldr&quot;&gt;TLDR&lt;/h3&gt;
+&lt;p&gt;Overall I think the Dasung is a pretty awesome piece of equipment. I am majorly dissapointed about the reflective glass screen. I am happy with my purchase and hope funds go to help further improve the company and product line. If you spend a lot of time editing text or reading with tired eyes I would recommend one. You can use it as a dedicated text editor or terminal screen to great success.&lt;/p&gt;
+&lt;h1&gt;Updates&lt;/h1&gt;
+&lt;h2&gt;2018/02/02:&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://kevzettler.com/2018/01/12/dasung-paperlike-pro-review#comment-3754833721&quot;&gt;Jon Hendry&lt;/a&gt; in the comments pointed out that the Dasung PaperlikePro Floyd mode is probably the &lt;a href=&quot;https://en.wikipedia.org/wiki/Floyd%E2%80%93Steinberg_dithering&quot;&gt;Floyd–Steinberg dithering algorithim&lt;/a&gt; and not the Floyd-Warshall I pointed out above. This makes much more sense I have updated the content above&lt;/p&gt;</content><author><name></name></author><category term="e-ink hardware workflow" /></entry><entry><title type="html">Rapid Local Development with Vagrant, Docker and Node.js</title><link href="/programming/2015/06/07/rapid_local_development_vagrant_docker_node.html" rel="alternate" type="text/html" title="Rapid Local Development with Vagrant, Docker and Node.js" /><published>2015-06-07T00:00:00-07:00</published><updated>2015-06-07T00:00:00-07:00</updated><id>/programming/2015/06/07/rapid_local_development_vagrant_docker_node</id><content type="html" xml:base="/programming/2015/06/07/rapid_local_development_vagrant_docker_node.html">&lt;h3 id=&quot;tldr&quot;&gt;TLDR&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;Using a cascade of Vagrant shared directories, Docker volumes and cleverly placed symlinks, you can rig Vagrant and Docker to instantly reflect your local application code updates.&lt;/li&gt;
   &lt;li&gt;Docker volume -&amp;gt; Vagrant shared directory -&amp;gt; Host machine code.&lt;/li&gt;

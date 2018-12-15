@@ -42,7 +42,6 @@ a img:hover{
     padding-top: 10px;
 }
 
-
 li p{
     margin-left: 10px;
 }
@@ -53,4 +52,8 @@ img {
     margin: 0 auto;
     padding-top: 5px;
     padding-bottom: 15px;
+}
+
+.highlight{
+  margin: 10px 0;
 }
