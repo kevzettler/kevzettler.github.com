@@ -11,7 +11,7 @@
     <link type="application/atom+xml" rel="alternate" href="https://kevzettler.com/feed.xml" title="Kev Zettler" />
 
     
-    <title>Disable Any Element With jQuery - Kev Zettler</title>
+    <title>How To Route Docker.io Containers To Public IPV6 on Linode - Kev Zettler</title>
     
 
     
@@ -21,7 +21,7 @@
 
 
     
-      <meta name="keywords" content="" />
+      <meta name="keywords" content="JavaScript,Conventions,Docker.io,IPV6,Linode," />
     
 
     <!-- Mobile viewport optimized: h5bp.com/viewport -->
@@ -76,46 +76,23 @@
 
     <div class="container">
       <div class="post cell">
-  <h1>Disable Any Element With jQuery</h1>
+  <h1>How To Route Docker.io Containers To Public IPV6 on Linode</h1>
   <h4 class="large-bottom">
-    Posted on 05 July 2012
-     in <a href="/categories/Code">Code</a> 
+    Posted on 25 June 2014
+     in <a href="/categories/Programming">Programming</a> 
   </h4>
 
   <div class="content">
-    <p>In HTML the <a href="http://www.w3schools.com/tags/att_input_disabled.asp">disabled attribute</a> alows you to mark an input element as ‘disabled’ Which will trigger 
-the browser to render the input in a ‘greyed out’ style:</p>
-
-<table style="padding:20px;">
-  <tr>
-    <td>
-      <form>
-        <p>Enabled elements</p>
-        <button>Click</button><br /><br />
-        <input type="text" value="text" /><br />
-        <select><br />
-          <option>Select</option>
-        </select>
-      </form>
-    </td>
-    <td>
-      <form style="padding-left:40px;">
-        <p>Disabled elements</p>
-        <button disabled="disabled">Click</button><br /><br />
-        <input type="text" disabled="disabled" value="text" /><br />
-        <select disabled="disabled"><br />
-          <option>Select</option>
-        </select>
-      </form>
-    </td>
-  </tr>
-</table>
-
-<p>This is helpful for limiting user interaction when an app is in an unknown state. Like waiting for an Ajax response. However this attribute is only available on form input elements.
-This is unfortunate if you are heavily using your own custom UI components. Say you have a bunch of buttons throughout your UI that are actually <code class="highlighter-rouge">&lt;a&gt;</code> elements.</p>
-
-<p>I’ve ran into this problem on several projects and developed a pattern which grew into a plugin I now use on most projects. You can get the plugin here <a href="https://github.com/kevzettler/jquery.disable/downloads">download jquery.disable</a>
-or check it out and contribute to <a href="https://github.com/kevzettler/jquery.disable">jquery.disable on github</a></p>
+    <ul>
+  <li>If you want to us ipv6 with docker.io on linode make sure you have the following <code class="highlighter-rouge">sysctl</code> set
+    <ul>
+      <li><code class="highlighter-rouge">net.ipv6.conf.all.accept_ra = 2</code></li>
+      <li><code class="highlighter-rouge">net.ipv6.conf.all.forwarding = 1</code></li>
+    </ul>
+  </li>
+  <li>Then you can pretty much follow this post <a href="http://zargony.com/2013/10/13/ipv6-in-docker-containers#sthash.xNFG3NCx.dpuf">http://zargony.com/2013/10/13/ipv6-in-docker-containers</a></li>
+  <li>If you want auto configured addresses you can install and configure <code class="highlighter-rouge">radvd</code></li>
+</ul>
 
   </div>
 
@@ -140,6 +117,16 @@ or check it out and contribute to <a href="https://github.com/kevzettler/jquery.
   
   Tagged in
   
+  <strong><a href="/tags/JavaScript">JavaScript</a></strong>, 
+  
+  <strong><a href="/tags/Conventions">Conventions</a></strong>, 
+  
+  <strong><a href="/tags/Docker.io">Docker.io</a></strong>, 
+  
+  <strong><a href="/tags/IPV6">IPV6</a></strong>, 
+  
+  <strong><a href="/tags/Linode">Linode</a></strong>
+  
   <br />
   
   -->
@@ -147,7 +134,7 @@ or check it out and contribute to <a href="https://github.com/kevzettler/jquery.
 
   <div class="next-prev-nav low-top">
     
-      &laquo;&nbsp;<a href="/2010/10/30/jquery-autobox-plugin.html" rel="previous" title="jQuery Autobox Plugin">jQuery Autobox Plugin</a>
+      &laquo;&nbsp;<a href="/code/2012/07/05/Disable_any_element_with_jquery/" rel="previous" title="Disable Any Element With jQuery">Disable Any Element With jQuery</a>
     
 
     
@@ -158,7 +145,7 @@ or check it out and contribute to <a href="https://github.com/kevzettler/jquery.
 
 
     
-      <a href="/programming/2014/06/25/docker_ipv6_linode.html" rel="next" title="How To Route Docker.io Containers To Public IPV6 on Linode">How To Route Docker.io Containers To Public IPV6 on Linode</a>&nbsp;&raquo;
+      <a href="/programming/2015/06/07/rapid_local_development_vagrant_docker_node/" rel="next" title="Rapid Local Development with Vagrant, Docker and Node.js">Rapid Local Development with Vagrant, Docker and Node.js</a>&nbsp;&raquo;
     
 
     <br />

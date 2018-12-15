@@ -11,7 +11,7 @@
     <link type="application/atom+xml" rel="alternate" href="https://kevzettler.com/feed.xml" title="Kev Zettler" />
 
     
-    <title>IE Button Bug - Kev Zettler</title>
+    <title>jQuery Autobox Plugin - Kev Zettler</title>
     
 
     
@@ -76,28 +76,38 @@
 
     <div class="container">
       <div class="post cell">
-  <h1>IE Button Bug</h1>
+  <h1>jQuery Autobox Plugin</h1>
   <h4 class="large-bottom">
-    Posted on 05 September 2010
+    Posted on 30 October 2010
     
   </h4>
 
   <div class="content">
-    <p>I recently encountered an annoying bug in multiple versions of IE regarding forms and button elements. I am writing about it to remind myself in the future and to hopefully save time for someone else. The bug spawned from my decision to use <code class="highlighter-rouge">&lt;button&gt;</code> elements over <code class="highlighter-rouge">&lt;input type="submit"&gt;</code> elements as the submit buttons for my forms. I chose button elements because they are generally more consistent in cross browser rendering and also allow for more semantic textual content than text in the input element’s type attribute.
-The behavior of modern browsers matched my own expected behavior. That is:</p>
+    <p>I have worked on several site designs that expect form inputs to render with a default value. Upon focus of the input the default text should clear and allow user input to stick. Sometimes the design calls for this to happen with a password field as well.</p>
 
-<p>if a from element contains a button element, and no input <code class="highlighter-rouge">type='submit'</code>, that button should trigger the submit event of the form</p>
+<p>Password fields are a special condition as the text is rendered as dots. You cannot dynamically change the ‘type’ attribute of a password input field. This is a browser security feature. To obtain this behavior with password fields you need to dynamically create a text field on top of the password and hide it on focus. This plugin handles this.</p>
 
-<p>However, IE does not.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> "You cannot dynamically change the 'type' attribute of a password input field."
+</code></pre></div></div>
 
-<p>“IE will not fire a form submit event on a <code class="highlighter-rouge">&lt;button&gt;&lt;/button&gt;</code> click by default.”</p>
+<p>Handle any font colors or styling with css.</p>
 
-<p>I found this out after testing in IE and discovering that none of the forms on a site would submit. I first assumed that it was some bug with an inline validation plugin that I had used. The submission bug remained after disabling the plugin.</p>
+<p>Downloads</p>
 
-<p>Solutions to this bug were:</p>
+<p><a href="https://github.com/kevzettler/jquery.autobox/tarball/master">download - tar.gz</a></p>
 
-<p>Replace all the button elements with input <code class="highlighter-rouge">type='submit'</code> and apply the button styles. 
-Or attach an explicit click event to the button elements that would fire the parent form elements submit event.</p>
+<p><a href="https://github.com/kevzettler/jquery.autobox/zipball/master">download - .zip</a></p>
+
+<p>Installation</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"&gt;&lt;/script&gt;  
+&lt;script src="jquery.autobox.js" type="text/javascript"&gt;&lt;/script&gt;  
+&lt;script type="text/javascript"&gt;&lt;/script&gt;  
+&lt;form&gt; &lt;input value="default text" type="text" /&gt; &lt;input value="default pass" type="pass" /&gt; &lt;/form&gt;  
+</code></pre></div></div>
+
+<p>Demo
+See it live <a href="http://www.callmekev.com/demo">here</a></p>
 
   </div>
 
@@ -129,12 +139,18 @@ Or attach an explicit click event to the button elements that would fire the par
 
   <div class="next-prev-nav low-top">
     
+      &laquo;&nbsp;<a href="/2010/09/05/IE-button-bug/" rel="previous" title="IE Button Bug">IE Button Bug</a>
+    
 
+    
+      
+        |
+      
     
 
 
     
-      <a href="/2010/10/30/jquery-autobox-plugin.html" rel="next" title="jQuery Autobox Plugin">jQuery Autobox Plugin</a>&nbsp;&raquo;
+      <a href="/code/2012/07/05/Disable_any_element_with_jquery/" rel="next" title="Disable Any Element With jQuery">Disable Any Element With jQuery</a>&nbsp;&raquo;
     
 
     <br />
