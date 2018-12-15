@@ -19,3 +19,6 @@ gem "pygments.rb", "~> 1.2"
 
 # Added at 2018-01-11 13:22:57 -0800 by kev:
 gem "jekyll-feed", "~> 0.9.2"
+
+# Added at 2018-12-15 07:23:54 -0800 by kev:
+gem "jekyll-sitemap", "~> 1.2"
