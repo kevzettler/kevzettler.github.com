@@ -1,6 +1,6 @@
 highlighter: rouge
 title: Kev Zettler
-url: "http://kevzettler.com"
+url: "https://kevzettler.com"
 plugins:
   - jekyll-org
   - jekyll-feed
