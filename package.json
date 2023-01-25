@@ -22,7 +22,7 @@
     "markdown-to-jsx": "^7.1.7",
     "marked": "^4.2.12",
     "next": "13.0.5",
-    "org": "^0.2.0",
+    "org": "https://github.com/jeansch/org-js.git",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "rimraf": "^4.1.1",

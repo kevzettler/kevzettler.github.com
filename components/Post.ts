@@ -77,12 +77,12 @@ function readMarkdownPost(fileName: string): Post {
 
 function readOrgModePost(fileName: string): Post {
   const fileContents = fs.readFileSync(`${folder}${fileName}`, "utf8");
-  const orgDocument = orgParser.parse(fileContents);
+  const orgDocument = orgParser.parse(fileContents, { num: false, toc: false });
   var orgHTMLDocument = orgDocument.convert(org.ConverterHTML, {
-    headerOffset: 1,
+    headerOffset: 0,
     exportFromLineNumber: false,
     suppressSubScriptHandling: false,
-    suppressAutoLink: false
+    suppressAutoLink: false,
   });
 
   return {

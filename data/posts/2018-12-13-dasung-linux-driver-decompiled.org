@@ -31,6 +31,7 @@ When looking at the 'drivers' provided by Dasung the contents of the Ubuntu fold
   is a Debian package archive containing the compiled driver and other data. The ~deb~ file can be extracted to the following contents:
 
 ** paperlikepro_1.0.5_amd64.deb contents
+
 #+BEGIN_SRC bash
 -rw-r--r--@ 1 kev  staff    279 Aug  4  2017 control.tar.gz
 -rw-r--r--@ 1 kev  staff  28932 Aug  4  2017 data.tar.xz
@@ -78,4 +79,5 @@ This is meant to be installed at ~/usr/local/sbin~ on Ubuntu. We have already se
 ~PaperLikePro~ and ~ResChange~ are both executables. I am assuming that ~PaperlikePro~ is the UI management tool found on other platforms and that ~ResChange~ is a resolution driving tool.
 
 * Converting amd64 binaries to other format
+
 Using the [[https://github.com/yegord/snowman][Snowman decompiler]] tool against ~PaperlikePro~ and ~ResChange~ binaries I was able to produce some C++ decompiled source code. I have not attempted to re compile them and see if they work as expected. I have uploaded the decompiled code to github at [[https://github.com/kevzettler/decompiled_dasung_drivers]].

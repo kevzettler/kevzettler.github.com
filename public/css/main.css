@@ -6,10 +6,6 @@ body > .container {
     max-width: 900px;
 }
 
-body {
-  padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
-}
-
 #disqus_thread{
     margin-top: 25px;
 }

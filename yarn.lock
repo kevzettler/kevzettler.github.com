@@ -617,10 +617,9 @@ object-hash@^3.0.0:
   resolved "https://registry.yarnpkg.com/object-hash/-/object-hash-3.0.0.tgz#73f97f753e7baffc0e2cc9d6e079079744ac82e9"
   integrity sha512-RSn9F68PjH9HqtltsSnqYC1XXoWe9Bju5+213R98cNGttag9q9yAOTzdbsqvIa7aNm5WffBZFpWYr2aWrklWAw==
 
-org@^0.2.0:
+"org@https://github.com/jeansch/org-js.git":
   version "0.2.0"
-  resolved "https://registry.yarnpkg.com/org/-/org-0.2.0.tgz#d76378387dc506fb8e3ccff73a0ad04e3afc6391"
-  integrity sha512-jlArvMYhC9ZZSwrZQDfkC1q6lCX/200qr24hkEavQc6cbigA1Y92uwDfpvPgLqpOQSLfSQi6XvmTtglsKX9riw==
+  resolved "https://github.com/jeansch/org-js.git#4a0c796011e91a10cecd2db021eb0028bd2bc372"
 
 path-parse@^1.0.7:
   version "1.0.7"

@@ -15,12 +15,14 @@ This is an understandable concern as most people's personal experience with E-in
 The Dasung doesn't have to make this compromise; it has a dedicated power source. The Dasung monitor performance runs at about 40 FPS on HDMI hookup. This thing can play videos.
 
 ** Coding in Emacs on a Dasung Paperlike Pro 13.3 E-ink monitor
+
 Below is a video I sent to a few friends demonstrating the responsiveness and performance
 
 e-ink emacs video:
 #+HTML: <iframe width="560" height="315" src="https://www.youtube.com/embed/zp8-eUmAnhg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 ** The pros
+
 + The overall physical design and form factor of the monitor is great.
 
     The monitor has a solid one-piece construction. As a bonus, it comes with a stand. HDMI hookup
@@ -32,6 +34,7 @@ e-ink emacs video:
 + Dasung support was fast, friendly and shipping was quick.
 
 *** Dasung driver and software performance
+
 Dasung packages software to help drive and configure the monitor on popular operating systems: Windows, OSX, and 64bit Ubuntu. I primarily used the monitor on an OSX system.
 
 The Monitor has three primary rendering modes: *Floyd*, *A2*, *A16*. I find myself spending most of the time in the *A2* mode. The different modes correspond to different algorithms that the monitor uses to convert the colored display pixel data into grey-scale e-ink data. The numbers in the *A2* and *A16* modes are the different shades of grey each pixel will render. The *A2* mode is a hard binary contrast containing only 2 colors, black and white. I found this great for text editing and reading.
@@ -49,11 +52,13 @@ I am not sure how Dasung applies that graph pathfinding algorithm to the pixel d
 ** The cons
 
 *** Reflective screen glare
+
 As you can see in the video above, there is an obvious glare on the screen. The video was captured in a moderately lit room. The monitor actually ships with a plastic anti-glare protective screen cover to help alleviate this. This is a huge problem and defeats the purpose of the monitor. Dasung's advertising is aggressive on claims of "Relax Your Eyes", "Ultimate Eye Protection" "No blue light, No flashing, No backlight, No glossy".
 
 Unfortunately, putting a reflective pane of glass over the e-ink display is a bad move.
 
 *** Dasung driver and software issues
+
 I listed the Dasung software as a Pro, unfortunately, it also has some frustrating issues. Again my experience was on MacOSX; your experience may be different.
 
 The monitor has a "change mode" hardware button that lets you cycle through these differnt modes. There is a software driver UI that also changes these modes. It seems the software can get out of sync with the hardware. You can set a resolution and contrast and mode in the software, Then press a hardware button and that resolution will be lost.
@@ -63,9 +68,11 @@ The monitor has a "change mode" hardware button that lets you cycle through thes
 Unfortunatly, the driver UI defaults to Chinese, I was able to navigate it blindly and change to English. It should detect the operating system's language setting.
 
 * Summary
+
 Overall I think the Dasung is a pretty awesome piece of equipment. I am majorly dissapointed about the reflective glass screen. I am happy with my purchase and hope funds go to help further improve the company and product line. If you spend a lot of time editing text or reading with tired eyes I would recommend one. You can use it as a dedicated text editor or terminal screen to great success.
 
 * Updates
 
 ** 2018/02/02:
-[[https://kevzettler.com/2018/01/12/dasung-paperlike-pro-review#comment-3754833721][Jon Hendry]] in the comments pointed out that the Dasung PaperlikePro Floyd mode is probably the [[https://en.wikipedia.org/wiki/Floyd%E2%80%93Steinberg_dithering][Floyd–Steinberg dithering algorithim]] and not the Floyd-Warshall I pointed out above. This makes much more sense I have updated the content above
+[[https://kevzettler.com/2018/01/12/dasung-paperlike-pro-review#comment-3754833721][
+Jon Hendry]] in the comments pointed out that the Dasung PaperlikePro Floyd mode is probably the [[https://en.wikipedia.org/wiki/Floyd%E2%80%93Steinberg_dithering][Floyd–Steinberg dithering algorithim]] and not the Floyd-Warshall I pointed out above. This makes much more sense I have updated the content above

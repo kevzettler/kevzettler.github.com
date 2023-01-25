@@ -16,6 +16,7 @@
 #+END_QUOTE
 
 ** Building a DIY E-ink or Epaper laptop
+
 This is a follow up to my previous [[/2018/01/12/dasung-paperlike-pro-review][Dasung Paperlike Pro Review]] post. For visitors landing here, a quick recap. The Dasung Paperlike Pro is billed as "The worlds first HDMI e-ink monitor" It is high performance for a e-ink display and renders at about 40fps. Check the review post for more info.
 
  I Bought the Dasung with intentions to tear it down for 'research' purposes. Mainly to confirm what e-ink display module they were using. This research was for the goal of building an [[https://www.youtube.com/watch?v=4-cVNJwhAqo][e-ink laptop]]. In this post I will walk through my experience dismantling the Dasung and discuss its internal components. Hopefully readers will find this useful in their own e-ink hardware projects, or in the chance they need to repair a Dasung.
@@ -24,7 +25,9 @@ This is a follow up to my previous [[/2018/01/12/dasung-paperlike-pro-review][Da
 You can click through any of the images below for full high res versions.
 
 ** How to open the Dasung Paperlike Pro
+
 The Dasung has a seemingly, solid one piece construction. It took me a few days to devise a method of disassembly that wasn't aggressively destructive, like cracking the frame open with a hammer, or pry-bar. After prodding it for a few days I discovered the front outer frame bezel was glued on and could be pried with a knife.
+
 
 #+BEGIN_HTML
 <a href='/img/dasung_teardown/2017-12-26 19.49.20.jpg'>
@@ -62,7 +65,9 @@ My main objective in purchasing the Dasung, was to confirm what e-ink display mo
 
 
 *** Detaching the E-ink display module
+
 This step was sensitive. The Display module is attached by a fragile ribbon cable to a latch bracket. This is called a ZIF (Zero Insertion Force) connector. It took me a bit to track down how to open it. You Lift the black latch off and can remove the ribbon cable.
+
 #+BEGIN_HTML
 <a href='/img/dasung_teardown/2017-12-26 20.28.23.jpg'>
   <img src='/img/dasung_teardown/2017-12-26 20.28.23.jpg' alt="How to open ZIF (Zero Insertion Force) connector" title="How to open ZIF (Zero Insertion Force) connector" />
@@ -77,6 +82,7 @@ This step was sensitive. The Display module is attached by a fragile ribbon cabl
 
 
 *** Reviewing the E-ink Epaper display module
+
 On inspection of the E-ink display module I was disappointed to find that the glass was actually part of the module and not a separate pane like I first expected and hoped.
 
 #+BEGIN_HTML
@@ -119,6 +125,7 @@ A [[http://www.panelook.com/modelcompare.php?ids=25596,25552,25553,27057,27058,2
 After comparing these options it looks as if *ES133TT3* would be the best Epaper laptop display from these options.
 
 ** The Control Board
+
 When I first saw this control board I was shocked at how large it is and how many components are packed into it. I had assumed that most of the proprietary Dasung functionality was handled in software.
 
 #+BEGIN_HTML
@@ -130,6 +137,7 @@ When I first saw this control board I was shocked at how large it is and how man
 On closer inspection all the chip components have had their labels chemically peeled off to prevernt reverse engineering.
 
 *** Two PCBs ?
+
 There are actually two PCBs. A smaller PCB towards the top of the enclosure is a USB port with an IC and wires hooked to the main board.
 
 #+BEGIN_HTML
@@ -147,6 +155,7 @@ This implies that the USB interface can used for firmware updates. I suspect wit
 There are only two input ports to the device. The USB on top, and the mini HDMI in the bottom left.
 
 * Dasung Paperlike Pro control board components
+
 I am way too junior in electronics to accurately identify the components of the board. I leave this as an exercise for any readers, and a learning challenge for myself. I will pursue this in future work.
 
 I reached out to some 3rd party help and the best lead I got was:
@@ -168,7 +177,9 @@ Looking forward to further discussion in the comments.
 * Updates
 
 ** 2018/02/14
+
 User thomasjfox on [[https://hackaday.com/2018/02/14/tearing-down-a-1000-e-ink-display/#comment-4362437][hackaday comments]] suggests:
+
 #+BEGIN_QUOTE
 On the bottom left is a HDMI signal decoder that feeds directly into a FPGA with RAM chips next to it.
 The FPGA is connected to the eink controller on the right. I couldn’t make out the largish chip above the eink controller.
