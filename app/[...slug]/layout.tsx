@@ -1,4 +1,5 @@
 import { Shell } from "../layout";
+import Script from 'next/script'
 
 export default function PostLayout({
   children
@@ -8,7 +9,7 @@ export default function PostLayout({
       <div className="container">
         {children}
         <div id="disqus_thread"></div>
-        <script type="text/javascript" dangerouslySetInnerHTML={{
+        <Script type="text/javascript" dangerouslySetInnerHTML={{
           __html: `
            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
           var disqus_shortname = 'kevzettler'; // required: replace example with your forum shortname

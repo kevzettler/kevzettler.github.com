@@ -2,26 +2,38 @@ import fs from "fs";
 import matter from "gray-matter";
 import org from "org";
 import striptags from "striptags";
+import { marked } from "marked";
+import htmlParse from "html-react-parser"
 const orgParser = new org.Parser();
-const folder = "data/posts/";
+
 
 export interface Post {
   title: string;
-  contentHTML: string;
+  contentHTML: string | JSX.Element | JSX.Element[];
   slug: string;
   date: string;
-  excerpt: string;
+  excerpt: string | JSX.Element | JSX.Element[];
 }
 
+interface PostExtensionMap {
+  [fileExtension: string]: (fileName: string) => Post
+}
 
-export function getPostContent(slug: string) {
-  return {
-    title: "",
-    contentHTML: "",
-    slug: "",
-    date: "",
-    excerpt: ""
-  };
+const folder = "data/posts/";
+
+const possibleFileExtensions: PostExtensionMap = {
+  '.org': readOrgModePost,
+  '.md': readMarkdownPost
+};
+
+export function getPostContent(slug: String[]) {
+  const fileName = slug.join('-');
+  const postExtension = Object.keys(possibleFileExtensions)
+    .filter((fileExtension) => fs.existsSync(`${folder}${fileName}${fileExtension}`))
+
+  const postFileName = fileName + postExtension[0];
+
+  return possibleFileExtensions[postExtension[0]](postFileName);
 }
 
 export function getPostDate(fileName: string) {
@@ -39,60 +51,68 @@ export function getPostSlug(fileName: string) {
   return slug;
 }
 
-export function getMarkdownPosts(): Post[] {
-  const files = fs.readdirSync(folder);
-  const markdownPosts = files.filter((file) => file.endsWith(".md"));
+function readMarkdownPost(fileName: string): Post {
+  const fileContents = fs.readFileSync(`${folder}${fileName}`, "utf8");
+  const matterResult = matter(fileContents);
 
-  // Get gray-matter data from each file.
-  const posts = markdownPosts.map((fileName) => {
-    const fileContents = fs.readFileSync(`${folder}${fileName}`, "utf8");
-    const matterResult = matter(fileContents);
+  let excerpt: string | JSX.Element | JSX.Element[] = matterResult.excerpt;
+  if (!excerpt || excerpt === "") {
+    excerpt = htmlParse(striptags(marked(matterResult.content).substring(0, 400) + "..."));
+  }
 
-    let excerpt = matterResult.excerpt;
-    if (!excerpt || excerpt === "") {
-      excerpt = striptags(matterResult.content).substring(0, 300) + "...";
-    }
+  let date = matterResult.data.date;
+  if (!date || date === "") {
+    date = getPostDate(fileName);
+  }
 
-    return {
-      title: matterResult.data.title,
-      date: matterResult.data.date,
-      contentHTML: matterResult.content,
-      excerpt,
-      slug: getPostSlug(fileName)
-    };
+  return {
+    title: matterResult.data.title,
+    date,
+    contentHTML: htmlParse(marked(matterResult.content)),
+    excerpt,
+    slug: getPostSlug(fileName)
+  };
+}
+
+
+function readOrgModePost(fileName: string): Post {
+  const fileContents = fs.readFileSync(`${folder}${fileName}`, "utf8");
+  const orgDocument = orgParser.parse(fileContents);
+  var orgHTMLDocument = orgDocument.convert(org.ConverterHTML, {
+    headerOffset: 1,
+    exportFromLineNumber: false,
+    suppressSubScriptHandling: false,
+    suppressAutoLink: false
   });
 
-  return posts;
-};
+  return {
+    title: orgHTMLDocument.title,
+    date: getPostDate(fileName),
+    contentHTML: htmlParse(orgHTMLDocument.contentHTML),
+    excerpt: htmlParse(striptags(orgHTMLDocument.contentHTML).substring(0, 400) + "..."),
+    slug: getPostSlug(fileName)
+  };
+}
 
-export function getOrgModePosts(): Post[] {
+
+function getPostType(fileExtension: string): Post[] {
   const files = fs.readdirSync(folder);
-  const markdownPosts = files.filter((file) => file.endsWith(".org"));
+  const postFiles = files.filter((file) => file.endsWith(fileExtension));
 
-  // Get gray-matter data from each file.
-  const posts = markdownPosts.map((fileName) => {
-    const fileContents = fs.readFileSync(`${folder}${fileName}`, "utf8");
-    const orgDocument = orgParser.parse(fileContents);
-    var orgHTMLDocument = orgDocument.convert(org.ConverterHTML, {
-      headerOffset: 1,
-      exportFromLineNumber: false,
-      suppressSubScriptHandling: false,
-      suppressAutoLink: false
-    });
-
-    return {
-      title: orgHTMLDocument.title,
-      date: getPostDate(fileName),
-      contentHTML: orgHTMLDocument.contentHTML,
-      excerpt: striptags(orgHTMLDocument.contentHTML).substring(0, 300) + "...",
-      slug: getPostSlug(fileName)
-    };
-  });
-
+  const posts = postFiles.map(possibleFileExtensions[fileExtension]);
   return posts;
-};
+}
 
 
 export function getPosts(): Post[] {
-  return [...getOrgModePosts(), ...getMarkdownPosts()];
+  const joinedPosts = Object.keys(possibleFileExtensions).flatMap((fileExtension) => getPostType(fileExtension));
+
+  // sort posts by date
+  let sortedPosts = joinedPosts.sort(function (a: Post, b: Post) {
+    let dateA = new Date(a.date);
+    let dateB = new Date(b.date);
+    return (dateB.getTime() - dateA.getTime())
+  });
+
+  return sortedPosts
 }

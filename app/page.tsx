@@ -3,7 +3,6 @@ import { getPosts } from "../components/Post";
 
 const HomePage = () => {
   const posts = getPosts();
-  console.log("******index posts**********", posts)
 
   const postPreviews = posts.map((post) => (
     <PostPreview key={post.slug} {...post} />
