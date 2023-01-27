@@ -22,9 +22,7 @@ export default function PostPage(props: any) {
       </h4>
 
 
-      <div className="content">
-        {post.contentHTML}
-      </div>
+      <div className="content" dangerouslySetInnerHTML={{ "__html": post.contentHTML }} />
 
 
       <div>

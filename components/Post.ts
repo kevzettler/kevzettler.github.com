@@ -9,7 +9,7 @@ const orgParser = new org.Parser();
 
 export interface Post {
   title: string;
-  contentHTML: string | JSX.Element | JSX.Element[];
+  contentHTML: string;
   slug: string;
   date: string;
   excerpt: string | JSX.Element | JSX.Element[];
@@ -68,7 +68,7 @@ function readMarkdownPost(fileName: string): Post {
   return {
     title: matterResult.data.title,
     date,
-    contentHTML: htmlParse(marked(matterResult.content)),
+    contentHTML: marked(matterResult.content),
     excerpt,
     slug: getPostSlug(fileName)
   };
@@ -88,7 +88,7 @@ function readOrgModePost(fileName: string): Post {
   return {
     title: orgHTMLDocument.title,
     date: getPostDate(fileName),
-    contentHTML: htmlParse(orgHTMLDocument.contentHTML),
+    contentHTML: orgHTMLDocument.contentHTML,
     excerpt: htmlParse(striptags(orgHTMLDocument.contentHTML).substring(0, 400) + "..."),
     slug: getPostSlug(fileName)
   };
