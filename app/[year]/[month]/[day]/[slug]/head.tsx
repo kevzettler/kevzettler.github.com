@@ -1,8 +1,13 @@
-import { getPostContent } from "../../components/Post";
+import { getPostContent } from "../../../../../components/Post";
 
 export default function Head(props: any) {
-  const slug = props.params.slug;
-  const post = getPostContent(slug);
+  const filePath = [
+    props.params.year,
+    props.params.month,
+    props.params.day,
+    props.params.slug
+  ];
+  const post = getPostContent(filePath);
 
   return (
     <>

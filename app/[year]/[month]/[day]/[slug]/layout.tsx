@@ -1,4 +1,4 @@
-import Body from "../../components/Body";
+import Body from "../../../../../components/Body";
 import Script from 'next/script'
 
 export default function PostLayout({

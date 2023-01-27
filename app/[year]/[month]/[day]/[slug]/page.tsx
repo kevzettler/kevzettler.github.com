@@ -1,18 +1,29 @@
-import { getPosts, getPostContent } from "../../components/Post";
-import "../../public/js/vendor/highlight/styles/stackoverflow-light.min.css";
+import { getPosts, getPostContent } from "../../../../../components/Post";
+import "../../../../../public/js/vendor/highlight/styles/stackoverflow-light.min.css";
 
 export const generateStaticParams = async () => {
   const posts = getPosts();
 
-  return posts.map((post) => ({
-    slug: post.slug.split('/'),
-  }));
+  return posts.map((post) => {
+    const urlChunks = post.slug.split('/');
+    return {
+      year: urlChunks[0],
+      month: urlChunks[1],
+      day: urlChunks[2],
+      slug: urlChunks[3],
+    }
+  });
 };
 
 
 export default function PostPage(props: any) {
-  const slug = props.params.slug;
-  const post = getPostContent(slug);
+  const filePath = [
+    props.params.year,
+    props.params.month,
+    props.params.day,
+    props.params.slug
+  ];
+  const post = getPostContent(filePath);
 
   return (
     <div className="post cell">

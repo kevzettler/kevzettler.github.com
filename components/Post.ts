@@ -26,8 +26,9 @@ const possibleFileExtensions: PostExtensionMap = {
   '.md': readMarkdownPost
 };
 
-export function getPostContent(slug: String[]) {
-  const fileName = slug.join('-');
+export function getPostContent(fileNameParts: String[]) {
+  console.log("*******getPostContent*********", fileNameParts);
+  const fileName = fileNameParts.join('-');
   const postExtension = Object.keys(possibleFileExtensions)
     .filter((fileExtension) => fs.existsSync(`${folder}${fileName}${fileExtension}`))
 
