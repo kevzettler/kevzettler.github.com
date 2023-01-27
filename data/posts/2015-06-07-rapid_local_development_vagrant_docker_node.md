@@ -26,7 +26,8 @@ I also wanted to do development on a custom Node module. Usually on your local m
 I wanted all this to work without having to rebuild Docker images, rerun docker containers, or reprovision Vagrant.
 
 ## The Base Web Image
-{% highlight docker %}
+
+``` docker
 # baseweb Dockerfile
 FROM ubuntu:14.04
 
@@ -46,18 +47,18 @@ ENV PATH $PATH:/usr/lib/jvm/java-6-oracle/jre/bin/
 
 
 RUN npm install -g forever
-{% endhighlight %}
+```
 
 With the `BaseWeb` Dockerfile inplace I then have my Nodejs application. It's structured as follows.
 
 ## The Web Application Code
-{% highlight bash %}
+``` bash
 /Projects/demo/web
 ├── Dockerfile
 ├── index.js
 ├── node_modules -> /dist/node_modules/
 └── package.json
-{% endhighlight %}
+```
 
 Take note here that my `node_modules` is actually a symlink to `/dist/node_modules/` this is committed to my repo. This may seem odd but it's key to letting us rapidly develop on a custom module. It enables a `npm link` style work flow.
 
@@ -66,18 +67,18 @@ Take note here that my `node_modules` is actually a symlink to `/dist/node_modul
 
 Assume we have a Vagrantfile outside of our web project like so:
 
-{% highlight bash %}
+``` bash
 /Projects/demo/
 ├── Vagrantfile
 └── web
-{% endhighlight %}
+```
 
 This will automatically mount the web code as a shared directory inside the Vagrant machine at `/vagrant/web`. At this point we can `vagrant up` and edit the application code on the host machine as usual and Vagrant will pickup the changes. This dosen't help us yet because the code is dependent on the ismorphic WebRTC dependences. We need Vagrant to run the Docker containers.
 
 Before we get to the `Vagrantfile` let's look at the Web Applications' Dockerfile.
 
 ## The Web Application Dockerfile
-{% highlight dockerfile %}
+``` dockerfile
 # web DockerFile
 FROM base_web
 COPY package.json /dist/package.json
@@ -87,7 +88,7 @@ RUN ln -s /dist/node_modules /srv/www/node_modules
 WORKDIR /srv/www
 EXPOSE 5000
 CMD ["forever", "index.js"]
-{% endhighlight %}
+```
 
 #### Points Of Interest
 
@@ -99,7 +100,7 @@ CMD ["forever", "index.js"]
 
 
 ### The Vagrant File
-{% highlight ruby %}
+``` ruby
 Vagrant.configure(2) do |config|
   config.vm.box = "Ubuntu 14.04 with Docker enabled"
   config.vm.box_url = "https://github.com/jose-lpa/packer-ubuntu_14.04/releases/download/v2.0/ubuntu-14.04.box"
@@ -117,7 +118,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.network "forwarded_port", guest: 5000, host: 5000
 end
-{% endhighlight %}
+```
 
 #### Points of interest
 * We use a 'Docker enabled' image for our Docker box.
@@ -125,14 +126,14 @@ end
 * We then run our container with some new arguments.
 
 Let's look at the run command more in-depth.
-{% highlight ruby %}
+``` ruby
     d.run "web",
           cmd: "forever -w index.js",
           args: "-v '/vagrant/web:/srv/www'\
                  -e NODE_ENV=development\
                  -p 5000:5000"
-                 
-{% endhighlight %}
+
+```
 
 We're overriding the Dockerfiles' `CMD ["forever", "index.js"]` with `forever -w index.js` The `-w` flag restarts our server on code updates, which is what we want in a development environment.
 
@@ -141,11 +142,11 @@ The Most important part of the `docker run` options is the `-v` flag, which is f
 
 A quick diagram of this shared filesystem cascade looks like this:
 
-{% highlight bash %}
+``` bash
 Docker `/srv/www` ->
 Vagrant `/vagrant/web ->
 Host `/web`/
-{% endhighlight %}
+```
 
 
 At this point you're set up to rapidly develop on your application code and have updates reflected in your Docker container.
@@ -155,38 +156,38 @@ The next challenge I faced was figuring out how to handle a local NPM module dep
 ## NPM Link Development In A Docker Container
 
 So in this scenario. Lets assume that `web` has an entry in `package.json` like this:
-{% highlight json %}
+``` json
   "dependencies": {
    "customModule": "git://github.com/kevzettler/customModule",
    }
-{% endhighlight %}
+```
 
 `customModule` is a NPM module that we maintain and develop. This package.json setup works fine for production because we just install from the repo and forget about it. In development we want to rapidly make changes to `customModule`and not have to rebuild everything. Normally when developing on local machine, we would `cd` into `web` and do `npm link customModule` which would build a symlink to our `customModule` code that would give us a rapid development setup.
 
 When we add Vagrant and Docker to the dev environment, this completly breaks NPM Link.
 
 Here's an updated directory diagram of our project with the new `customModule` code:
-{% highlight bash %}
+``` bash
 /Projects/demo/
 ├── Vagrantfile
 ├── web
 └── customModule
-{% endhighlight %}
+```
 
 So similliar to the web code, Vagrant will mount our customModule code at `/vagrant/customModule`
 
 We can then update our VagrantFile to add a new Docker Volume:
 `-v '/vagrant/engine:/dist/node_modules/engine'`
 
-{% highlight ruby %}
+``` ruby
     d.run "web",
           cmd: "forever -w index.js",
           args: "-v '/vagrant/web:/srv/www'\
                  -v '/vagrant/customModule:/dist/node_modules/customModule'\
                  -e NODE_ENV=development\
                  -p 5000:5000"
-                 
-{% endhighlight %} 
+
+```
 
 ### What's All This Symlink Business Then?
 So we have this symlink in 2 places.
@@ -194,7 +195,7 @@ So we have this symlink in 2 places.
 * The `RUN` symlink in Web Dockerfile
     `RUN ln -s /dist/node_modules /srv/www/node_modules`
 
-* In 'Filesystem' symlink 
+* In 'Filesystem' symlink
     `node_modules -> /dist/node_modules/`
 
 Docker does not support symlinks when using the `ADD` command in a DockerFile.
@@ -203,5 +204,3 @@ It will drop them from the `ADD` filesystem. That's why we need the `RUN` symlin
 When we want to do development work, we run the container with the `-v` flag to mount our local code. The volume doesn't get attached until after our container has already been created. At that time, the `RUN` symlink exists; however, the `-v` option overrides everything in the container's `/srv/www/`, wiping out the `RUN` symlink.
 
 But wait! We have a 'Filesystem' symlink in our shared code. The volume respects this symlink and it routes internally to the container's filesystem. You don't necessarily have to commit the symlink to your repo like I was dong. You just need it around when you build the Docker image. I committed it because I kept forgetting. Try this out and let me know if you have a better solution to it.
-
-Thanks to [Gabrielle Nicolet](http://gabriellenicolet.com/) for editing this post.
