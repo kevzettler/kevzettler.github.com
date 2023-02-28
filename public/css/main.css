@@ -2,7 +2,7 @@ body pre{
     background-color: rgba(251, 244, 222, 70);
 }
 
-body > .container {
+body .container {
     max-width: 900px;
 }
 
@@ -51,7 +51,6 @@ li p{
 }
 
 img {
-    max-width: 80%;
     max-height: 400px;
     margin: 0 auto;
     padding-top: 5px;

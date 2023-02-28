@@ -4,7 +4,7 @@ import PostPreview from "../components/PostPreview";
 import { getPosts } from "../components/Post";
 import type { GetServerSideProps } from "next";
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetServerSideProps = async () => {
   const posts = getPosts();
   return {
     props: {

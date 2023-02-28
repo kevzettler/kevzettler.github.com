@@ -1,6 +1,6 @@
 // _app.js
 import "../public/css/bootstrap.min.css";
-import "../public/css/solarized.css"
+import "../public/js/vendor/highlight/styles/solarized_light.min.css";
 import "../public/css/bootstrap-responsive.css";
 import "../public/css/main.css";
 import Body from "../components/Body"

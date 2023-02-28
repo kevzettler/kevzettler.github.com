@@ -13,6 +13,11 @@ export interface Post {
   slug: string;
   date: string;
   excerpt: string | JSX.Element | JSX.Element[];
+  meta: {
+    keywords: string,
+    image: string,
+    description: string
+  }
 }
 
 interface PostExtensionMap {
@@ -26,7 +31,7 @@ const possibleFileExtensions: PostExtensionMap = {
   '.md': readMarkdownPost
 };
 
-export function getPostContent(fileNameParts: String[]) {
+export function getPostContent(fileNameParts: string[]) {
   const fileName = fileNameParts.join('-');
   const postExtension = Object.keys(possibleFileExtensions)
     .filter((fileExtension) => fs.existsSync(`${folder}${fileName}${fileExtension}`))
@@ -70,10 +75,32 @@ function readMarkdownPost(fileName: string): Post {
     date,
     contentHTML: marked(matterResult.content),
     excerpt,
-    slug: getPostSlug(fileName)
+    slug: getPostSlug(fileName),
+    meta: {
+      keywords: matterResult.data.tags || null,
+      image: metaImageFallback(matterResult.data.image),
+      description: metaDescriptionFallback(
+        striptags(marked(matterResult.content)),
+        matterResult.data.description
+      )
+    }
   };
 }
 
+
+function metaImageFallback(imagePath?: string): string {
+  if (!imagePath || imagePath === "") {
+    return "img/kev.jpeg"
+  }
+  return imagePath;
+}
+
+function metaDescriptionFallback(content: string, description?: string): string {
+  if (!description || description === "") {
+    return content.substring(0, 300);
+  }
+  return description;
+}
 
 function readOrgModePost(fileName: string): Post {
   const fileContents = fs.readFileSync(`${folder}${fileName}`, "utf8");
@@ -85,12 +112,21 @@ function readOrgModePost(fileName: string): Post {
     suppressAutoLink: false,
   });
 
+
   return {
     title: orgHTMLDocument.title,
     date: getPostDate(fileName),
     contentHTML: orgHTMLDocument.contentHTML,
     excerpt: htmlParse(striptags(orgHTMLDocument.contentHTML).substring(0, 400) + "..."),
-    slug: getPostSlug(fileName)
+    slug: getPostSlug(fileName),
+    meta: {
+      keywords: orgDocument.directiveValues['tags:'],
+      image: metaImageFallback(orgDocument.directiveValues['image:']),
+      description: metaDescriptionFallback(
+        striptags(orgHTMLDocument.contentHTML),
+        orgDocument.directiveValues['description:']
+      )
+    }
   };
 }
 
