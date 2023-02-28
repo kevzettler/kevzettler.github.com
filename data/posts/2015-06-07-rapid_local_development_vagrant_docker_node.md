@@ -11,6 +11,7 @@ tags:
 ---
 
 ### TLDR
+
 * Using a cascade of Vagrant shared directories, Docker volumes and cleverly placed symlinks, you can rig Vagrant and Docker to instantly reflect your local application code updates.
 * Docker volume -> Vagrant shared directory -> Host machine code.
 * Enable NPM link style development in Docker container.
@@ -19,6 +20,7 @@ tags:
 
 
 ## The Problem
+
 I wanted to use [isomorphic WebRTC](https://github.com/js-platform/node-webrtc) with the awesome [SimplePeer](https://github.com/feross/simple-peer) in a recent Node.js project. However the server WebRTC has a bunch of system level dependencies that are a pain to install. Luckily they provide a [Dockerfile](https://github.com/js-platform/node-webrtc/blob/develop/Dockerfile) which does it all for you. I didn't end up using their exact Dockerfile but copy pasted the majority of it to my project to use as a `Base web` Dockerfile.
 
 I also wanted to do development on a custom Node module. Usually on your local machine you would do `npm link` which creates a symlink to your module's code directory and you can rapidly iterate there. However, working with Vagrant and Docker makes this more complicated.
@@ -190,6 +192,7 @@ We can then update our VagrantFile to add a new Docker Volume:
 ```
 
 ### What's All This Symlink Business Then?
+
 So we have this symlink in 2 places.
 
 * The `RUN` symlink in Web Dockerfile

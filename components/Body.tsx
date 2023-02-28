@@ -31,16 +31,9 @@ function NavBar() {
 
 export default function Body({ children }: { children: React.ReactNode }) {
   return (
-    <body>
+    <>
       <NavBar />
       {children}
-      <script dangerouslySetInnerHTML={{
-        __html: `
-      var _gaq=[['_setAccount','UA-33186180-1'],['_trackPageview']];
-      (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-        s.parentNode.insertBefore(g,s)}(document,'script'));
-        `}} />
-    </body>
+    </>
   );
 }

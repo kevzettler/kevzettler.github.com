@@ -27,7 +27,6 @@ const possibleFileExtensions: PostExtensionMap = {
 };
 
 export function getPostContent(fileNameParts: String[]) {
-  console.log("*******getPostContent*********", fileNameParts);
   const fileName = fileNameParts.join('-');
   const postExtension = Object.keys(possibleFileExtensions)
     .filter((fileExtension) => fs.existsSync(`${folder}${fileName}${fileExtension}`))

@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
+    "export": "yarn clean && next build && next export",
     "start": "next start",
     "lint": "next lint",
     "clean": "rimraf .next"
@@ -21,7 +22,7 @@
     "html-react-parser": "^3.0.8",
     "markdown-to-jsx": "^7.1.7",
     "marked": "^4.2.12",
-    "next": "13.0.5",
+    "next": "^13.1.7-canary.2",
     "org": "https://github.com/jeansch/org-js.git",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -34,5 +35,6 @@
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.19",
     "tailwindcss": "^3.2.4"
-  }
+  },
+  "packageManager": "yarn@3.4.1"
 }
