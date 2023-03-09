@@ -32,7 +32,7 @@ export const getStaticProps: GetServerSideProps = async (context) => {
     context.params.month,
     context.params.day,
     context.params.slug
-  ];
+  ] as string[];
 
   const post = getPostContent(filePath);
 
