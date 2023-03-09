@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
-    "export": "yarn clean && next build && next export",
+    "export": "yarn clean && next build && next export -o docs",
     "start": "next start",
     "lint": "next lint",
     "clean": "rimraf .next"
