@@ -48,10 +48,10 @@ export default function PostPage({ post }) {
     <>
       <Head>
         <title>{post.title} - Kev Zettler</title>
-        <meta property="og:image" content={`https://kevzettler.com/${post.image}`} />
-        <meta name="description" content={post.description} />
-        <meta property="og:description" content={post.description} />
-        <meta name="keywords" content={post.keywords} />
+        <meta property="og:image" content={`https://kevzettler.com/${post.meta.image}`} />
+        <meta name="description" content={post.meta.description} />
+        <meta property="og:description" content={post.meta.description} />
+        <meta name="keywords" content={post.meta.keywords} />
       </Head>
       <Script src="/js/vendor/highlight/highlight.min.js" strategy="beforeInteractive" />
       <div className="container" id="body-content">
