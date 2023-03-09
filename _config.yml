@@ -1,8 +1,0 @@
-highlighter: rouge
-title: Kev Zettler
-permalink: pretty
-url: "https://kevzettler.com"
-plugins:
-  - jekyll-org
-  - jekyll-feed
-  - jekyll-sitemap
