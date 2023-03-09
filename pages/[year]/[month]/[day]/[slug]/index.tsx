@@ -2,6 +2,7 @@ import { GetServerSideProps } from "next";
 import { getPosts, getPostContent } from "../../../../../components/Post";
 import Head from 'next/head'
 import Script from 'next/script'
+import DisqusComments from "../../../../../components/DisqusComments";
 
 export const getStaticPaths = async () => {
   const posts = getPosts();
@@ -74,6 +75,7 @@ export default function PostPage({ post }) {
               </div>
 
               <hr />
+              <DisqusComments post={post} />
             </div>
           </div>
         </div>
