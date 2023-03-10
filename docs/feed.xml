@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.0">Jekyll</generator><link href="https://kevzettler.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://kevzettler.com/" rel="alternate" type="text/html" /><updated>2018-12-15T08:15:14-08:00</updated><id>https://kevzettler.com/</id><title type="html">Kev Zettler</title><entry><title type="html">Dasung Linux Driver Decompiled</title><link href="https://kevzettler.com/2018/12/13/dasung-linux-driver-decompiled/" rel="alternate" type="text/html" title="Dasung Linux Driver Decompiled" /><published>2018-12-13T00:00:00-08:00</published><updated>2018-12-13T00:00:00-08:00</updated><id>https://kevzettler.com/2018/12/13/dasung-linux-driver-decompiled</id><content type="html" xml:base="https://kevzettler.com/2018/12/13/dasung-linux-driver-decompiled/">&lt;p&gt;This is a follow up to the &lt;a href=&quot;https://kevzettler.com/2018/02/11/dasung-paperlike-pro-teardown&quot;&gt;Dasung teardown&lt;/a&gt; post in which I decompile the software drivers. Dasung ships their monitors with a Linux driver that is sadly limited to the Ubuntu amd64 architecture. The driver can be downloaded from:
+  &lt;a href=&quot;http://www.dasungtech.com/sta/en/software_en0310.html&quot;&gt;Dasung driver download page&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;I have decompiled the drivers and uploaded them to github at:
+  &lt;a href=&quot;https://github.com/kevzettler/decompiled_dasung_drivers&quot;&gt;Dasung linux drivers source code decompiled&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;I was naively hoping I could hack this to be ARM compatible so I could use the Dasung with a Raspberry PI. I have been told that is not feasible due to architecture differences and OS API compatibility concerns. However these Drivers can potentially be used to make mods for other AMD64 systems.&lt;/p&gt;
+&lt;p&gt;When looking at the &amp;#8216;drivers&amp;#8217; provided by Dasung the contents of the Ubuntu folder are as follows:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;-rwxrwxrwx@ &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; kev  staff  &lt;span class=&quot;m&quot;&gt;67646&lt;/span&gt; Nov  &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;  &lt;span class=&quot;m&quot;&gt;2017&lt;/span&gt; DS.ico
+-rwxrwxrwx@ &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; kev  staff  &lt;span class=&quot;m&quot;&gt;29404&lt;/span&gt; Nov  &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;  &lt;span class=&quot;m&quot;&gt;2017&lt;/span&gt; paperlikepro_1.0.5_amd64.deb
+-rwxrwxrwx@ &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; kev  staff    &lt;span class=&quot;m&quot;&gt;180&lt;/span&gt; Nov  &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;  &lt;span class=&quot;m&quot;&gt;2017&lt;/span&gt; readme
+&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;DS.ico&lt;/code&gt;
+    &lt;p&gt;is an icon file of the Dasung logo&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;readme&lt;/code&gt;
+    &lt;p&gt;is a text file explaining how to install the driver on Ubuntu systems&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;paperlikepro_1.0.5_amd64.deb&lt;/code&gt;
+    &lt;p&gt;is a Debian package archive containing the compiled driver and other data. The &lt;code&gt;deb&lt;/code&gt; file can be extracted to the following contents:&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;paperlikepro_1.0.5_amd64.deb contents&lt;/h2&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;-rw-r--r--@ &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; kev  staff    &lt;span class=&quot;m&quot;&gt;279&lt;/span&gt; Aug  &lt;span class=&quot;m&quot;&gt;4&lt;/span&gt;  &lt;span class=&quot;m&quot;&gt;2017&lt;/span&gt; control.tar.gz
+-rw-r--r--@ &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; kev  staff  &lt;span class=&quot;m&quot;&gt;28932&lt;/span&gt; Aug  &lt;span class=&quot;m&quot;&gt;4&lt;/span&gt;  &lt;span class=&quot;m&quot;&gt;2017&lt;/span&gt; data.tar.xz
+-rw-r--r--@ &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; kev  staff      &lt;span class=&quot;m&quot;&gt;4&lt;/span&gt; Aug  &lt;span class=&quot;m&quot;&gt;4&lt;/span&gt;  &lt;span class=&quot;m&quot;&gt;2017&lt;/span&gt; debian-binary
+&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;debian-binary&lt;/code&gt;
+    is a text file that contains a version number
+    &lt;code&gt;$ cat debian-binary 2.0&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;control.tar.gz&lt;/code&gt;
+    is an archive that can be extracted using &lt;code&gt;tar&lt;/code&gt;
+    it expands to a text file &lt;code&gt;control&lt;/code&gt; with the following content:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ cat control
+Package: PaperlikePro
+Version: 1.0.5
+Section: x11
+Priority: standard
+Architecture: amd64
+Depends:
+Installed-Size: 200
+Maintainer: support@dasung.com
+Description: Paperlike Pro Software
+&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;data.tar.xz&lt;/code&gt;
+    &lt;p&gt;This is where things get interesting. It is another tar archive which contains the executables of the driver. When extracted it produces the following:&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ tar -xzvf data.tar.xz
+x ./
+x ./usr/
+x ./usr/local/
+x ./usr/local/sbin/
+x ./usr/local/sbin/PaperlikePro
+x ./usr/local/sbin/DS.ico
+x ./usr/local/sbin/ResChange
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This is meant to be installed at &lt;code&gt;/usr/local/sbin&lt;/code&gt; on Ubuntu. We have already seen &lt;code&gt;DS.ico&lt;/code&gt; and know it is the Dasung logo.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;PaperLikePro&lt;/code&gt; and &lt;code&gt;ResChange&lt;/code&gt; are both executables. I am assuming that &lt;code&gt;PaperlikePro&lt;/code&gt; is the UI management tool found on other platforms and that &lt;code&gt;ResChange&lt;/code&gt; is a resolution driving tool.&lt;/p&gt;
+&lt;h1&gt;Converting amd64 binaries to other format&lt;/h1&gt;
+&lt;p&gt;Using the &lt;a href=&quot;https://github.com/yegord/snowman&quot;&gt;Snowman decompiler&lt;/a&gt; tool against &lt;code&gt;PaperlikePro&lt;/code&gt; and &lt;code&gt;ResChange&lt;/code&gt; binaries I was able to produce some C++ decompiled source code. I have not attempted to re compile them and see if they work as expected. I have uploaded the decompiled code to github at &lt;a href=&quot;https://github.com/kevzettler/decompiled_dasung_drivers&quot;&gt;https://github.com/kevzettler/decompiled_dasung_drivers&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><category term="e-ink hardware workflow laptop" /></entry><entry><title type="html">Dasung Paperlike Pro Teardown</title><link href="https://kevzettler.com/2018/02/11/dasung-paperlike-pro-teardown/" rel="alternate" type="text/html" title="Dasung Paperlike Pro Teardown" /><published>2018-02-11T00:00:00-08:00</published><updated>2018-02-11T00:00:00-08:00</updated><id>https://kevzettler.com/2018/02/11/dasung-paperlike-pro-teardown</id><content type="html" xml:base="https://kevzettler.com/2018/02/11/dasung-paperlike-pro-teardown/">&lt;img src='/img/dasung_teardown/title.png'
+ alt='Dasung Paperlike Pro control board says. Oops, you have lost the warranty :-('
+ title='Dasung Paperlike Pro control board says. Oops, you have lost the warranty :-('
+/&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;b&gt;Disclaimer&lt;/b&gt; This is my first real electronics, hardware project. I&amp;#8217;m picking this up as I go. I don&amp;#8217;t yet have a mature mental model on electronics. I appreciate any guidance and coaching in the comments.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;Building a DIY E-ink or Epaper laptop&lt;/h2&gt;
+&lt;p&gt;This is a follow up to my previous &lt;a href=&quot;/2018/01/12/dasung-paperlike-pro-review&quot;&gt;Dasung Paperlike Pro Review&lt;/a&gt; post. For visitors landing here, a quick recap. The Dasung Paperlike Pro is billed as &amp;#8220;The worlds first HDMI e-ink monitor&amp;#8221; It is high performance for a e-ink display and renders at about 40fps. Check the review post for more info.&lt;/p&gt;
+&lt;p&gt;I Bought the Dasung with intentions to tear it down for &amp;#8216;research&amp;#8217; purposes. Mainly to confirm what e-ink display module they were using. This research was for the goal of building an &lt;a href=&quot;https://www.youtube.com/watch?v=4-cVNJwhAqo&quot;&gt;e-ink laptop&lt;/a&gt;. In this post I will walk through my experience dismantling the Dasung and discuss its internal components. Hopefully readers will find this useful in their own e-ink hardware projects, or in the chance they need to repair a Dasung.&lt;/p&gt;
+&lt;p&gt;You can click through any of the images below for full high res versions.&lt;/p&gt;
+&lt;h2&gt;How to open the Dasung Paperlike Pro&lt;/h2&gt;
+&lt;p&gt;The Dasung has a seemingly, solid one piece construction. It took me a few days to devise a method of disassembly that wasn&amp;#8217;t aggressively destructive, like cracking the frame open with a hammer, or pry-bar. After prodding it for a few days I discovered the front outer frame bezel was glued on and could be pried with a knife.&lt;/p&gt;
+&lt;a href='/img/dasung_teardown/2017-12-26 19.49.20.jpg'&gt;
+  &lt;img src='/img/dasung_teardown/2017-12-26 19.49.20.jpg' alt=&quot;How to remove Dasung Paperlike Pro faceplate&quot; title=&quot;How to remove Dasung Paperlike Pro faceplate&quot; /&gt;
+&lt;/a&gt;
+&lt;a href='/img/dasung_teardown/2017-12-26 19.49.39.jpg'&gt;
+  &lt;img src='/img/dasung_teardown/2017-12-26 19.49.39.jpg' alt=&quot;How to remove Dasung Paperlike Pro faceplate&quot; title=&quot;How to remove Dasung Paperlike Pro faceplate&quot; /&gt;
+&lt;/a&gt;
+&lt;a href='/img/dasung_teardown/2017-12-26 19.52.19.jpg' &gt;
+  &lt;img src='/img/dasung_teardown/2017-12-26 19.52.19.jpg' title=&quot;How to dissasemble Dasung Paperlike Pro&quot; alt=&quot;How to dissasemble Dasung Paperlike Pro&quot; /&gt;
+&lt;/a&gt;
+&lt;a href='/img/dasung_teardown/2017-12-26 19.54.26.jpg'&gt;
+  &lt;img src='/img/dasung_teardown/2017-12-26 19.54.26.jpg' alt=&quot;How to unscrew Dasung Paperlike Pro&quot; title=&quot;How to unscrew Dasung Paperlike Pro dissasembly&quot; /&gt;
+&lt;/a&gt;
+&lt;h2&gt;The Dasung E-ink display module&lt;/h2&gt;
+&lt;p&gt;My main objective in purchasing the Dasung, was to confirm what e-ink display module was in use. I had suspected it was the &lt;a href=&quot;http://shopkits.eink.com/product/13-3%CB%9D-epaper-display-ed133ut2/&quot;&gt;13.3˝ ePaper Display (ED133UT2)&lt;/a&gt; However other notes from Dasung about a &amp;#8220;Carta&amp;#8221; version change lead me to doubt that. One of my biggest complaints in my &lt;a href=&quot;2018/01/12/dasung-paperlike-pro-review&quot;&gt;Dasung Paperlike Pro Review&lt;/a&gt; post, was that the monitor display was reflective and has an aggressive glare.&lt;/p&gt;
+&lt;a href='/img/dasung_teardown/2017-12-26 19.56.24.jpg'&gt;
+  &lt;img src='/img/dasung_teardown/2017-12-26 19.56.24.jpg' alt=&quot;&quot; title=&quot;&quot; /&gt;
+&lt;/a&gt;
+&lt;h3&gt;Detaching the E-ink display module&lt;/h3&gt;
+&lt;p&gt;This step was sensitive. The Display module is attached by a fragile ribbon cable to a latch bracket. This is called a ZIF (Zero Insertion Force) connector. It took me a bit to track down how to open it. You Lift the black latch off and can remove the ribbon cable.&lt;/p&gt;
+&lt;a href='/img/dasung_teardown/2017-12-26 20.28.23.jpg'&gt;
+  &lt;img src='/img/dasung_teardown/2017-12-26 20.28.23.jpg' alt=&quot;How to open ZIF (Zero Insertion Force) connector&quot; title=&quot;How to open ZIF (Zero Insertion Force) connector&quot; /&gt;
+&lt;/a&gt;
+&lt;a href='/img/dasung_teardown/2017-12-26 21.21.55.jpg'&gt;
+  &lt;img src='/img/dasung_teardown/2017-12-26 21.21.55.jpg' alt=&quot;&quot; title=&quot;&quot; /&gt;
+&lt;/a&gt;
+&lt;h3&gt;Reviewing the E-ink Epaper display module&lt;/h3&gt;
+&lt;p&gt;On inspection of the E-ink display module I was disappointed to find that the glass was actually part of the module and not a separate pane like I first expected and hoped.&lt;/p&gt;
+&lt;a href='/img/dasung_teardown/2018-02-07 19.31.52.jpg'&gt;
+  &lt;img src='/img/dasung_teardown/2018-02-07 19.31.52.jpg' alt=&quot;Broken glass on dasung e-ink display module&quot; title=&quot;borken glass on dasung e-ink module&quot; /&gt;
+&lt;/a&gt;
+&lt;a href='/img/dasung_teardown/2018-02-07 19.30.16.jpg'&gt;
+  &lt;img src='/img/dasung_teardown/2018-02-07 19.30.16.jpg' alt=&quot;e-ink module identification&quot; title=&quot;e-ink module identification&quot; /&gt;
+&lt;/a&gt;
+&lt;p&gt;The tag on the display module has a model number &lt;b&gt;ED133UT2&lt;/b&gt; that confirms my suspicious of it being the &lt;a href=&quot;http://shopkits.eink.com/product/13-3%CB%9D-epaper-display-ed133ut2/&quot;&gt;e-ink 13.3 ed133ut2&lt;/a&gt;. This is unfortunate as it appears that E-ink  offers another module the &lt;b&gt;ES133UT2&lt;/b&gt; model. Note that the difference between the model numbers is the &lt;b&gt;S&lt;/b&gt; and &lt;b&gt;D&lt;/b&gt;. The &lt;b&gt;S&lt;/b&gt; model is marketed as &amp;#8220;Flexible&amp;#8221; and has sales points of:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Antiglare hard-coated front-surface&lt;/li&gt;
+  &lt;li&gt;Plastic substrate&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;It is hugely disappointing that Dasung went with the &lt;b&gt;D&lt;/b&gt; model as I suspect the &lt;b&gt;S&lt;/b&gt; model would be an &lt;a href=&quot;http://shopkits.eink.com/product/13-3%CB%9D-epaper-display-es133ut2/&quot;&gt;anti-glare e-ink display module&lt;/a&gt; solving a major problem with the Dasung. I could almost see a mistake being made during production ordering because of the very close model identifiers.&lt;/p&gt;
+&lt;p&gt;On further exploration of these model numbers I found a &lt;a href=&quot;http://www.panelook.com/product_cat.php?catid=73&amp;amp;pl=photo&amp;amp;st=&amp;amp;tag=74&amp;amp;panel_size_inch=1330&quot;&gt;PaneLook.com a whole sale display panel site&lt;/a&gt; which lists other 13.3 e paper, display models:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;b&gt;EN133UT1&lt;/b&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;b&gt;ES133UT1&lt;/b&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;b&gt;ED133UT1&lt;/b&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;b&gt;ED133TT1&lt;/b&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;b&gt;ES133TT2&lt;/b&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;b&gt;ES133TE1&lt;/b&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;b&gt;ED133UT2&lt;/b&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;b&gt;ES133TT3&lt;/b&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Panelook curiously does not have a listing for &lt;b&gt;ES133UT2&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;A &lt;a href=&quot;http://www.panelook.com/modelcompare.php?ids=25596,25552,25553,27057,27058,27059,31868,31869&quot;&gt;comparison of 13.3 epaper displays&lt;/a&gt; on PaneLook shows some interesting details about the available options.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The &lt;b&gt;ES133TE1&lt;/b&gt; has embbed touch screen capabilities.&lt;/li&gt;
+  &lt;li&gt;&lt;b&gt;EN133UT1&lt;/b&gt; and &lt;b&gt;ES133TT3&lt;/b&gt; are the only models listed with &amp;#8216;Antiglare&amp;#8217;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;After comparing these options it looks as if &lt;b&gt;ES133TT3&lt;/b&gt; would be the best Epaper laptop display from these options.&lt;/p&gt;
+&lt;h2&gt;The Control Board&lt;/h2&gt;
+&lt;p&gt;When I first saw this control board I was shocked at how large it is and how many components are packed into it. I had assumed that most of the proprietary Dasung functionality was handled in software.&lt;/p&gt;
+&lt;a href='/img/dasung_teardown/2017-12-26 21.33.30.jpg' &gt;
+  &lt;img src='/img/dasung_teardown/2017-12-26 21.33.30.jpg' alt=&quot;Dasung Paperlike control board&quot; title=&quot;Dasung Paperlike Pro control board&quot; /&gt;
+&lt;/a&gt;
+&lt;p&gt;On closer inspection all the chip components have had their labels chemically peeled off to prevernt reverse engineering.&lt;/p&gt;
+&lt;h3&gt;Two PCBs ?&lt;/h3&gt;
+&lt;p&gt;There are actually two PCBs. A smaller PCB towards the top of the enclosure is a USB port with an IC and wires hooked to the main board.&lt;/p&gt;
+&lt;a href='/img/dasung_teardown/2017-12-26 20.22.38.jpg' &gt;
+  &lt;img src='/img/dasung_teardown/2017-12-26 20.22.38.jpg' alt=&quot;Dasung Paperlike control board&quot; title=&quot;Dasung Paperlike Pro control board&quot; /&gt;
+&lt;/a&gt;
+&lt;p&gt;The Dasung manual claims that this USB port is intended to be used as an interface for a USB external lamp. Then elsewhere, on the included accessories section of a &amp;#8216;quick start&amp;#8217; sheet, it says:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;A USB to USB cable for firmware upgrade in some emergency (non standard).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This implies that the USB interface can used for firmware updates. I suspect with some further hacking this could be used to load custom firmware or maybe dump the existing firmware of the board.&lt;/p&gt;
+&lt;p&gt;There are only two input ports to the device. The USB on top, and the mini HDMI in the bottom left.&lt;/p&gt;
+&lt;h1&gt;Dasung Paperlike Pro control board components&lt;/h1&gt;
+&lt;p&gt;I am way too junior in electronics to accurately identify the components of the board. I leave this as an exercise for any readers, and a learning challenge for myself. I will pursue this in future work.&lt;/p&gt;
+&lt;p&gt;I reached out to some 3rd party help and the best lead I got was:&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;from top to bottom&amp;#8230;
+    some kind of IO breakout, maybe an MCU for platform management, might actually be running the whole show and below is just a display controller
+    main SoC, probably contains display driver they&amp;#8217;re using for just the internal screen
+    the two little ones are DRAM
+    an FPGA, used as glue logic and DMA buffer for both displays
+    highly integrated hdmi controller, handles the full spec + audio and just clocks in a frame&lt;/p&gt;
+  &lt;p&gt;the collection of shit in the white boxes are various power regulators for the display etc, on the far top left you have a power management controller and support circuitry, handles just about all the IC and IO voltages by the looks.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Looking forward to further discussion in the comments.&lt;/p&gt;
+&lt;h1&gt;Updates&lt;/h1&gt;
+&lt;h2&gt;2018/02/14&lt;/h2&gt;
+&lt;p&gt;User thomasjfox on &lt;a href=&quot;https://hackaday.com/2018/02/14/tearing-down-a-1000-e-ink-display/#comment-4362437&quot;&gt;hackaday comments&lt;/a&gt; suggests:&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;On the bottom left is a HDMI signal decoder that feeds directly into a FPGA with RAM chips next to it.
+    The FPGA is connected to the eink controller on the right. I couldn’t make out the largish chip above the eink controller.
+    Wild guess: A MCU to configure the HDMI signal decoder + eink controller.&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name></name></author><category term="e-ink hardware workflow laptop" /><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kevzettler.com/img/dasung_teardown/title.png" /></entry><entry><title type="html">Dasung Paperlike Pro(grammer) Review</title><link href="https://kevzettler.com/2018/01/12/dasung-paperlike-pro-review/" rel="alternate" type="text/html" title="Dasung Paperlike Pro(grammer) Review" /><published>2018-01-12T00:00:00-08:00</published><updated>2018-01-12T00:00:00-08:00</updated><id>https://kevzettler.com/2018/01/12/dasung-paperlike-pro-review</id><content type="html" xml:base="https://kevzettler.com/2018/01/12/dasung-paperlike-pro-review/">&lt;p&gt;I recently purchased a &lt;a href=&quot;http://www.dasung.com/english/&quot;&gt;Dasung Paperlike Pro 13.3 E-ink monitor&lt;/a&gt; to use for coding, reading, and terminal work. I have many thoughts on the overall e-ink market and consumer experience. I will save them for another post. This post will be brief and focused on personal expectations with the Dasung. Additionally, there are &lt;a href=&quot;https://www.youtube.com/results?search_query=dasung+paperlike+pro&quot;&gt;many other, more thorough reviews&lt;/a&gt; online demonstrating the capabilities of the monitor.&lt;/p&gt;
+&lt;p&gt;After telling people I purchased this monitor the common reaction is:&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;&amp;#8220;E-ink? Isn&amp;#8217;t that slow!? How do you code on that?&amp;#8221; - Tech Friend&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This is an understandable concern as most people&amp;#8217;s personal experience with E-ink has been on smaller low powered devices like Kindles or other E-readers.  The smaller e-reader screens tend to have an extended &amp;#8216;refresh&amp;#8217; rate built in. This is an attempt to conserve battery power.&lt;/p&gt;
+&lt;p&gt;The Dasung doesn&amp;#8217;t have to make this compromise; it has a dedicated power source. The Dasung monitor performance runs at about 40 FPS on HDMI hookup. This thing can play videos.&lt;/p&gt;
+&lt;h2&gt;Coding in Emacs on a Dasung Paperlike Pro 13.3 E-ink monitor&lt;/h2&gt;
+&lt;p&gt;Below is a video I sent to a few friends demonstrating the responsiveness and performance&lt;/p&gt;
+&lt;p&gt;e-ink emacs video:&lt;/p&gt;
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/zp8-eUmAnhg&quot; frameborder=&quot;0&quot; allow=&quot;autoplay; encrypted-media&quot; allowfullscreen&gt;&lt;/iframe&gt;
+&lt;h2&gt;The pros&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;The overall physical design and form factor of the monitor is great.
+    &lt;p&gt;The monitor has a solid one-piece construction. As a bonus, it comes with a stand. HDMI hookup&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Works excellent for Emacs.
+    &lt;p&gt;Can be a dedicated Emacs monitor.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Dasung support was fast, friendly and shipping was quick.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Dasung driver and software performance&lt;/h3&gt;
+&lt;p&gt;Dasung packages software to help drive and configure the monitor on popular operating systems: Windows, OSX, and 64bit Ubuntu. I primarily used the monitor on an OSX system.&lt;/p&gt;
+&lt;p&gt;The Monitor has three primary rendering modes: &lt;b&gt;Floyd&lt;/b&gt;, &lt;b&gt;A2&lt;/b&gt;, &lt;b&gt;A16&lt;/b&gt;. I find myself spending most of the time in the &lt;b&gt;A2&lt;/b&gt; mode. The different modes correspond to different algorithms that the monitor uses to convert the colored display pixel data into grey-scale e-ink data. The numbers in the &lt;b&gt;A2&lt;/b&gt; and &lt;b&gt;A16&lt;/b&gt; modes are the different shades of grey each pixel will render. The &lt;b&gt;A2&lt;/b&gt; mode is a hard binary contrast containing only 2 colors, black and white. I found this great for text editing and reading.&lt;/p&gt;
+&lt;p&gt;The &lt;b&gt;A16&lt;/b&gt; mode maps color pixels into one of 16 shades of grey. This mode is useful for viewing operating system UI and Apps that don&amp;#8217;t render well in a black and white mode.&lt;/p&gt;
+&lt;p&gt;The &lt;b&gt;Floyd&lt;/b&gt; mode is apparently a proprietary custom Dasung algorithm that is based on &lt;del&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm&quot;&gt;The Floyd-Warshall algorithim&lt;/a&gt;&lt;/del&gt; &lt;a href=&quot;https://en.wikipedia.org/wiki/Floyd%E2%80%93Steinberg_dithering&quot;&gt;Floyd–Steinberg dithering algorithim&lt;/a&gt;. Overall the &lt;b&gt;Floyd&lt;/b&gt; mode renders multi shade grey output at a high frame rate. You can watch videos in this mode. Wikipedia states that:&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;del&gt;the Floyd–Warshall algorithm is an algorithm for finding shortest paths in a weighted graph with positive or negative edge weights (but with no negative cycles).&lt;/del&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I am not sure how Dasung applies that graph pathfinding algorithm to the pixel data of the display output. I haven&amp;#8217;t thought too hard about this yet, I would appreciate any ideas left in the comments below.&lt;/p&gt;
+&lt;h2&gt;The cons&lt;/h2&gt;
+&lt;h3&gt;Reflective screen glare&lt;/h3&gt;
+&lt;p&gt;As you can see in the video above, there is an obvious glare on the screen. The video was captured in a moderately lit room. The monitor actually ships with a plastic anti-glare protective screen cover to help alleviate this. This is a huge problem and defeats the purpose of the monitor. Dasung&amp;#8217;s advertising is aggressive on claims of &amp;#8220;Relax Your Eyes&amp;#8221;, &amp;#8220;Ultimate Eye Protection&amp;#8221; &amp;#8220;No blue light, No flashing, No backlight, No glossy&amp;#8221;.&lt;/p&gt;
+&lt;p&gt;Unfortunately, putting a reflective pane of glass over the e-ink display is a bad move.&lt;/p&gt;
+&lt;h3&gt;Dasung driver and software issues&lt;/h3&gt;
+&lt;p&gt;I listed the Dasung software as a Pro, unfortunately, it also has some frustrating issues. Again my experience was on MacOSX; your experience may be different.&lt;/p&gt;
+&lt;p&gt;The monitor has a &amp;#8220;change mode&amp;#8221; hardware button that lets you cycle through these differnt modes. There is a software driver UI that also changes these modes. It seems the software can get out of sync with the hardware. You can set a resolution and contrast and mode in the software, Then press a hardware button and that resolution will be lost.&lt;/p&gt;
+&lt;p&gt;At times the monitor goes in to some kind of &amp;#8220;sleep mode&amp;#8221; even while plugged into an active computer. The screen goes black and unresponsive. By messing with a combination of the hardware buttons on the screen you can wake it up.&lt;/p&gt;
+&lt;p&gt;Unfortunatly, the driver UI defaults to Chinese, I was able to navigate it blindly and change to English. It should detect the operating system&amp;#8217;s language setting.&lt;/p&gt;
+&lt;h1&gt;Summary&lt;/h1&gt;
+&lt;p&gt;Overall I think the Dasung is a pretty awesome piece of equipment. I am majorly dissapointed about the reflective glass screen. I am happy with my purchase and hope funds go to help further improve the company and product line. If you spend a lot of time editing text or reading with tired eyes I would recommend one. You can use it as a dedicated text editor or terminal screen to great success.&lt;/p&gt;
+&lt;h1&gt;Updates&lt;/h1&gt;
+&lt;h2&gt;2018/02/02:&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://kevzettler.com/2018/01/12/dasung-paperlike-pro-review#comment-3754833721&quot;&gt;Jon Hendry&lt;/a&gt; in the comments pointed out that the Dasung PaperlikePro Floyd mode is probably the &lt;a href=&quot;https://en.wikipedia.org/wiki/Floyd%E2%80%93Steinberg_dithering&quot;&gt;Floyd–Steinberg dithering algorithim&lt;/a&gt; and not the Floyd-Warshall I pointed out above. This makes much more sense I have updated the content above&lt;/p&gt;</content><author><name></name></author><category term="e-ink hardware workflow" /></entry><entry><title type="html">Rapid Local Development with Vagrant, Docker and Node.js</title><link href="https://kevzettler.com/programming/2015/06/07/rapid_local_development_vagrant_docker_node/" rel="alternate" type="text/html" title="Rapid Local Development with Vagrant, Docker and Node.js" /><published>2015-06-07T00:00:00-07:00</published><updated>2015-06-07T00:00:00-07:00</updated><id>https://kevzettler.com/programming/2015/06/07/rapid_local_development_vagrant_docker_node</id><content type="html" xml:base="https://kevzettler.com/programming/2015/06/07/rapid_local_development_vagrant_docker_node/">&lt;h3 id=&quot;tldr&quot;&gt;TLDR&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Using a cascade of Vagrant shared directories, Docker volumes and cleverly placed symlinks, you can rig Vagrant and Docker to instantly reflect your local application code updates.&lt;/li&gt;
+  &lt;li&gt;Docker volume -&amp;gt; Vagrant shared directory -&amp;gt; Host machine code.&lt;/li&gt;
+  &lt;li&gt;Enable NPM link style development in Docker container.&lt;/li&gt;
+  &lt;li&gt;Dosen’t cover &lt;code class=&quot;highlighter-rouge&quot;&gt;gulp&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;webpack&lt;/code&gt; asset generation but you can figure it out.&lt;/li&gt;
+  &lt;li&gt;There might be a better way to do this or improvements to make. Leave it in the comments.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;the-problem&quot;&gt;The Problem&lt;/h2&gt;
+&lt;p&gt;I wanted to use &lt;a href=&quot;https://github.com/js-platform/node-webrtc&quot;&gt;isomorphic WebRTC&lt;/a&gt; with the awesome &lt;a href=&quot;https://github.com/feross/simple-peer&quot;&gt;SimplePeer&lt;/a&gt; in a recent Node.js project. However the server WebRTC has a bunch of system level dependencies that are a pain to install. Luckily they provide a &lt;a href=&quot;https://github.com/js-platform/node-webrtc/blob/develop/Dockerfile&quot;&gt;Dockerfile&lt;/a&gt; which does it all for you. I didn’t end up using their exact Dockerfile but copy pasted the majority of it to my project to use as a &lt;code class=&quot;highlighter-rouge&quot;&gt;Base web&lt;/code&gt; Dockerfile.&lt;/p&gt;
+
+&lt;p&gt;I also wanted to do development on a custom Node module. Usually on your local machine you would do &lt;code class=&quot;highlighter-rouge&quot;&gt;npm link&lt;/code&gt; which creates a symlink to your module’s code directory and you can rapidly iterate there. However, working with Vagrant and Docker makes this more complicated.&lt;/p&gt;
+
+&lt;p&gt;I wanted all this to work without having to rebuild Docker images, rerun docker containers, or reprovision Vagrant.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-base-web-image&quot;&gt;The Base Web Image&lt;/h2&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-docker&quot; data-lang=&quot;docker&quot;&gt;&lt;span class=&quot;c&quot;&gt;# baseweb Dockerfile&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; ubuntu:14.04&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; DEBIAN_FRONTEND noninteractive&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;RUN &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo &lt;/span&gt;debconf shared/accepted-oracle-license-v1-1 &lt;span class=&quot;k&quot;&gt;select &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt; | debconf-set-selections
+&lt;span class=&quot;k&quot;&gt;RUN &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo &lt;/span&gt;debconf shared/accepted-oracle-license-v1-1 seen &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt; | debconf-set-selections
+
+&lt;span class=&quot;k&quot;&gt;RUN &lt;/span&gt;apt-get update &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt-get &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; software-properties-common
+&lt;span class=&quot;k&quot;&gt;RUN &lt;/span&gt;add-apt-repository ppa:webupd8team/java &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; add-apt-repository ppa:chris-lea/node.js &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt-get update
+
+&lt;span class=&quot;k&quot;&gt;RUN &lt;/span&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; git subversion g++ python libnss3-dev libasound2-dev libpulse-dev &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;libjpeg62-dev libxv-dev libgtk2.0-dev libexpat1-dev libxss-dev libudev-dev libdrm-dev libgconf2-dev &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;libgcrypt11-dev libpci-dev libxtst-dev libgnome-keyring-dev libssl-dev nodejs oracle-java6-installer oracle-java6-set-default
+
+&lt;span class=&quot;k&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; JAVA_HOME /usr/lib/jvm/java-6-oracle/&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; PATH $PATH:/usr/lib/jvm/java-6-oracle/jre/bin/&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;RUN &lt;/span&gt;npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-g&lt;/span&gt; forever&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;With the &lt;code class=&quot;highlighter-rouge&quot;&gt;BaseWeb&lt;/code&gt; Dockerfile inplace I then have my Nodejs application. It’s structured as follows.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-web-application-code&quot;&gt;The Web Application Code&lt;/h2&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;/Projects/demo/web
+├── Dockerfile
+├── index.js
+├── node_modules -&amp;gt; /dist/node_modules/
+└── package.json&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Take note here that my &lt;code class=&quot;highlighter-rouge&quot;&gt;node_modules&lt;/code&gt; is actually a symlink to &lt;code class=&quot;highlighter-rouge&quot;&gt;/dist/node_modules/&lt;/code&gt; this is committed to my repo. This may seem odd but it’s key to letting us rapidly develop on a custom module. It enables a &lt;code class=&quot;highlighter-rouge&quot;&gt;npm link&lt;/code&gt; style work flow.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-vagrant-setup&quot;&gt;The Vagrant Setup&lt;/h3&gt;
+
+&lt;p&gt;Assume we have a Vagrantfile outside of our web project like so:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;/Projects/demo/
+├── Vagrantfile
+└── web&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;This will automatically mount the web code as a shared directory inside the Vagrant machine at &lt;code class=&quot;highlighter-rouge&quot;&gt;/vagrant/web&lt;/code&gt;. At this point we can &lt;code class=&quot;highlighter-rouge&quot;&gt;vagrant up&lt;/code&gt; and edit the application code on the host machine as usual and Vagrant will pickup the changes. This dosen’t help us yet because the code is dependent on the ismorphic WebRTC dependences. We need Vagrant to run the Docker containers.&lt;/p&gt;
+
+&lt;p&gt;Before we get to the &lt;code class=&quot;highlighter-rouge&quot;&gt;Vagrantfile&lt;/code&gt; let’s look at the Web Applications’ Dockerfile.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-web-application-dockerfile&quot;&gt;The Web Application Dockerfile&lt;/h2&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-dockerfile&quot; data-lang=&quot;dockerfile&quot;&gt;&lt;span class=&quot;c&quot;&gt;# web DockerFile&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; base_web&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;COPY&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; package.json /dist/package.json&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;RUN &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; /dist/node_modules &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /dist &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;ADD&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; . /srv/www&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;RUN &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ln&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; /dist/node_modules /srv/www/node_modules
+&lt;span class=&quot;k&quot;&gt;WORKDIR&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; /srv/www&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;EXPOSE&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; 5000&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;CMD&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; [&quot;forever&quot;, &quot;index.js&quot;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h4 id=&quot;points-of-interest&quot;&gt;Points Of Interest&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;The key to this whole thing here is the &lt;code class=&quot;highlighter-rouge&quot;&gt;node_modules&lt;/code&gt; setup. We don’t do the &lt;code class=&quot;highlighter-rouge&quot;&gt;npm install&lt;/code&gt; in the application code directory. We create a &lt;code class=&quot;highlighter-rouge&quot;&gt;/dist/&lt;/code&gt; directory and copy &lt;code class=&quot;highlighter-rouge&quot;&gt;package.json&lt;/code&gt; there. We then &lt;code class=&quot;highlighter-rouge&quot;&gt;npm install&lt;/code&gt; in &lt;code class=&quot;highlighter-rouge&quot;&gt;/dist&lt;/code&gt; and get &lt;code class=&quot;highlighter-rouge&quot;&gt;/dist/node_modules&lt;/code&gt;. This is really the seceret sauce. In production you don’t rebuild your modules each time you re-build your container. If your &lt;code class=&quot;highlighter-rouge&quot;&gt;package.json&lt;/code&gt; file changes then your modules will be rebuilt. I got this from  &lt;a href=&quot;http://bitjudo.com/blog/2014/03/13/building-efficient-dockerfiles-node-dot-js/&quot;&gt;Building Efficient Dockerfiles&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;RUN ln -s /dist/node_modules /srv/www/node_modules&lt;/code&gt;&lt;/p&gt;
+
+    &lt;p&gt;This creates a symlink for &lt;code class=&quot;highlighter-rouge&quot;&gt;node_modues&lt;/code&gt; from our application code at &lt;code class=&quot;highlighter-rouge&quot;&gt;/srv/www&lt;/code&gt;. to our &lt;code class=&quot;highlighter-rouge&quot;&gt;/dist&lt;/code&gt;. This also overrides the symlink that is committed in the web repo. You might be thinking, “well what was the point of that then?”. I promise we’ll get to that soon. It’s key to the &lt;code class=&quot;highlighter-rouge&quot;&gt;npm link&lt;/code&gt; style.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;the-vagrant-file&quot;&gt;The Vagrant File&lt;/h3&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;Vagrant&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;configure&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;vm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;box&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Ubuntu 14.04 with Docker enabled&quot;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;vm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;box_url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;https://github.com/jose-lpa/packer-ubuntu_14.04/releases/download/v2.0/ubuntu-14.04.box&quot;&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;vm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;provision&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;docker&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;build_image&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;/vagrant/Dockerfiles/base_web&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;args: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'-t &quot;base_web&quot;'&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;build_image&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;/vagrant/web&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;args: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'-t &quot;web&quot;'&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;run&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;web&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+          &lt;span class=&quot;ss&quot;&gt;cmd: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;forever -w bin/server.js&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+          &lt;span class=&quot;ss&quot;&gt;args: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;-v '/vagrant/web:/srv/www'\
+                 -e NODE_ENV=development\
+                 -p 5000:5000&quot;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;vm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;network&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;forwarded_port&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;guest: &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;host: &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5000&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h4 id=&quot;points-of-interest-1&quot;&gt;Points of interest&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;We use a ‘Docker enabled’ image for our Docker box.&lt;/li&gt;
+  &lt;li&gt;We use Vagrant’s built-in Docker provisioner.&lt;/li&gt;
+  &lt;li&gt;We then run our container with some new arguments.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Let’s look at the run command more in-depth.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;    &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;run&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;web&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+          &lt;span class=&quot;ss&quot;&gt;cmd: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;forever -w index.js&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+          &lt;span class=&quot;ss&quot;&gt;args: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;-v '/vagrant/web:/srv/www'\
+                 -e NODE_ENV=development\
+                 -p 5000:5000&quot;&lt;/span&gt;
+                 &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;We’re overriding the Dockerfiles’ &lt;code class=&quot;highlighter-rouge&quot;&gt;CMD [&quot;forever&quot;, &quot;index.js&quot;]&lt;/code&gt; with &lt;code class=&quot;highlighter-rouge&quot;&gt;forever -w index.js&lt;/code&gt; The &lt;code class=&quot;highlighter-rouge&quot;&gt;-w&lt;/code&gt; flag restarts our server on code updates, which is what we want in a development environment.&lt;/p&gt;
+
+&lt;h3 id=&quot;bringing-it-all-together&quot;&gt;Bringing It All Together&lt;/h3&gt;
+&lt;p&gt;The Most important part of the &lt;code class=&quot;highlighter-rouge&quot;&gt;docker run&lt;/code&gt; options is the &lt;code class=&quot;highlighter-rouge&quot;&gt;-v&lt;/code&gt; flag, which is for Docker Volumes. We are telling our container to mount &lt;code class=&quot;highlighter-rouge&quot;&gt;/srv/www&lt;/code&gt; as a volume that points to &lt;code class=&quot;highlighter-rouge&quot;&gt;/vagrant/web/&lt;/code&gt;. If you review our Vagrant setup from earlier you can see that &lt;code class=&quot;highlighter-rouge&quot;&gt;/srv/www&lt;/code&gt; is actualy a shared directory to our application code directory &lt;code class=&quot;highlighter-rouge&quot;&gt;/web&lt;/code&gt; on the host machine!&lt;/p&gt;
+
+&lt;p&gt;A quick diagram of this shared filesystem cascade looks like this:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;Docker &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;/srv/www&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt; -&amp;gt;
+Vagrant &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;/vagrant/web -&amp;gt;
+Host &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;/web&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;/&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;At this point you’re set up to rapidly develop on your application code and have updates reflected in your Docker container.&lt;/p&gt;
+
+&lt;p&gt;The next challenge I faced was figuring out how to handle a local NPM module dependency that I wanted to iterate on in the same rapid manner.&lt;/p&gt;
+
+&lt;h2 id=&quot;npm-link-development-in-a-docker-container&quot;&gt;NPM Link Development In A Docker Container&lt;/h2&gt;
+
+&lt;p&gt;So in this scenario. Lets assume that &lt;code class=&quot;highlighter-rouge&quot;&gt;web&lt;/code&gt; has an entry in &lt;code class=&quot;highlighter-rouge&quot;&gt;package.json&lt;/code&gt; like this:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-json&quot; data-lang=&quot;json&quot;&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;dependencies&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+   &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;customModule&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;git://github.com/kevzettler/customModule&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+   &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;customModule&lt;/code&gt; is a NPM module that we maintain and develop. This package.json setup works fine for production because we just install from the repo and forget about it. In development we want to rapidly make changes to &lt;code class=&quot;highlighter-rouge&quot;&gt;customModule&lt;/code&gt;and not have to rebuild everything. Normally when developing on local machine, we would &lt;code class=&quot;highlighter-rouge&quot;&gt;cd&lt;/code&gt; into &lt;code class=&quot;highlighter-rouge&quot;&gt;web&lt;/code&gt; and do &lt;code class=&quot;highlighter-rouge&quot;&gt;npm link customModule&lt;/code&gt; which would build a symlink to our &lt;code class=&quot;highlighter-rouge&quot;&gt;customModule&lt;/code&gt; code that would give us a rapid development setup.&lt;/p&gt;
+
+&lt;p&gt;When we add Vagrant and Docker to the dev environment, this completly breaks NPM Link.&lt;/p&gt;
+
+&lt;p&gt;Here’s an updated directory diagram of our project with the new &lt;code class=&quot;highlighter-rouge&quot;&gt;customModule&lt;/code&gt; code:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;/Projects/demo/
+├── Vagrantfile
+├── web
+└── customModule&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;So similliar to the web code, Vagrant will mount our customModule code at &lt;code class=&quot;highlighter-rouge&quot;&gt;/vagrant/customModule&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;We can then update our VagrantFile to add a new Docker Volume:
+&lt;code class=&quot;highlighter-rouge&quot;&gt;-v '/vagrant/engine:/dist/node_modules/engine'&lt;/code&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;    &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;run&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;web&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+          &lt;span class=&quot;ss&quot;&gt;cmd: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;forever -w index.js&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+          &lt;span class=&quot;ss&quot;&gt;args: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;-v '/vagrant/web:/srv/www'\
+                 -v '/vagrant/customModule:/dist/node_modules/customModule'\
+                 -e NODE_ENV=development\
+                 -p 5000:5000&quot;&lt;/span&gt;
+                 &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;whats-all-this-symlink-business-then&quot;&gt;What’s All This Symlink Business Then?&lt;/h3&gt;
+&lt;p&gt;So we have this symlink in 2 places.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;RUN&lt;/code&gt; symlink in Web Dockerfile
+  &lt;code class=&quot;highlighter-rouge&quot;&gt;RUN ln -s /dist/node_modules /srv/www/node_modules&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;In ‘Filesystem’ symlink 
+  &lt;code class=&quot;highlighter-rouge&quot;&gt;node_modules -&amp;gt; /dist/node_modules/&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Docker does not support symlinks when using the &lt;code class=&quot;highlighter-rouge&quot;&gt;ADD&lt;/code&gt; command in a DockerFile.
+It will drop them from the &lt;code class=&quot;highlighter-rouge&quot;&gt;ADD&lt;/code&gt; filesystem. That’s why we need the &lt;code class=&quot;highlighter-rouge&quot;&gt;RUN&lt;/code&gt; symlink in the dockerfile.&lt;/p&gt;
+
+&lt;p&gt;When we want to do development work, we run the container with the &lt;code class=&quot;highlighter-rouge&quot;&gt;-v&lt;/code&gt; flag to mount our local code. The volume doesn’t get attached until after our container has already been created. At that time, the &lt;code class=&quot;highlighter-rouge&quot;&gt;RUN&lt;/code&gt; symlink exists; however, the &lt;code class=&quot;highlighter-rouge&quot;&gt;-v&lt;/code&gt; option overrides everything in the container’s &lt;code class=&quot;highlighter-rouge&quot;&gt;/srv/www/&lt;/code&gt;, wiping out the &lt;code class=&quot;highlighter-rouge&quot;&gt;RUN&lt;/code&gt; symlink.&lt;/p&gt;
+
+&lt;p&gt;But wait! We have a ‘Filesystem’ symlink in our shared code. The volume respects this symlink and it routes internally to the container’s filesystem. You don’t necessarily have to commit the symlink to your repo like I was dong. You just need it around when you build the Docker image. I committed it because I kept forgetting. Try this out and let me know if you have a better solution to it.&lt;/p&gt;
+
+&lt;p&gt;Thanks to &lt;a href=&quot;http://gabriellenicolet.com/&quot;&gt;Gabrielle Nicolet&lt;/a&gt; for editing this post.&lt;/p&gt;</content><author><name></name></author><category term="Programming" /><category term="JavaScript" /><category term="Conventions" /><category term="Docker" /><category term="Vagrant" /><category term="Node.js" /><summary type="html">TLDR Using a cascade of Vagrant shared directories, Docker volumes and cleverly placed symlinks, you can rig Vagrant and Docker to instantly reflect your local application code updates. Docker volume -&amp;gt; Vagrant shared directory -&amp;gt; Host machine code. Enable NPM link style development in Docker container. Dosen’t cover gulp webpack asset generation but you can figure it out. There might be a better way to do this or improvements to make. Leave it in the comments.</summary></entry><entry><title type="html">How To Route Docker.io Containers To Public IPV6 on Linode</title><link href="https://kevzettler.com/programming/2014/06/25/docker_ipv6_linode/" rel="alternate" type="text/html" title="How To Route Docker.io Containers To Public IPV6 on Linode" /><published>2014-06-25T00:00:00-07:00</published><updated>2014-06-25T00:00:00-07:00</updated><id>https://kevzettler.com/programming/2014/06/25/docker_ipv6_linode</id><content type="html" xml:base="https://kevzettler.com/programming/2014/06/25/docker_ipv6_linode/">&lt;ul&gt;
+  &lt;li&gt;If you want to us ipv6 with docker.io on linode make sure you have the following &lt;code class=&quot;highlighter-rouge&quot;&gt;sysctl&lt;/code&gt; set
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;net.ipv6.conf.all.accept_ra = 2&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;net.ipv6.conf.all.forwarding = 1&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Then you can pretty much follow this post &lt;a href=&quot;http://zargony.com/2013/10/13/ipv6-in-docker-containers#sthash.xNFG3NCx.dpuf&quot;&gt;http://zargony.com/2013/10/13/ipv6-in-docker-containers&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;If you want auto configured addresses you can install and configure &lt;code class=&quot;highlighter-rouge&quot;&gt;radvd&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="Programming" /><category term="JavaScript" /><category term="Conventions" /><category term="Docker.io" /><category term="IPV6" /><category term="Linode" /><summary type="html">If you want to us ipv6 with docker.io on linode make sure you have the following sysctl set net.ipv6.conf.all.accept_ra = 2 net.ipv6.conf.all.forwarding = 1 Then you can pretty much follow this post http://zargony.com/2013/10/13/ipv6-in-docker-containers If you want auto configured addresses you can install and configure radvd</summary></entry><entry><title type="html">Disable Any Element With jQuery</title><link href="https://kevzettler.com/code/2012/07/05/Disable_any_element_with_jquery/" rel="alternate" type="text/html" title="Disable Any Element With jQuery" /><published>2012-07-05T00:00:00-07:00</published><updated>2012-07-05T00:00:00-07:00</updated><id>https://kevzettler.com/code/2012/07/05/Disable_any_element_with_jquery</id><content type="html" xml:base="https://kevzettler.com/code/2012/07/05/Disable_any_element_with_jquery/">&lt;p&gt;In HTML the &lt;a href=&quot;http://www.w3schools.com/tags/att_input_disabled.asp&quot;&gt;disabled attribute&lt;/a&gt; alows you to mark an input element as ‘disabled’ Which will trigger 
+the browser to render the input in a ‘greyed out’ style:&lt;/p&gt;
+
+&lt;table style=&quot;padding:20px;&quot;&gt;
+  &lt;tr&gt;
+    &lt;td&gt;
+      &lt;form&gt;
+        &lt;p&gt;Enabled elements&lt;/p&gt;
+        &lt;button&gt;Click&lt;/button&gt;&lt;br /&gt;&lt;br /&gt;
+        &lt;input type=&quot;text&quot; value=&quot;text&quot; /&gt;&lt;br /&gt;
+        &lt;select&gt;&lt;br /&gt;
+          &lt;option&gt;Select&lt;/option&gt;
+        &lt;/select&gt;
+      &lt;/form&gt;
+    &lt;/td&gt;
+    &lt;td&gt;
+      &lt;form style=&quot;padding-left:40px;&quot;&gt;
+        &lt;p&gt;Disabled elements&lt;/p&gt;
+        &lt;button disabled=&quot;disabled&quot;&gt;Click&lt;/button&gt;&lt;br /&gt;&lt;br /&gt;
+        &lt;input type=&quot;text&quot; disabled=&quot;disabled&quot; value=&quot;text&quot; /&gt;&lt;br /&gt;
+        &lt;select disabled=&quot;disabled&quot;&gt;&lt;br /&gt;
+          &lt;option&gt;Select&lt;/option&gt;
+        &lt;/select&gt;
+      &lt;/form&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;p&gt;This is helpful for limiting user interaction when an app is in an unknown state. Like waiting for an Ajax response. However this attribute is only available on form input elements.
+This is unfortunate if you are heavily using your own custom UI components. Say you have a bunch of buttons throughout your UI that are actually &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;a&amp;gt;&lt;/code&gt; elements.&lt;/p&gt;
+
+&lt;p&gt;I’ve ran into this problem on several projects and developed a pattern which grew into a plugin I now use on most projects. You can get the plugin here &lt;a href=&quot;https://github.com/kevzettler/jquery.disable/downloads&quot;&gt;download jquery.disable&lt;/a&gt;
+or check it out and contribute to &lt;a href=&quot;https://github.com/kevzettler/jquery.disable&quot;&gt;jquery.disable on github&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><category term="Code" /><summary type="html">In HTML the disabled attribute alows you to mark an input element as ‘disabled’ Which will trigger the browser to render the input in a ‘greyed out’ style:</summary></entry><entry><title type="html">jQuery Autobox Plugin</title><link href="https://kevzettler.com/2010/10/30/jquery-autobox-plugin/" rel="alternate" type="text/html" title="jQuery Autobox Plugin" /><published>2010-10-30T00:00:00-07:00</published><updated>2010-10-30T00:00:00-07:00</updated><id>https://kevzettler.com/2010/10/30/jquery-autobox-plugin</id><content type="html" xml:base="https://kevzettler.com/2010/10/30/jquery-autobox-plugin/">&lt;p&gt;I have worked on several site designs that expect form inputs to render with a default value. Upon focus of the input the default text should clear and allow user input to stick. Sometimes the design calls for this to happen with a password field as well.&lt;/p&gt;
+
+&lt;p&gt;Password fields are a special condition as the text is rendered as dots. You cannot dynamically change the ‘type’ attribute of a password input field. This is a browser security feature. To obtain this behavior with password fields you need to dynamically create a text field on top of the password and hide it on focus. This plugin handles this.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &quot;You cannot dynamically change the 'type' attribute of a password input field.&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Handle any font colors or styling with css.&lt;/p&gt;
+
+&lt;p&gt;Downloads&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/kevzettler/jquery.autobox/tarball/master&quot;&gt;download - tar.gz&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/kevzettler/jquery.autobox/zipball/master&quot;&gt;download - .zip&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Installation&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;script src=&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js&quot; type=&quot;text/javascript&quot;&amp;gt;&amp;lt;/script&amp;gt;  
+&amp;lt;script src=&quot;jquery.autobox.js&quot; type=&quot;text/javascript&quot;&amp;gt;&amp;lt;/script&amp;gt;  
+&amp;lt;script type=&quot;text/javascript&quot;&amp;gt;&amp;lt;/script&amp;gt;  
+&amp;lt;form&amp;gt; &amp;lt;input value=&quot;default text&quot; type=&quot;text&quot; /&amp;gt; &amp;lt;input value=&quot;default pass&quot; type=&quot;pass&quot; /&amp;gt; &amp;lt;/form&amp;gt;  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Demo
+See it live &lt;a href=&quot;http://www.callmekev.com/demo&quot;&gt;here&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">I have worked on several site designs that expect form inputs to render with a default value. Upon focus of the input the default text should clear and allow user input to stick. Sometimes the design calls for this to happen with a password field as well.</summary></entry><entry><title type="html">IE Button Bug</title><link href="https://kevzettler.com/2010/09/05/IE-button-bug/" rel="alternate" type="text/html" title="IE Button Bug" /><published>2010-09-05T00:00:00-07:00</published><updated>2010-09-05T00:00:00-07:00</updated><id>https://kevzettler.com/2010/09/05/IE-button-bug</id><content type="html" xml:base="https://kevzettler.com/2010/09/05/IE-button-bug/">&lt;p&gt;I recently encountered an annoying bug in multiple versions of IE regarding forms and button elements. I am writing about it to remind myself in the future and to hopefully save time for someone else. The bug spawned from my decision to use &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;button&amp;gt;&lt;/code&gt; elements over &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;input type=&quot;submit&quot;&amp;gt;&lt;/code&gt; elements as the submit buttons for my forms. I chose button elements because they are generally more consistent in cross browser rendering and also allow for more semantic textual content than text in the input element’s type attribute.
+The behavior of modern browsers matched my own expected behavior. That is:&lt;/p&gt;
+
+&lt;p&gt;if a from element contains a button element, and no input &lt;code class=&quot;highlighter-rouge&quot;&gt;type='submit'&lt;/code&gt;, that button should trigger the submit event of the form&lt;/p&gt;
+
+&lt;p&gt;However, IE does not.&lt;/p&gt;
+
+&lt;p&gt;“IE will not fire a form submit event on a &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;button&amp;gt;&amp;lt;/button&amp;gt;&lt;/code&gt; click by default.”&lt;/p&gt;
+
+&lt;p&gt;I found this out after testing in IE and discovering that none of the forms on a site would submit. I first assumed that it was some bug with an inline validation plugin that I had used. The submission bug remained after disabling the plugin.&lt;/p&gt;
+
+&lt;p&gt;Solutions to this bug were:&lt;/p&gt;
+
+&lt;p&gt;Replace all the button elements with input &lt;code class=&quot;highlighter-rouge&quot;&gt;type='submit'&lt;/code&gt; and apply the button styles. 
+Or attach an explicit click event to the button elements that would fire the parent form elements submit event.&lt;/p&gt;</content><author><name></name></author><summary type="html">I recently encountered an annoying bug in multiple versions of IE regarding forms and button elements. I am writing about it to remind myself in the future and to hopefully save time for someone else. The bug spawned from my decision to use &amp;lt;button&amp;gt; elements over &amp;lt;input type=&quot;submit&quot;&amp;gt; elements as the submit buttons for my forms. I chose button elements because they are generally more consistent in cross browser rendering and also allow for more semantic textual content than text in the input element’s type attribute. The behavior of modern browsers matched my own expected behavior. That is:</summary></entry></feed>
