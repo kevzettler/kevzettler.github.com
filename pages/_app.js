@@ -17,7 +17,9 @@ const App = ({ Component, pageProps }) => {
       (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
         g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
         s.parentNode.insertBefore(g,s)}(document,'script'));
-        `}} />
+          `}} />
+      <Script strategy="beforeInteractive" src="/js/jquery-3.6.4.min.js" />
+      <Script strategy="afterInteractive" src="/js/bootstrap.js" />
       <Body>
         <Component {...pageProps} />
       </Body>
