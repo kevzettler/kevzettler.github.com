@@ -1,6 +1,6 @@
 import { DiscussionEmbed } from "disqus-react"
 const DisqusComments = ({ post }) => {
-  const disqusShortname = "radcade-com";
+  const disqusShortname = "kevzettler";
   const disqusConfig = {
     url: `https://www.kevzettler.com/${post.slug}`,
     identifier: post.slug, // Single post id
