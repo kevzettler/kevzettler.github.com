@@ -1,21 +1,11 @@
 * Development
 
-Start local dev server
-#+BEGIN_SRC
-jekyll s
-#+END_SRC
+```
+yarn dev
+```
 
-This uses ~jekyll-org~ gem:
-https://github.com/eggcaker/jekyll-org
-
-add new posts in ~_posts~
-
-Work on the "source code do not delete branch" or the updates will not take
-
-when done merge to master
-
-* Publishing
-http://arademaker.github.io/blog/2011/12/01/github-pages-jekyll-plugins.html
-copy site to root directory on master branch
-
-cp -r _site/* . && rm -rf _site/ && touch .nojekyll
+* Deploy
+```
+yarn export &&
+git commit && git push
+```
