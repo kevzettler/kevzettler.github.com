@@ -21,7 +21,7 @@ export default function Page() {
             <div className="span3" style={{ padding: "30px 0" }}>
               <p>Kev is a San Francisco bay area fullstack engineer and entrepreneur.</p>
 
-              <p>Currently available to <a href="https://www.upwork.com/o/profiles/users/_~01728af9ddb3ece22a/">hire for remote contract work</a></p>
+              <p>Currently available to hire for remote contract work</p>
 
               <p>You can find Kev on:</p>
               <ul>
