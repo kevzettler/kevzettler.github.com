@@ -1,0 +1,59 @@
+#+TITLE: I built a multiplayer voxel browser game engine.
+#+TAGS: gamedev, javascript, react
+
+* intro TLDR
+This post is a retrospective on a [[https://github.com/kevzettler/multiplayer-voxel-browser-game-engine][multiplayer voxel browser game engine]] I built. This post will cover the squishy side of the project and the accompanying code repository will have more of the hard technical details. I'm writing this post to put closure on the project before moving on new work.
+
+** disclaimer
+This project is a bit old and stale now. Some of the tech decisions made sense at the time but are questionable today. I will address that in this post. Additionally, I started this project with very minimal game development experience. I had no idea how many things worked, shaders, 3d asset files, raw binary buffer manipulation, physics. I learned all these skills and more during this project. This experience also helped me later land some major corporate jobs. This project was primarily through 2017-2019 however exploration for the project goes back to late 2016.
+
+* inspiration & motivation
+ I wanted to build a multiplayer browser game. I was very inspired by .io games and sites like [[https://iogames.space/][iogames.space]]. I love the .io gaming experience of entering in a URL, sharing a URL and getting in a game with your friends. I wanted to recreate a canceled MMO called [[https://en.wikipedia.org/wiki/Exteel][Exteel]]  My background was in web development and design. I stuck with the tools and environment I was most familiar with.
+
+** target features
+  + network multiplayer
+  + playable cross platform in browser
+  + player character mesh customization
+  + lazy loading assets
+  + third person camera
+  + platforming physics
+  + destructible environments
+
+All these features were completed except for destructible environments. Destructible environments was a big driver for the voxel asset pipeline, assuming voxels would enable the destructibility. This idea was inspired by another browser game [[https://github.com/Lallassu/VoxLords][VoxLords]] which had captured my imagination. I actually started this out by forking and modifying VoxLords to be multiplayer.
+
+https://twitter.com/kevzettler/status/725399264084389889?s=20
+
+Realized that it was entirely possible to make
+
+* Acknowledgements
+This project was built on the work and research of developers much better than I.
+
+** [[https://twitter.com/MikolaLysenko][Mikola lysenko]]
+Mikola 0fps.net [[https://www.youtube.com/watch?v=Z_--8z549D4][Reflections on building web-based voxel MMO in China (Mikola Lysenko, et al) - YouTube]]
+
+** [[https://chinedufn.com/][Chinedu Francis Nwafili]]
+
+https://chinedufn.com/
+
+* the grind
+ I started by exploring multiple tech stacks and building a prototype in each of them concurrently. The stack I looked at were babylon, three.js, stackgl,
+
+[[https://gist.github.com/AndrewRayCode/746be166c3008a03167206aec4a46531][Andy three.js blender]]
+
+I took a year off and worked on it full time through out 2017.
+
+2018 and 2019 I made part time
+
+* the technical highlights
+
+* Learnings
+** what went wrong
+In 2019 I upgraded my laptop to an M1 Mac. This triggered a roadblock on the project because the WebRTc module I was using would not compile on the new M1 apple silicon chip.
+
+The animation pipeline using landon had severe entrophy
+
+** Moving on
+
+Manifold engine
+
+Ambient engine
