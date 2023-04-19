@@ -6,6 +6,26 @@ import { marked } from "marked";
 import htmlParse from "html-react-parser"
 const orgParser = new org.Parser();
 
+function preprocessContentForTweets(contentHTML) {
+  const tweetURLRegex = /<a[^>]* href="https:\/\/twitter.com\/\w+\/status\/\d+"[^>]*>[^<]*<\/a>/g;
+  const matches = contentHTML.match(tweetURLRegex) || [];
+
+  matches.forEach((match) => {
+    const tweetId = getTweetIdFromURL(match);
+    if (tweetId) {
+      const tweetEmbed = `<span data-tweet-id="${tweetId}"></span>`;
+      contentHTML = contentHTML.replace(match, tweetEmbed);
+    }
+  });
+
+  return contentHTML;
+}
+
+function getTweetIdFromURL(url) {
+  const tweetUrlRegex = /https:\/\/twitter.com\/\w+\/status\/(\d+)/;
+  const match = url.match(tweetUrlRegex);
+  return match ? match[1] : null;
+}
 
 export interface Post {
   title: string;
@@ -73,7 +93,7 @@ function readMarkdownPost(fileName: string): Post {
   return {
     title: matterResult.data.title,
     date,
-    contentHTML: marked(matterResult.content),
+    contentHTML: preprocessContentForTweets(marked(matterResult.content)),
     excerpt,
     slug: getPostSlug(fileName),
     meta: {
@@ -116,7 +136,7 @@ function readOrgModePost(fileName: string): Post {
   return {
     title: orgHTMLDocument.title,
     date: getPostDate(fileName),
-    contentHTML: orgHTMLDocument.contentHTML,
+    contentHTML: preprocessContentForTweets(orgHTMLDocument.contentHTML),
     excerpt: htmlParse(striptags(orgHTMLDocument.contentHTML).substring(0, 400) + "..."),
     slug: getPostSlug(fileName),
     meta: {

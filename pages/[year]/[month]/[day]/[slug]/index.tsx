@@ -1,8 +1,11 @@
 import { GetServerSideProps } from "next";
+import htmlParse, { HTMLReactParserOptions } from 'html-react-parser';
+import { TwitterTweetEmbed } from 'react-twitter-embed';
 import { getPosts, getPostContent } from "../../../../../components/Post";
 import Head from 'next/head'
 import Script from 'next/script'
 import DisqusComments from "../../../../../components/DisqusComments";
+import { Element } from 'domhandler/lib/node';
 
 export const getStaticPaths = async () => {
   const posts = getPosts();
@@ -43,7 +46,23 @@ export const getStaticProps: GetServerSideProps = async (context) => {
   }
 };
 
+const options: HTMLReactParserOptions = {
+  replace: (domNode) => {
+    if (
+      domNode.type === "tag" &&
+      (domNode as Element).name === "a" &&
+      (domNode as Element).attribs &&
+      (domNode as Element).attribs.href &&
+      (domNode as Element).attribs.href.match(/https:\/\/twitter\.com\/[A-Za-z0-9_]+\/status\/\d+/)
+    ) {
+      const tweetId = (domNode as Element).attribs.href.match(/\d+/)[0];
+      return <TwitterTweetEmbed tweetId={tweetId} />;
+    }
+  },
+};
+
 export default function PostPage({ post }) {
+  const content = htmlParse(post.contentHTML, options);
   return (
     <>
       <Head>
@@ -63,7 +82,7 @@ export default function PostPage({ post }) {
             </h4>
 
 
-            <div className="content" dangerouslySetInnerHTML={{ "__html": post.contentHTML }} />
+            <div className="content">{content}</div>
 
 
             <div>
