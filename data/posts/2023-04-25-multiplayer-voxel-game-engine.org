@@ -1,5 +1,5 @@
 #+TITLE: I built a multiplayer voxel browser game engine.
-#+IMAGE: img/multilpayer-engine-post/meta.png
+#+IMAGE: img/multiplayer-engine-post/meta.png
 #+TAGS: game dev, javascript, react
 
 ** Intro & TLDR;
