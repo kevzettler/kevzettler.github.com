@@ -190,7 +190,7 @@ During this time, I switched to hobby mode and started putting less and less tim
 
 ** The state of the art
 
-  Overall this project was a significant educational return on investment for me. I learned about hardcore browser optimization and many other data-processing techniques. I have continued to do game ( and engine ) development as a hobby and have already looked into some other emerging technologies. My focus is still on browser multiplayer experiences. I haven't found the big engines: Unreal, Unity, and Godot have the best models for multiplayer. I have previously written about [[https://radcade.com/how-to-add-network-multiplayer-to-your-indie-game/][multilpayer game engine design for indies]]. The big engines use coding patterns that couple game simulation code to rendering code. This coupling makes it challenging to build a server as you have to decouple the simulation and run it headless.
+  Overall this project was a significant educational return on investment for me. I learned about hardcore browser optimization and many other data-processing techniques. I have continued to do game ( and engine ) development as a hobby and have already looked into some other emerging technologies. My focus is still on browser multiplayer experiences. I haven't found the big engines: Unreal, Unity, and Godot have the best models for multiplayer. I have previously written about [[https://radcade.com/how-to-add-network-multiplayer-to-your-indie-game/][multiplayer game engine design for indies]]. The big engines use coding patterns that couple game simulation code to rendering code. This coupling makes it challenging to build a server as you have to decouple the simulation and run it headless.
 
 + [[https://dotbigbang.com/][DotBigBang]]
 
