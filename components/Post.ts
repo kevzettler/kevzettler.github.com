@@ -36,7 +36,8 @@ export interface Post {
   meta: {
     keywords: string,
     image: string,
-    description: string
+    description: string,
+    title: string
   }
 }
 
@@ -97,6 +98,7 @@ function readMarkdownPost(fileName: string): Post {
     excerpt,
     slug: getPostSlug(fileName),
     meta: {
+      title: matterResult.data.title,
       keywords: matterResult.data.tags || null,
       image: metaImageFallback(matterResult.data.image),
       description: metaDescriptionFallback(
@@ -145,7 +147,8 @@ function readOrgModePost(fileName: string): Post {
       description: metaDescriptionFallback(
         striptags(orgHTMLDocument.contentHTML),
         orgDocument.directiveValues['description:']
-      )
+      ),
+      title: orgHTMLDocument.title
     }
   };
 }

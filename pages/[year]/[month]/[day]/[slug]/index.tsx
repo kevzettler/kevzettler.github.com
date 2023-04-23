@@ -76,6 +76,7 @@ export default function PostPage({ post }) {
     <>
       <Head>
         <title>{post.title} - Kev Zettler</title>
+        <meta property="og:title" content={post.meta.title} />
         <meta property="og:image" content={`https://kevzettler.com/${post.meta.image}`} />
         <meta name="description" content={post.meta.description} />
         <meta property="og:description" content={post.meta.description} />
