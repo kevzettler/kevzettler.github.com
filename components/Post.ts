@@ -98,7 +98,7 @@ function readMarkdownPost(fileName: string): Post {
     excerpt,
     slug: getPostSlug(fileName),
     meta: {
-      title: matterResult.data.title,
+      title: matterResult.data.title + "- Kev Zettler",
       keywords: matterResult.data.tags || null,
       image: metaImageFallback(matterResult.data.image),
       description: metaDescriptionFallback(
@@ -148,7 +148,7 @@ function readOrgModePost(fileName: string): Post {
         striptags(orgHTMLDocument.contentHTML),
         orgDocument.directiveValues['description:']
       ),
-      title: orgHTMLDocument.title
+      title: orgHTMLDocument.title + "- Kev Zettler"
     }
   };
 }

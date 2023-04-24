@@ -1,5 +1,6 @@
 #+TITLE: I built a multiplayer voxel browser game engine.
 #+IMAGE: img/multiplayer-engine-post/meta.png
+#+DESCRIPTION: What I learned building a HTML5 multiplayer 3D voxel browser game engine. Now open source
 #+TAGS: game dev, javascript, react
 
 ** Intro & TLDR;
