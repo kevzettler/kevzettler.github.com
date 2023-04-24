@@ -81,6 +81,19 @@ export default function PostPage({ post }) {
         <meta name="description" content={post.meta.description} />
         <meta property="og:description" content={post.meta.description} />
         <meta name="keywords" content={post.meta.keywords} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@kevzettler" />
+        <meta name="twitter:creator" content="@kevzettler" />
+        <meta name="twitter:title" content={post.meta.title} />
+        <meta name="twitter:description" content={post.meta.description} />
+        <meta
+          name="twitter:image"
+          content={`https://kevzettler.com/${post.meta.image}`}
+        />
+
+        <meta name="twitter:image:width" content="4096" />
+        <meta name="twitter:image:height" content="2701" />
+
       </Head>
       <Script src="/js/vendor/highlight/highlight.min.js" strategy="beforeInteractive" />
       <div className="container" id="body-content">
