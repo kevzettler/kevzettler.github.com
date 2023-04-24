@@ -134,7 +134,7 @@ React+Redux setup was too much performance overhead for the real-time gameplay s
 
 **** Hobby time
 
-  When I started progressing with Stackgl, I took a year off and worked on it full-time throughout 2017. I lived off some savings and unemployment checks until late 2018. I got back into corporate wage slavery from 2018-2020. During this time, I was invited to Animecon 2019 indie developer section to shill my game in the Indie game section.
+  When I started progressing with Stackgl, I took a year off and worked on it full-time throughout 2017. I lived off some savings and unemployment checks until late 2018. I got back into corporate roles from 2018-2020. I was invited to Animecon 2019 indie developer section to shill my game in the Indie game section.
 
   #+BEGIN_HTML
 <a href='/img/multiplayer-engine-post/animecon.png'>
@@ -189,7 +189,9 @@ During this time, I switched to hobby mode and started putting less and less tim
 
 ** The state of the art
 
-  Overall this project was a significant educational return on investment for me. I learned about hardcore browser optimization and many other data-processing techniques. I have continued to do game ( and engine ) development as a hobby and have already looked into some other emerging technologies. My focus is still on browser multiplayer experiences. I haven't found the big engines: Unreal, Unity, and Godot have the best models for multiplayer. I have previously written about [[https://radcade.com/how-to-add-network-multiplayer-to-your-indie-game/][multiplayer game engine design for indies]]. The big engines use coding patterns that couple game simulation code to rendering code. This coupling makes it challenging to build a server as you have to decouple the simulation and run it headless.
+  Overall this project was a significant educational return on investment for me. I learned about hardcore browser optimization and many other data-processing techniques. I have continued to do game ( and engine ) development as a hobby and have already looked into some other emerging technologies. My focus is still on browser multiplayer experiences.
+
+Despite their popularity, I am dissatisfied with the multiplayer offerings provided by the major engines, Unreal, Unity, and Godot, as they fail to deliver user-friendly solutions catered to the needs of indie developers. I have previously written about [[https://radcade.com/how-to-add-network-multiplayer-to-your-indie-game/][multiplayer game engine design for indies]]. The big engines use coding patterns that couple game simulation code to rendering code. This coupling makes it challenging to build a server as you have to decouple the simulation and run it headless.
 
 + [[https://dotbigbang.com/][DotBigBang]]
 
@@ -204,3 +206,7 @@ During this time, I switched to hobby mode and started putting less and less tim
 + [[https://github.com/AmbientRun/Ambient][Ambient engine]]
 
   Ambient is a promising new Rust lang engine. It is a default multiplayer engine. It shares code between the client and server. It compiles game code to WASM and then acts as a cross-platform binary runtime to execute that WASM. I have built a promising prototype in Ambient but unfortunately Ambient does not currently make for browser environments. The Ambient team is actively working to target browsers and is aiming for an upcoming release.
+
+
+
+*Thanks for reading. checkout the* [[https://github.com/kevzettler/multiplayer-voxel-browser-game-engine][multiplayer voxel browser game engine repository]] *for more details.*

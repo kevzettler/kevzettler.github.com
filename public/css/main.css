@@ -19,7 +19,7 @@ h2{
 }
 
 .post{
- margin: 15px 0;
+  margin: 15px 0;
 }
 
 header{
@@ -44,6 +44,14 @@ a img:hover{
 
 .content{
     padding-top: 10px;
+}
+
+.post .content h2{
+  padding-top: 20px;
+}
+
+.post .content h3{
+  padding-top: 10px;
 }
 
 li p{
