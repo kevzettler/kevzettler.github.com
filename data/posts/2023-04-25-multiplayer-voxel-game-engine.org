@@ -82,8 +82,6 @@ I then imported the segmented Qubicle mesh into Blender and built the skeletal a
 
 The engine then combines the animation data and voxel mesh data at runtime.
 
-https://twitter.com/kevzettler/status/1002235365246222336?s=20
-
 
 *** Tech stack evaluation
 
