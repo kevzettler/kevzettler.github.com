@@ -21,22 +21,6 @@ function preprocessContentForTweets(contentHTML) {
   return contentHTML;
 }
 
-function addTargetBlankToExternalLinks(htmlContent: string): string {
-  const dom = new JSDOM(htmlContent);
-  const document = dom.window.document;
-
-  const anchors = document.querySelectorAll('a');
-  anchors.forEach((anchor) => {
-    const href = anchor.getAttribute('href');
-    if (href && !href.startsWith('/') && !href.startsWith('#')) {
-      anchor.setAttribute('target', '_blank');
-      anchor.setAttribute('rel', 'noopener noreferrer');
-    }
-  });
-
-  return dom.serialize();
-}
-
 function getTweetIdFromURL(url) {
   const tweetUrlRegex = /https:\/\/twitter.com\/\w+\/status\/(\d+)/;
   const match = url.match(tweetUrlRegex);
