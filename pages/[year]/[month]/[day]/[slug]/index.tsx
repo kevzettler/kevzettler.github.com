@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { GetServerSideProps } from "next";
-import htmlParse, { HTMLReactParserOptions } from 'html-react-parser';
+import htmlParse, { domToReact, HTMLReactParserOptions } from 'html-react-parser';
 import { TwitterTweetEmbed } from 'react-twitter-embed';
 import { getPosts, getPostContent } from "../../../../../components/Post";
 import Head from 'next/head'
@@ -56,17 +56,35 @@ export default function PostPage({ post }) {
   }, []);
 
   const options: HTMLReactParserOptions = {
-    replace: (domNode) => {
+    replace: (domNode: Element) => {
       if (
         domNode.type === "tag" &&
-        (domNode as Element).name === "a" &&
-        (domNode as Element).attribs &&
-        (domNode as Element).attribs.href &&
-        (domNode as Element).attribs.href.match(/https:\/\/twitter\.com\/[A-Za-z0-9_]+\/status\/\d+/)
+        domNode.name === "a" &&
+        domNode.attribs &&
+        domNode.attribs.href &&
+        domNode.attribs.href.match(/https:\/\/twitter\.com\/[A-Za-z0-9_]+\/status\/\d+/)
       ) {
-        const tweetId = (domNode as Element).attribs.href.match(/\d+/)[0];
+        const tweetId = domNode.attribs.href.match(/\d+/)[0];
         return isClient ? <TwitterTweetEmbed tweetId={tweetId} /> : null;
       }
+
+      if (
+        domNode.type === "tag" &&
+        domNode.name === "a"
+      ) {
+        const href = domNode.attribs.href;
+        if (href && !href.startsWith('/') && !href.startsWith('#') && !href.startsWith('https://kevzettler.com')) {
+          const updatedAttributes = {
+            ...domNode.attribs,
+            target: '_blank',
+            rel: 'noopener noreferrer',
+          };
+
+          const children = domToReact(domNode.children);
+          return React.createElement(domNode.name, updatedAttributes, children);
+        }
+      }
+
     },
   };
 

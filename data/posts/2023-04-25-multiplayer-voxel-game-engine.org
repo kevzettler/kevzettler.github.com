@@ -1,11 +1,11 @@
-#+TITLE: I built a multiplayer voxel browser game engine.
+#+TITLE: I built a multiplayer voxel browser game engine
 #+IMAGE: img/multiplayer-engine-post/meta.png
 #+DESCRIPTION: I open sourced my HTML5 multiplayer 3D voxel browser game engine.
 #+TAGS: game dev, javascript, react
 
-** Intro & TLDR;
+** TLDR;
 
-  This post is a retrospective on a [[https://github.com/kevzettler/multiplayer-voxel-browser-game-engine][multiplayer voxel browser game engine]] I built. This post will cover the squishy storytelling side of the project, and the [[https://github.com/kevzettler/multiplayer-voxel-browser-game-engine][accompanying code repository]] has all of the intricate technical details. This post is essentially a 2 part post. Read this and read the repo README.
+  This post is a retrospective on a [[https://github.com/kevzettler/multiplayer-voxel-browser-game-engine][multiplayer voxel browser game engine]] I built. This post will cover the squishy storytelling side of the project, and the [[https://github.com/kevzettler/multiplayer-voxel-browser-game-engine][accompanying code repository]] has all of the intricate technical details. This post is essentially a 2 part post. Read this and read the [[https://github.com/kevzettler/multilpayer-voxel-browser-game-engine][repo README]].
 
     #+BEGIN_HTML
 <a href='/img/multiplayer-engine-post/play.gif'>
@@ -16,9 +16,9 @@
 #+END_HTML
 
 
-*** Disclaimer
+*** Context
 
-  This project is a bit old and stale at the time of this post. Some of the tech decisions made sense during development but are questionable today. I will try to address that in this post. I started this project with very minimal game development experience. I had no idea how many things worked, shaders, 3d asset files, raw binary buffer manipulation, scene graphs, and physics engines. I learned all these skills and more during this project. This experience also helped me later land some major corporate jobs. This project was primarily active from 2017-2019; however, exploration for the project goes back to late 2016.
+  This project is a bit old and stale at the time of this post. Some of the tech decisions made sense during development but are questionable today. I will try to address that in this post. I started this project with very minimal game development experience. I had no idea how many things worked, shaders, 3d asset files, raw binary buffer manipulation, scene graphs, and physics engines. I learned all these skills and more during this project. This experience also helped me later land some major corporate projects. This project was primarily active from 2017-2019; however, exploration for the project goes back to late 2016.
 
 #+BEGIN_HTML
 <a href='/img/multiplayer-engine-post/disclaimer.png'>
@@ -30,9 +30,9 @@
 
 ** Inspiration & motivation
 
-  I wanted to build a multiplayer browser game. I was very inspired by ~.io~ games and sites like [[https://iogames.space/][iogames.space]]. I love the ~.io~ gaming experience of copy-pasting a URL around and getting in a game with your friends. Furthermore, I wanted to recreate a canceled MMO called [[https://en.wikipedia.org/wiki/Exteel][Exteel]]. My background was in web development and design. I stuck with the tools and environment I was most familiar with.
+  I wanted to build a multiplayer browser game. I was very inspired by ~.io~ games and sites like [[https://iogames.space/][iogames.space]]. I love the ~.io~ gaming experience of copy-pasting a URL around and getting in a game with your friends. I wanted to recreate a canceled MMO called [[https://en.wikipedia.org/wiki/Exteel][Exteel]] in an ~.io~ style. My background was in web development and design. I stuck with the tools and environment I was most familiar with.
 
-*** Target features
+*** Target Features
   + network multiplayer
   + playable cross-platform in the browser
   + Player avatar customization
@@ -54,9 +54,9 @@ After hacking on VoxLords, it was clear that making a captivating 3D multiplayer
 
 ** The work
 
-  After hacking the VoxLords multiplayer fork, I started by exploring multiple tech stacks concurrently and building a prototype in each. The stacks I looked at were Babylon.js, Three.js, & Stackgl.
+  After hacking the VoxLords multiplayer fork, I started by exploring multiple tech stacks concurrently and building a prototype in each. The stacks I looked at were [[https://www.babylonjs.com/][Babylon.js]], [[https://threejs.org/][Three.js]], & [[http://stack.gl/][Stackgl]].
 
-*** Tech stack requirements
+*** Tech Stack Requirements
 
   The first requirement was support for the 3d asset pipeline. I had been working with voxel models in [[https://ephtracy.github.io/][MagicaVoxel .vox]] format. The .vox format was great for static entities. There are primarily two ways to animate a voxel model. You can create frame-based animation, in which each frame is a separate voxel animation, and then you morph or swap them out at runtime. Or you can apply skeletal transformation data to voxel meshes. If you decide on the skeletal route, you must break the voxel mesh into smaller meshes corresponding to the skeleton bones.
 
@@ -83,7 +83,7 @@ I then imported the segmented Qubicle mesh into Blender and built the skeletal a
 The engine then combines the animation data and voxel mesh data at runtime.
 
 
-*** Tech stack evaluation
+*** Tech Stack Evaluation
 
 + [[https://threejs.org/][three.js]]
 
@@ -205,7 +205,7 @@ Despite their popularity, I am dissatisfied with the multiplayer offerings provi
 
 + [[https://github.com/AmbientRun/Ambient][Ambient engine]]
 
-  Ambient is a promising new Rust lang engine. It is a default multiplayer engine. It shares code between the client and server. It compiles game code to WASM and then acts as a cross-platform binary runtime to execute that WASM. I have built a promising prototype in Ambient but unfortunately Ambient does not currently make for browser environments. The Ambient team is actively working to target browsers and is aiming for an upcoming release.
+  Ambient is a promising new Rust lang engine. It is a default multiplayer engine. It shares code between the client and server. It compiles game code to WASM and then acts as a cross-platform binary runtime to execute that WASM. I have built a promising prototype in Ambient but unfortunately Ambient does not currently have a browser build. The Ambient team is actively working to target browsers and is aiming for an upcoming release.
 
 
 
